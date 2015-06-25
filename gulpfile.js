@@ -8,6 +8,8 @@ var gulp = require('gulp'),
     gutil = require('gulp-util'),
     sass = require("gulp-ruby-sass"),
     sourcemaps = require('gulp-sourcemaps'),
+    browserify = require('gulp-browserify'),
+    livereload = require('gulp-livereload'),
     fs = require('fs');
     
 var html_src = ['app/*.html'];
@@ -61,10 +63,22 @@ gulp.task('css', function() {
 
 // Watch task
 gulp.task('watch', function() {
-    gulp.watch('app/dev/js/**/*', ['js']);
-    gulp.watch(all_css, ['css']);
-    gulp.watch(['app/*.html','app/dev/views/*.html'], ['html']);
-    gulp.watch(all_sass, ['sass']);
+    livereload.listen();
+    gulp.watch('app/dev/js/**/*', ['compress']).on('change', function(file) { livereload.changed(file.path);
+        gutil.log(gutil.colors.yellow('JS changed' + ' (' + file.path + ')'));
+    });
+    
+    gulp.watch(all_css, ['css']).on('change', function(file) { livereload.changed(file.path);
+        gutil.log(gutil.colors.yellow('CSS changed' + ' (' + file.path + ')'));
+    });
+    
+    gulp.watch(['app/*.html','app/dev/views/*.html'], ['html']).on('change', function(file) { livereload.changed(file.path);
+        gutil.log(gutil.colors.cyan('HTML changed' + ' (' + file.path + ')'));
+    });
+    
+    gulp.watch(all_sass, ['sass']).on('change', function(file) { livereload.changed(file.path);
+        gutil.log(gutil.colors.grey('SASS changed' + ' (' + file.path + ')'));
+    });
 });
 
 // Webserver

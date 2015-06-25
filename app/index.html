@@ -15,36 +15,277 @@
     <link rel="stylesheet" type="text/css" media="all" href="css/ie6.css"/><![endif]-->
     <title>Alexis Phanor - Web Developer</title>
     <link href="http://alexisphanor.com/images/favicon.ico" rel="icon" type="image/x-icon" />
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+    
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
     <link rel="stylesheet" type="text/css" href="prod/css/styles.css" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script>
     <script src="prod/js/all.min.js"></script>
-    <script type="text/javascript">
-        $(document).ready(function(){
-            $('.down').click(function(){
-                $("div.main").moveDown();
-            })
-            
-            $('.up').click(function(){
-                $("div.main").moveUp();
-            })
-        })
-    </script>
+    <script src="prod/js/jquery.onepage-scroll.min.js"></script>
+    <link rel="stylesheet" href="prod/css/fontello.css"><!--[if IE 7]><link rel="stylesheet" href="css/fontello-ie7.css"><![endif]-->
+    <style>
+        .arrows {
+        	width: 60px;
+        	height: 72px;
+        	position: absolute;
+        	left: 50%;
+        	margin-left: -30px;
+        	bottom: 20px;
+        }
+        
+        #last_content, #header_content, #info_content {margin: 0 auto; width: 1000px;}
+        
+        #info_content {
+            padding-top: 2em;
+        }
+        .arrows path {
+        	stroke: #2994D1;
+        	fill: transparent;
+        	stroke-width: 1px;	
+        	animation: arrow 2s infinite;
+        	-webkit-animation: arrow 2s infinite; 
+        }
+        
+        @keyframes arrow
+        {
+            0% {opacity:0}
+            40% {opacity:1}
+            80% {opacity:0}
+            100% {opacity:0}
+        }
+        
+        @-webkit-keyframes arrow /*Safari and Chrome*/
+        {
+            0% {opacity:0}
+            40% {opacity:1}
+            80% {opacity:0}
+            100% {opacity:0}
+        }
+        
+        .arrows path.a1 {
+        	animation-delay:-1s;
+        	-webkit-animation-delay:-1s; /* Safari 和 Chrome */
+        }
+        
+        .arrows path.a2 {
+        	animation-delay:-0.5s;
+        	-webkit-animation-delay:-0.5s; /* Safari 和 Chrome */
+        }
+        
+        .arrows path.a3 {	
+        	animation-delay:0s;
+        	-webkit-animation-delay:0s; /* Safari 和 Chrome */
+        }
+        
+        .down i, .up i {font-size: 26px; cursor: pointer;}
+        
+        .down i {
+            bottom: 0;
+            position: absolute;
+            left: 50%;
+            margin-left: -16px !important;
+            margin-bottom: 0.5em;
+        }
+        
+        .up i {
+            top: 0;
+            position: absolute;
+            left: 50%;
+            margin-left: -16px !important;
+            margin-top: 0.5em;
+        }
+        
+        .uppi i {color: #FFF;}
+        
+        .scroll {display: none;}
+        
+        .project-planner {
+            background-color: #DDD;
+        }
+        
+        .col-md-4 img {
+            width: 300px;
+        }
+    </style>
     </head>
     <body>
         <div class="main onepage-wrapper">
             <section class="header">
-                <h1>Alexis</h1>
-                <div><span class="down">Down</span></div>
+                <div id="header_content">
+                    <div class="row">
+                        <div class="container-fluid">
+                            <div class="col-md-4">
+                                <h1>Header</h1>
+                            </div>
+                            <div class="col-md-8">
+                                <h2>Alexis</h2>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="scroll">
+                        <span class="down">
+                        <svg class="arrows">
+    						<path class="a1" d="M0 0 L30 32 L60 0"></path>
+    						<path class="a2" d="M0 20 L30 52 L60 20"></path>
+    						<path class="a3" d="M0 40 L30 72 L60 40"></path>
+    					</svg>
+        				</span>
+                    </div>
+				</div>
             </section>
             <section class="info">
-                <div><span class="up">Up</span></div>
-                <h1>Test</h1>
-                <div><span class="down">Down</span></div>
+                <div id="info_content">
+                    <div><span class="up"><i class="icon-up-open"></i></span></div>
+                    <h1>Skills</h1>
+                    <p>
+                        HTML5
+                        SASS
+                        - CSS, SCSS & SASS
+                        JavaScript
+                        - AngularJS, Backbone.js, CoffeeScript
+                        NodeJS
+                        - Express, Gulp, GruntJS and Browserify
+                        PHP
+                        - Zend 2
+                        
+                        Java, Git, Svn, Npm…
+                    </p>
+                    <ul class="progressi">
+                        <!--  Item  -->
+                        <li data-name="HTML" data-percent="98%"> 
+                            <svg viewBox="-10 -10 220 220">
+                                <g fill="none" stroke-width="2" transform="translate(100,100)">
+                                    <path d="M 0,-100 A 100,100 0 0,1 86.6,-50" stroke="url(#cl1)"/>
+                                    <path d="M 86.6,-50 A 100,100 0 0,1 86.6,50" stroke="url(#cl2)"/>
+                                    <path d="M 86.6,50 A 100,100 0 0,1 0,100" stroke="url(#cl3)"/>
+                                    <path d="M 0,100 A 100,100 0 0,1 -86.6,50" stroke="url(#cl4)"/>
+                                    <path d="M -86.6,50 A 100,100 0 0,1 -86.6,-50" stroke="url(#cl5)"/>
+                                    <path d="M -86.6,-50 A 100,100 0 0,1 0,-100" stroke="url(#cl6)"/>
+                                </g>
+                            </svg> 
+                            <svg viewBox="-10 -10 220 220">
+                                <path d="M200,100 C200,44.771525 155.228475,0 100,0 C44.771525,0 0,44.771525 0,100 C0,155.228475 44.771525,200 100,200 C155.228475,200 200,155.228475 200,100 Z" stroke-dashoffset="589"></path>
+                            </svg> 
+                        </li>
+                        <li data-name="CSS & SASS" data-percent="88%"> 
+                            <svg viewBox="-10 -10 220 220">
+                                <g fill="none" stroke-width="2" transform="translate(100,100)">
+                                    <path d="M 0,-100 A 100,100 0 0,1 86.6,-50" stroke="url(#cl1)"/>
+                                    <path d="M 86.6,-50 A 100,100 0 0,1 86.6,50" stroke="url(#cl2)"/>
+                                    <path d="M 86.6,50 A 100,100 0 0,1 0,100" stroke="url(#cl3)"/>
+                                    <path d="M 0,100 A 100,100 0 0,1 -86.6,50" stroke="url(#cl4)"/>
+                                    <path d="M -86.6,50 A 100,100 0 0,1 -86.6,-50" stroke="url(#cl5)"/>
+                                    <path d="M -86.6,-50 A 100,100 0 0,1 0,-100" stroke="url(#cl6)"/>
+                                </g>
+                            </svg> 
+                            <svg viewBox="-10 -10 220 220">
+                                <path d="M200,100 C200,44.771525 155.228475,0 100,0 C44.771525,0 0,44.771525 0,100 C0,155.228475 44.771525,200 100,200 C155.228475,200 200,155.228475 200,100 Z" stroke-dashoffset="529"></path>
+                            </svg> 
+                        </li>
+                        <li data-name="JavaScript" data-percent="85%"> 
+                            <svg viewBox="-10 -10 220 220">
+                                <g fill="none" stroke-width="2" transform="translate(100,100)">
+                                    <path d="M 0,-100 A 100,100 0 0,1 86.6,-50" stroke="url(#cl1)"/>
+                                    <path d="M 86.6,-50 A 100,100 0 0,1 86.6,50" stroke="url(#cl2)"/>
+                                    <path d="M 86.6,50 A 100,100 0 0,1 0,100" stroke="url(#cl3)"/>
+                                    <path d="M 0,100 A 100,100 0 0,1 -86.6,50" stroke="url(#cl4)"/>
+                                    <path d="M -86.6,50 A 100,100 0 0,1 -86.6,-50" stroke="url(#cl5)"/>
+                                    <path d="M -86.6,-50 A 100,100 0 0,1 0,-100" stroke="url(#cl6)"/>
+                                </g>
+                            </svg> 
+                            <svg viewBox="-10 -10 220 220">
+                                <path d="M200,100 C200,44.771525 155.228475,0 100,0 C44.771525,0 0,44.771525 0,100 C0,155.228475 44.771525,200 100,200 C155.228475,200 200,155.228475 200,100 Z" stroke-dashoffset="500"></path>
+                            </svg> 
+                        </li>
+                        <li data-name="PHP" data-percent="70%"> 
+                            <svg viewBox="-10 -10 220 220">
+                                <g fill="none" stroke-width="2" transform="translate(100,100)">
+                                    <path d="M 0,-100 A 100,100 0 0,1 86.6,-50" stroke="url(#cl1)"/>
+                                    <path d="M 86.6,-50 A 100,100 0 0,1 86.6,50" stroke="url(#cl2)"/>
+                                    <path d="M 86.6,50 A 100,100 0 0,1 0,100" stroke="url(#cl3)"/>
+                                    <path d="M 0,100 A 100,100 0 0,1 -86.6,50" stroke="url(#cl4)"/>
+                                    <path d="M -86.6,50 A 100,100 0 0,1 -86.6,-50" stroke="url(#cl5)"/>
+                                    <path d="M -86.6,-50 A 100,100 0 0,1 0,-100" stroke="url(#cl6)"/>
+                                </g>
+                            </svg> 
+                            <svg viewBox="-10 -10 220 220">
+                                <path d="M200,100 C200,44.771525 155.228475,0 100,0 C44.771525,0 0,44.771525 0,100 C0,155.228475 44.771525,200 100,200 C155.228475,200 200,155.228475 200,100 Z" stroke-dashoffset="450"></path>
+                            </svg> 
+                        </li>
+                        <li data-name="NodeJS" data-percent="62%"> 
+                            <svg viewBox="-10 -10 220 220">
+                                <g fill="none" stroke-width="2" transform="translate(100,100)">
+                                    <path d="M 0,-100 A 100,100 0 0,1 86.6,-50" stroke="url(#cl1)"/>
+                                    <path d="M 86.6,-50 A 100,100 0 0,1 86.6,50" stroke="url(#cl2)"/>
+                                    <path d="M 86.6,50 A 100,100 0 0,1 0,100" stroke="url(#cl3)"/>
+                                    <path d="M 0,100 A 100,100 0 0,1 -86.6,50" stroke="url(#cl4)"/>
+                                    <path d="M -86.6,50 A 100,100 0 0,1 -86.6,-50" stroke="url(#cl5)"/>
+                                    <path d="M -86.6,-50 A 100,100 0 0,1 0,-100" stroke="url(#cl6)"/>
+                                </g>
+                            </svg> 
+                            <svg viewBox="-10 -10 220 220">
+                                <path d="M200,100 C200,44.771525 155.228475,0 100,0 C44.771525,0 0,44.771525 0,100 C0,155.228475 44.771525,200 100,200 C155.228475,200 200,155.228475 200,100 Z" stroke-dashoffset="400"></path>
+                            </svg> 
+                        </li>
+                        <li data-name="Swift" data-percent="50%"> 
+                            <svg viewBox="-10 -10 220 220">
+                                <g fill="none" stroke-width="2" transform="translate(100,100)">
+                                    <path d="M 0,-100 A 100,100 0 0,1 86.6,-50" stroke="url(#cl1)"/>
+                                    <path d="M 86.6,-50 A 100,100 0 0,1 86.6,50" stroke="url(#cl2)"/>
+                                    <path d="M 86.6,50 A 100,100 0 0,1 0,100" stroke="url(#cl3)"/>
+                                    <path d="M 0,100 A 100,100 0 0,1 -86.6,50" stroke="url(#cl4)"/>
+                                    <path d="M -86.6,50 A 100,100 0 0,1 -86.6,-50" stroke="url(#cl5)"/>
+                                    <path d="M -86.6,-50 A 100,100 0 0,1 0,-100" stroke="url(#cl6)"/>
+                                </g>
+                            </svg> 
+                            <svg viewBox="-10 -10 220 220">
+                                <path d="M200,100 C200,44.771525 155.228475,0 100,0 C44.771525,0 0,44.771525 0,100 C0,155.228475 44.771525,200 100,200 C155.228475,200 200,155.228475 200,100 Z" stroke-dashoffset="315"></path>
+                            </svg> 
+                        </li>
+                    </ul>
+                    <!--  Defining Angle Gradient Colors  --> 
+                    <svg width="0" height="0">
+                        <defs>
+                            <linearGradient id="cl1" gradientUnits="objectBoundingBox" x1="0" y1="0" x2="1" y2="1">
+                                <stop stop-color="#618099"/>
+                                <stop offset="100%" stop-color="#8e6677"/>
+                            </linearGradient>
+                            <linearGradient id="cl2" gradientUnits="objectBoundingBox" x1="0" y1="0" x2="0" y2="1">
+                                <stop stop-color="#8e6677"/>
+                                <stop offset="100%" stop-color="#9b5e67"/>
+                            </linearGradient>
+                            <linearGradient id="cl3" gradientUnits="objectBoundingBox" x1="1" y1="0" x2="0" y2="1">
+                                <stop stop-color="#9b5e67"/>
+                                <stop offset="100%" stop-color="#9c787a"/>
+                            </linearGradient>
+                            <linearGradient id="cl4" gradientUnits="objectBoundingBox" x1="1" y1="1" x2="0" y2="0">
+                                <stop stop-color="#9c787a"/>
+                                <stop offset="100%" stop-color="#817a94"/>
+                            </linearGradient>
+                            <linearGradient id="cl5" gradientUnits="objectBoundingBox" x1="0" y1="1" x2="0" y2="0">
+                                <stop stop-color="#817a94"/>
+                                <stop offset="100%" stop-color="#498a98"/>
+                            </linearGradient>
+                            <linearGradient id="cl6" gradientUnits="objectBoundingBox" x1="0" y1="1" x2="1" y2="0">
+                                <stop stop-color="#498a98"/>
+                                <stop offset="100%" stop-color="#618099"/>
+                            </linearGradient>
+                        </defs>
+                    </svg>
+                    <div><span class="down"><i class="icon-down-open"></i></span></div>
+                </div>
             </section>
             <section class="project-planner">
-                <div><span class="up">Up</span></div>
-                <h1>Hello</h1>
+                <div id="last_content">
+                    <div><span class="up uppi"><i class="icon-up-open"></i></span></div>
+                    <h1>Hello</h1>
+                </div>
             </section>
         </div>
     </body>
