@@ -9,6 +9,16 @@ var gulp = require('gulp'),
     sass = require("gulp-ruby-sass"),
     sourcemaps = require('gulp-sourcemaps'),
     fs = require('fs');
+    
+var html_src = ['app/*.html'];
+var sass_src = ['app/dev/sass/'];
+var css_src = ['app/prod/css/'];
+var js_src = ['app/prod/js'];
+
+var all_js =['app/dev/js/*.js'];
+var all_sass = ['app/dev/sass/*'];
+var all_css = ['app/prod/css/*.css'];
+var all_html = ['app/*.html'];
 
 // Sass & CSS configuration
 gulp.task('sass', function () {
@@ -27,7 +37,7 @@ gulp.task('sass', function () {
 
 // Uglify configuration 
 gulp.task('compress', function() {
-    return gulp.src(['app/dev/js/*.js', '!app/dev/js/*.min.js'])
+    return gulp.src(['app/dev/js/*.js', '!app/dev/js/*.min.js', '!app/dev/sass/jquery.onepage-scroll.js'])
     .pipe(uglify().on('error', gutil.log))
     .pipe(concat('all.js'))
     .pipe(rename({
@@ -38,23 +48,23 @@ gulp.task('compress', function() {
 
 // Watch items
 gulp.task('js', function() {
-    gulp.src('app/dev/js/*.js')
+    gulp.src(all_js)
 });
 
 gulp.task('html', function() {
-    gulp.src('*.html')
+    gulp.src(all_html)
 });
 
 gulp.task('css', function() {
-    gulp.src('app/prod/css/*.css')
+    gulp.src(all_css)
 });
 
 // Watch task
 gulp.task('watch', function() {
     gulp.watch('app/dev/js/**/*', ['js']);
-    gulp.watch('app/prod/css/*.css', ['css']);
-    gulp.watch(['app/*.html',
-    'app/dev/views/*.html'], ['html']);
+    gulp.watch(all_css, ['css']);
+    gulp.watch(['app/*.html','app/dev/views/*.html'], ['html']);
+    gulp.watch(all_sass, ['sass']);
 });
 
 // Webserver
