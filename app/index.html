@@ -15,6 +15,8 @@
     <link rel="stylesheet" type="text/css" media="all" href="css/ie6.css"/><![endif]-->
     <title>Alexis Phanor - Web Developer</title>
     <link href="http://alexisphanor.com/images/favicon.ico" rel="icon" type="image/x-icon" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script>
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
     
@@ -24,8 +26,6 @@
     <!-- Latest compiled and minified JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
     <link rel="stylesheet" type="text/css" href="prod/css/styles.css" />
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script>
     <script src="prod/js/all.min.js"></script>
     <script src="prod/js/jquery.onepage-scroll.min.js"></script>
     <link rel="stylesheet" href="prod/css/fontello.css"><!--[if IE 7]><link rel="stylesheet" href="css/fontello-ie7.css"><![endif]-->
@@ -108,34 +108,182 @@
         .project-planner {
             background-color: #DDD;
         }
-        
-        .col-md-4 img {
-            width: 300px;
+                
+        .intro {
+            background-color: #11141f;
+            position: relative;
+            text-transform: uppercase;
+            text-align: center;
         }
+        .logo {
+            width: 50%;
+            height: 50%;
+            overflow: auto;
+            margin: auto;
+            position: absolute;
+            top: 0; left: 0; bottom: 0; right: 0;
+            text-align: center;
+            padding-top: 3%;
+            
+        }
+        
+        .logo h1 {
+            color: #FFF;
+            font-size: 20px;
+        }
+        
+        .logo h2 {
+            color: #f99314;
+            font-size: 18px;
+        }
+        #front-end, #back-end {
+            height: 50%;
+            width: 100%;
+            position: relative;
+            /* Lorem ipsum dolor si: */
+            opacity: 0.79;
+            font-size: 15px;
+            color: #565656;
+            line-height: 20px;
+            font-family: 'Open Sans', sans-serif;
+        }
+        
+        .front-content, .back-content {
+            height: 100%;
+            padding: 2em;
+        }
+        
+        .front-content h1, .back-content h1 {
+            margin-bottom: 1em;
+        }
+        
+        .back-content * {
+            float: right;
+            text-align: right;
+        }
+        
+        #back-end {
+            background-color: #f6f6f6;
+        }
+        
+        .row, .row div {
+            height: 100% !important;
+        }
+        
+        .img_container {
+            text-align: center;  /* align the inline(-block) elements horizontally */
+            font: 0/0 a;         /* remove the gap between inline(-block) elements */
+        }
+
+        .img_container:before {    /* create a full-height inline block pseudo=element */
+            content: ' ';
+            display: inline-block;
+            vertical-align: middle;  /* vertical alignment of the inline element */
+            height: 100%;
+        }
+        
+        .img_container img {
+            vertical-align: middle;
+            display: inline-block;
+        }
+        
+        #front-end h1, #back-end h1 {
+            font-weight: 300 !important;
+            font-family: 'Open Sans', sans-serif;
+            text-transform: uppercase;
+            /* FRONTEND DEVELOPMENT: */
+            font-size: 29px;
+            color: #5D5D5D;
+            line-height: 34px;
+        }
+        
+        #front-end h1 span, #back-end h1 span {
+            font-weight: 600;
+            text-transform: uppercase;
+            font-family: 'Open Sans', sans-serif;
+            color: #000;
+            line-height: 34px;
+            margin-left: 8px;
+        }
+        
+        .spany {
+            color: #979797;
+            margin-top: 2em;
+        }
+        
+        svg.sv {
+          display: block;
+          margin: 50px auto;
+        }
+        
+        #loader 
+        { fill: #11141f; }
+        
+        #border 
+        { fill: #FFF; }
     </style>
+    <script>
+        setTimeout(function() { $('.logo svg').fadeOut(); }, 4000) 
+    </script>
     </head>
     <body>
         <div class="main onepage-wrapper">
+            <section class="intro">
+                <div class="logo">
+                    <img src="prod/content/logo_svg.svg" alt="aphanor" />
+                    <h1>Alexis Phanor</h1>
+                    <h2>Front-end &amp; Back-end Developer</h2>
+                    <svg class='sv' width="50" viewbox="0 0 250 250">
+                        <path id="border" transform="translate(125, 125)"/>
+                        <path id="loader" transform="translate(125, 125) scale(.94)"/>
+                    </svg>
+                </div>
+                <div class="scroll">
+                    <span class="down">
+                    <svg class="arrows">
+						<path class="a1" d="M0 0 L30 32 L60 0"></path>
+						<path class="a2" d="M0 20 L30 52 L60 20"></path>
+						<path class="a3" d="M0 40 L30 72 L60 40"></path>
+					</svg>
+    				</span>
+                </div>
+            </section>
             <section class="header">
-                <div id="header_content">
+                <div id="front-end">
                     <div class="row">
                         <div class="container-fluid">
-                            <div class="col-md-4">
-                                <h1>Header</h1>
-                            </div>
                             <div class="col-md-8">
-                                <h2>Alexis</h2>
+                                <div class="front-content">
+                                    <h1>FRONTEND<span>DEVELOPMENT</span></h1>
+                                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+                                    <p>It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</p>
+                                    <span class="spany">_______</span>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="img_container">
+                                    <img src="prod/content/%3C%20%2B%20%3C.svg" alt="aphanor" />
+                                </div>
                             </div>
                         </div>
                     </div>
-                    <div class="scroll">
-                        <span class="down">
-                        <svg class="arrows">
-    						<path class="a1" d="M0 0 L30 32 L60 0"></path>
-    						<path class="a2" d="M0 20 L30 52 L60 20"></path>
-    						<path class="a3" d="M0 40 L30 72 L60 40"></path>
-    					</svg>
-        				</span>
+				</div>
+				<div id="back-end">
+                    <div class="row">
+                        <div class="container-fluid">
+                            <div class="col-md-4">
+                                <div class="img_container">
+                                    <img src="prod/content/%7D%20%2B%20%7B.svg" alt="aphanor" />
+                                </div>
+                            </div>
+                            <div class="col-md-8">
+                                <div class="back-content">
+                                    <h1>BACKEND<span>DEVELOPMENT</span></h1>
+                                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</p>
+                                    <span class="spany">_______</span>
+                                </div>
+                            </div>
+                        </div>
                     </div>
 				</div>
             </section>

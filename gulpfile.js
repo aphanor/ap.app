@@ -7,9 +7,12 @@ var gulp = require('gulp'),
     minifyCss = require('gulp-minify-css'),
     gutil = require('gulp-util'),
     sass = require("gulp-ruby-sass"),
+    compass = require('gulp-compass'),
     sourcemaps = require('gulp-sourcemaps'),
     browserify = require('gulp-browserify'),
     livereload = require('gulp-livereload'),
+    replace = require('gulp-replace'),
+    s3 = require("gulp-s3"),
     fs = require('fs');
     
 var html_src = ['app/*.html'];
@@ -17,11 +20,29 @@ var sass_src = ['app/dev/sass/'];
 var css_src = ['app/prod/css/'];
 var js_src = ['app/prod/js'];
 
-var all_js =['app/dev/js/*.js'];
+var all_js = ['app/dev/js/*.js'];
 var all_sass = ['app/dev/sass/*'];
 var all_css = ['app/prod/css/*.css'];
 var all_html = ['app/*.html'];
 
+var amazon_aws = ['app/prod/**'];
+
+gulp.task('prod', function() {
+    gulp.src('app/index.html')
+        .pipe(replace('"prod/', '"'))
+        .pipe(gulp.dest('app/prod/'));
+});
+
+//Amazon S3 configuration
+gulp.task('aws', ['prod'], function() { 
+    aws = JSON.parse(fs.readFileSync('./aws.json'));
+    gutil.log(gutil.colors.cyan('Starting Upload...'));
+    setTimeout(function() {
+        gulp.src(amazon_aws)
+            .pipe(s3(aws).on('error', gutil.log));
+    }, 800)
+});
+ 
 // Sass & CSS configuration
 gulp.task('sass', function () {
     return sass('app/dev/sass/', {style: 'compressed', sourcemap: true})
@@ -36,6 +57,7 @@ gulp.task('sass', function () {
         }))
         .pipe(gulp.dest('app/prod/css/'));
 });
+
 
 // Uglify configuration 
 gulp.task('compress', function() {
