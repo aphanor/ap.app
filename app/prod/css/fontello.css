@@ -1,10 +1,10 @@
 @font-face {
   font-family: 'fontello';
-  src: url('../font/fontello.eot?11145778');
-  src: url('../font/fontello.eot?11145778#iefix') format('embedded-opentype'),
-       url('../font/fontello.woff?11145778') format('woff'),
-       url('../font/fontello.ttf?11145778') format('truetype'),
-       url('../font/fontello.svg?11145778#fontello') format('svg');
+  src: url('../font/fontello.eot?38038676');
+  src: url('../font/fontello.eot?38038676#iefix') format('embedded-opentype'),
+       url('../font/fontello.woff?38038676') format('woff'),
+       url('../font/fontello.ttf?38038676') format('truetype'),
+       url('../font/fontello.svg?38038676#fontello') format('svg');
   font-weight: normal;
   font-style: normal;
 }
@@ -14,12 +14,12 @@
 @media screen and (-webkit-min-device-pixel-ratio:0) {
   @font-face {
     font-family: 'fontello';
-    src: url('../font/fontello.svg?11145778#fontello') format('svg');
+    src: url('../font/fontello.svg?38038676#fontello') format('svg');
   }
 }
 */
  
- [class^="icon-"]:before, [class*=" icon-"]:before {
+ [class^="icono-"]:before, [class*=" icono-"]:before {
   font-family: "fontello";
   font-style: normal;
   font-weight: normal;
@@ -54,9 +54,13 @@
   /* text-shadow: 1px 1px 1px rgba(127, 127, 127, 0.3); */
 }
  
-.icon-firefox:before { content: '\e800'; } /* '' */
-.icon-chrome:before { content: '\e801'; } /* '' */
-.icon-opera:before { content: '\e802'; } /* '' */
-.icon-ie:before { content: '\e803'; } /* '' */
-.icon-down-open:before { content: '\e804'; } /* '' */
-.icon-up-open:before { content: '\e805'; } /* '' */
+.icono-down-open:before { content: '\e800'; } /* '' */
+.icono-up-open:before { content: '\e801'; } /* '' */
+.icono-html5:before { content: '\e805'; } /* '' */
+.icono-github-squared:before { content: '\e806'; } /* '' */
+.icono-github:before { content: '\e807'; } /* '' */
+.icono-terminal:before { content: '\e808'; } /* '' */
+.icono-terminal-1:before { content: '\e809'; } /* '' */
+.icono-folder:before { content: '\e80a'; } /* '' */
+.icono-code:before { content: '\e80b'; } /* '' */
+.icono-code-1:before { content: '\e80c'; } /* '' */

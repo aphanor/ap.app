@@ -21,13 +21,51 @@ $(document).ready(function(){
         beforeMove: function(index) {},
         afterMove: function(index) {
             function loader() {
-                if(!$('link[href="prod/css/loader.css"]').length) { 
-                    $('head').append('<link rel="stylesheet" type="text/css" href="http://dev.staging-ap.s3-website-eu-west-1.amazonaws.com/css/loader.css"/>');
+                if($('section.info').visible(true)) { 
+                    $('.pie_progress').asPieProgress('start');
+                    $(".pie_progressi").asPieProgress('start');
+                    $(".pie_progresso").asPieProgress('start');
+                    $(".pie_progressa").asPieProgress('start');
+                    $(".pie_progressu").asPieProgress('start');
                 }
             }
             loader()
+            clearTimeout(scrolly)
+            
+            if($('section.project-planner').visible(true)) {
+                $('div#projectplannerformarea').slideDown(500, 'swing');
+            }
+            
+            $('button.button--sacnite').addClass('bounce');
+            
+            $('.contact').hover(function() { $('button.button--sacnite').removeClass('bounce'); clearTimeout(scrolly); });
+            
+            $('.contact').click(function(){
+                clearTimeout(scrolly)
+                StopInterval()
+            })
+            
+            /*var intervalContact;
+    
+            function intervalContact() {
+                intervalContact = setInterval(function(){ $(".contact").effect("bounce", { times: 3 }, 800);}, 4000);
+            }
+            
+            function StopInterval() {
+                clearInterval(intervalContact);
+            }
+            
+            $('.contact').click(function(){
+                clearTimeout(scrolly)
+                StopInterval()
+            })
+            
+            $('.contact').hover(function(){
+                StopInterval()
+            })
+            intervalContact() */
         },
-        loop: true,
+        loop: false,
         keyboard: true,
         responsiveFallback: false,
         direction: "vertical" 
@@ -153,5 +191,18 @@ $(document).ready(function(){
         loops: 1
     });
     
-    setTimeout(function() { $("div.main").moveTo(2) }, 4400) 
+    //setTimeout(function() { $("div.main").moveTo(2) }, 4400) 
+    
+    var scrolly;
+
+    function scroller() {
+        scrolly = setTimeout(function() { $("div.main").moveTo(2) }, 4400);
+    }
+    
+    scroller()
+    
+    function stopScroller() {
+        clearTimeout(scrolly);
+    }
+    
 });

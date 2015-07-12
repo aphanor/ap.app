@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<!-- Made by Alexis Phanor -->
 <html lang="en">
     <head>
     <meta charset="UTF-8" />
@@ -16,6 +17,8 @@
     <title>Alexis Phanor - Web Developer</title>
     <link href="http://alexisphanor.com/images/favicon.ico" rel="icon" type="image/x-icon" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script>
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
@@ -25,11 +28,40 @@
     
     <!-- Latest compiled and minified JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script src="prod/js/jquery.visible.min.js"></script>
+    <!-- CSS -->
     <link rel="stylesheet" type="text/css" href="prod/css/styles.css" />
+    <link rel="stylesheet" type="text/css" href="prod/css/pie.css" />
+    <link rel="stylesheet" type="text/css" href="prod/css/project.css" />
+    <link rel="stylesheet" type="text/css" href="prod/css/vicons-font.css" />
+    <link rel="stylesheet" type="text/css" href="prod/css/svg-home.css" />
+    <link rel="stylesheet" href="prod/css/fontello.css"><!--[if IE 7]><link rel="stylesheet" href="css/fontello-ie7.css"><![endif]-->
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    <!-- JavaScript -->
     <script src="prod/js/all.min.js"></script>
     <script src="prod/js/jquery.onepage-scroll.min.js"></script>
-    <link rel="stylesheet" href="prod/css/fontello.css"><!--[if IE 7]><link rel="stylesheet" href="css/fontello-ie7.css"><![endif]-->
+    <script src="prod/js/type.js"></script>
+    <script src="prod/js/modernizr.custom.js"></script>
+    <script src="prod/js/snap.svg-min.js"></script>
+    <script src="prod/js/dialogFx.js"></script>
+    <script src="prod/js/classie.js"></script>
+    <script src="prod/js/jquery.steps.min.js"></script>
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    
+      ga('create', 'UA-39741636-1', 'auto');
+      ga('send', 'pageview');
+    
+    </script>
+    
     <style>
+        h1 {
+            font-size: 28px;
+        }
+        
         .arrows {
         	width: 60px;
         	height: 72px;
@@ -39,11 +71,27 @@
         	bottom: 20px;
         }
         
-        #last_content, #header_content, #info_content {margin: 0 auto; width: 1000px;}
+        #last_content, #header_content, #info_content {margin: 0 auto; max-width: 80%;}
         
         #info_content {
-            padding-top: 2em;
+            padding-top: 4%;
+            color: #f0e4d9;
         }
+        
+        #info_content h1 {
+            text-align: center;
+            text-transform: uppercase;
+            margin-bottom: 2em;
+            margin-top: 1em;
+            font-weight: 300;
+            text-rendering: optimizelegibility;
+            -webkit-font-smoothing: antialiased;
+        }
+        
+        span.prog {
+            font-weight: 600;
+        }
+        
         .arrows path {
         	stroke: #2994D1;
         	fill: transparent;
@@ -101,12 +149,20 @@
             margin-top: 0.5em;
         }
         
-        .uppi i {color: #FFF;}
+        .uppi i {color: #1c1e26;}
         
         .scroll {display: none;}
         
         .project-planner {
-            background-color: #DDD;
+            text-align: center;
+            color: #1c1e26;
+        }
+        
+        .project-planner h1 {
+            margin: 2em auto 1em;
+            text-rendering: optimizelegibility;
+            -webkit-font-smoothing: antialiased;
+            font-weight: 300;
         }
                 
         .intro {
@@ -157,9 +213,13 @@
             margin-bottom: 1em;
         }
         
-        .back-content * {
+        .back-content p {
             float: right;
             text-align: right;
+        }
+        
+        .back-content span {
+            text-align: center !important;
         }
         
         #back-end {
@@ -173,6 +233,10 @@
         .img_container {
             text-align: center;  /* align the inline(-block) elements horizontally */
             font: 0/0 a;         /* remove the gap between inline(-block) elements */
+        }
+        
+        .img_container svg {
+            margin-top: 66px;
         }
 
         .img_container:before {    /* create a full-height inline block pseudo=element */
@@ -195,6 +259,9 @@
             font-size: 29px;
             color: #5D5D5D;
             line-height: 34px;
+            text-rendering: optimizelegibility;
+            -webkit-font-smoothing: antialiased;
+
         }
         
         #front-end h1 span, #back-end h1 span {
@@ -221,18 +288,97 @@
         
         #border 
         { fill: #FFF; }
+        
+        section.info {
+            background-color: #1c1e26;
+        }
+        
+        .slogan * {
+            display: inline-block;
+            color: #f99314;
+        }
+        
+        h2.quote {
+            margin-right: 0.25em;
+        }
+        div.contact {
+            position: absolute;
+            right: 30px;
+            top: 0px;
+            padding: 10px;
+            color: #fff;
+            font-weight: 500;
+            font-size: 20px;
+            cursor: pointer;
+            height: 40px !important;
+            width: 101px !important;
+        }
+        
+        @keyframes bounce {
+        	0%, 20%, 50%, 80%, 100% {
+            transform: translateY(0);
+          }
+        	40% {
+            transform: translateY(-30px);
+          }
+        	60% {
+            transform: translateY(-15px);
+          }
+        }
+        
+        .bounce {
+          animation: bounce 5s infinite;
+        }
     </style>
     <script>
-        setTimeout(function() { $('.logo svg').fadeOut(); }, 4000) 
+        setTimeout(function() { 
+            $('.logo svg').fadeOut(); 
+        }, 4000) 
+        $(document).ready(function(){
+            $(".logo h2").typed({
+                strings: ["Front-end &amp; Back-end Developer"],
+                typeSpeed: 40,
+                startDelay: 5
+            });
+        })
+        
     </script>
     </head>
     <body>
         <div class="main onepage-wrapper">
             <section class="intro">
+                <div id="somedialog" class="dialog">
+					<div class="dialog__overlay"></div>
+					<div class="dialog__content">
+						<div class="morph-shape">
+							<svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 560 280" preserveAspectRatio="none">
+								<rect x="3" y="3" fill="none" width="556" height="276"/>
+							</svg>
+						</div>
+						<div class="dialog-inner">
+							<h2><strong>Get in</strong> touch!</h2>
+							<ul class="links-container">
+                        		<li>
+                        			<a class="linkedin" href="https://uk.linkedin.com/in/alexisphanor"><i class="fa fa-linkedin-square"></i> LinkedIn</a>
+                        		</li>
+                        		<li>
+                        			<a class="github" href="https://github.com/aphanor/"><i class="fa fa-github-square"></i> Github</a>
+                        		</li>
+                        		<li>
+                        			<a class="google" href="https://plus.google.com/u/0/110870683980041798119"><i class="fa fa-google-plus"></i> Google +</a>
+                        		</li>
+                        	</ul>
+							<div><button class="action" data-dialog-close>Close</button></div>
+						</div>
+					</div>
+				</div>
+                <div data-dialog="somedialog" class="contact trigger">
+                    <button class="button button--sacnite button--round-l"><i class="button__icon icon icon-user"></i><span>User</span></button>
+                </div>
                 <div class="logo">
                     <img src="prod/content/logo_svg.svg" alt="aphanor" />
                     <h1>Alexis Phanor</h1>
-                    <h2>Front-end &amp; Back-end Developer</h2>
+                    <div class="slogan"><h2 class="quote"></h2></div>
                     <svg class='sv' width="50" viewbox="0 0 250 250">
                         <path id="border" transform="translate(125, 125)"/>
                         <path id="loader" transform="translate(125, 125) scale(.94)"/>
@@ -252,17 +398,26 @@
                 <div id="front-end">
                     <div class="row">
                         <div class="container-fluid">
-                            <div class="col-md-8">
+                            <div class="col-md-6">
                                 <div class="front-content">
-                                    <h1>FRONTEND<span>DEVELOPMENT</span></h1>
-                                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
-                                    <p>It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</p>
-                                    <span class="spany">_______</span>
+                                    <h1>FRONT-END<span>DEVELOPMENT</span></h1>
+                                    <p>My first induction to Web Development was when I started working as Front-end Developer. Having worked with the latest technologies such as <b>HTML5</b>, <b>CSS3</b>, <b>SASS</b> and <b>JavaScript</b> (including <b>BackbonesJS</b>, <b>Coffee Script</b> & <b>AngularJS</b>) in the past 5 years, I feel I have gained lot of experience in this sector.</p>
+                                    <p>The addition of external libraries like Bootstrap, CSS media queries to made it easy to make create fast website layout and responsive design (compatible on all desktop and mobile devices).</p>
+                                    <button onclick="window.open('http://alexisphanor.com/v2/portfolio.html', '_blank');" class="button button--itzel button--text-thick"><i class="button__icon icono-code"></i><span>Portfolio</span></button>
                                 </div>
                             </div>
-                            <div class="col-md-4">
+                            <div class="col-md-6">
                                 <div class="img_container">
-                                    <img src="prod/content/%3C%20%2B%20%3C.svg" alt="aphanor" />
+                                    <div class="circle"> 
+                                        <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 width="369.402px" height="184.8px" viewBox="0 0 369.402 184.8" enable-background="new 0 0 369.402 184.8" xml:space="preserve">
+<line fill="none" stroke="#000000" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="126.401" y1="176.8" x2="4" y2="101.8"/>
+<line fill="none" stroke="#000000" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="4" y1="101.8" x2="127.045" y2="30.405"/>
+<line fill="none" stroke="#000000" stroke-width="6" stroke-linejoin="round" stroke-miterlimit="10" x1="141.8" y1="180.8" x2="233.8" y2="4"/>
+<line fill="none" stroke="#000000" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="243" y1="180.8" x2="365.402" y2="105.8"/>
+<line fill="none" stroke="#000000" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="365.401" y1="105.8" x2="243" y2="30.8"/>
+</svg>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -271,16 +426,27 @@
 				<div id="back-end">
                     <div class="row">
                         <div class="container-fluid">
-                            <div class="col-md-4">
+                            <div class="col-md-6">
                                 <div class="img_container">
-                                    <img src="prod/content/%7D%20%2B%20%7B.svg" alt="aphanor" />
+                                        <svg version="1.1" width="200" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 635.3 844.6" enable-background="new 0 0 635.3 844.6" xml:space="preserve"> 
+                                        <path fill="none" stroke="#010202" stroke-width="20" stroke-linejoin="round" stroke-miterlimit="10" d="M259.3,834.6
+                                        
+                                        c0,0-93.9,4.9-142.4-74c-25.5-41.5-27-117-27-117l0.5-143.5c0,0-1-65-80.3-77.7l0,0c79.3-12.7,79.9-77.7,79.9-77.7l-0.5-143.5
+                                        
+                                        c0,0,1.5-75.5,27-117c48.5-78.9,142.4-74,142.4-74" style="stroke-dasharray: 1107.41015625px, 1107.41015625px; stroke-dashoffset: 0px;"></path> 
+                                        <path fill="none" stroke="#010202" stroke-width="20" stroke-linejoin="round" stroke-miterlimit="10" d="M376,834.6
+                                        
+                                        c0,0,93.9,4.9,142.4-74c25.5-41.5,27-117,27-117l-0.5-143.5c0,0,1-65,80.3-77.7l0,0c-79.3-12.7-79.9-77.7-79.9-77.7l0.5-143.5
+                                        
+                                        c0,0-1.5-75.5-27-117c-48.5-78.9-142.4-74-142.4-74" style="stroke-dasharray: 1107.41015625px, 1107.41015625px; stroke-dashoffset: 0px;"></path>
+                                        </svg>
                                 </div>
                             </div>
-                            <div class="col-md-8">
+                            <div class="col-md-6">
                                 <div class="back-content">
-                                    <h1>BACKEND<span>DEVELOPMENT</span></h1>
-                                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</p>
-                                    <span class="spany">_______</span>
+                                    <h1>BACK-END<span>DEVELOPMENT</span></h1>
+                                    <p>As a Web Developer, I was always willing to learn more, thus I started learning <b>PHP</b> a couple years ago and also worked with <b>.NET</b> and <b>Java</b>. In recent years, I have concentrated all my efforts on learning Node.JS which I believe is a powerful alternative to those languages and is the future of Web Development. The big bonus is that <b>Node.JS</b> is 100% written in <b>JavaScript</b>, which is very good for me coming from a front-end background.</p>
+                                    <button onclick="window.open('https://github.com/aphanor/', '_blank');" class="button buto button--itzel button--text-thick"><i class="button__icon icono-github"></i><span>Recent Projects</span></button>
                                 </div>
                             </div>
                         </div>
@@ -289,152 +455,160 @@
             </section>
             <section class="info">
                 <div id="info_content">
-                    <div><span class="up"><i class="icon-up-open"></i></span></div>
-                    <h1>Skills</h1>
-                    <p>
-                        HTML5
-                        SASS
-                        - CSS, SCSS & SASS
-                        JavaScript
-                        - AngularJS, Backbone.js, CoffeeScript
-                        NodeJS
-                        - Express, Gulp, GruntJS and Browserify
-                        PHP
-                        - Zend 2
-                        
-                        Java, Git, Svn, Npm…
-                    </p>
-                    <ul class="progressi">
-                        <!--  Item  -->
-                        <li data-name="HTML" data-percent="98%"> 
-                            <svg viewBox="-10 -10 220 220">
-                                <g fill="none" stroke-width="2" transform="translate(100,100)">
-                                    <path d="M 0,-100 A 100,100 0 0,1 86.6,-50" stroke="url(#cl1)"/>
-                                    <path d="M 86.6,-50 A 100,100 0 0,1 86.6,50" stroke="url(#cl2)"/>
-                                    <path d="M 86.6,50 A 100,100 0 0,1 0,100" stroke="url(#cl3)"/>
-                                    <path d="M 0,100 A 100,100 0 0,1 -86.6,50" stroke="url(#cl4)"/>
-                                    <path d="M -86.6,50 A 100,100 0 0,1 -86.6,-50" stroke="url(#cl5)"/>
-                                    <path d="M -86.6,-50 A 100,100 0 0,1 0,-100" stroke="url(#cl6)"/>
-                                </g>
-                            </svg> 
-                            <svg viewBox="-10 -10 220 220">
-                                <path d="M200,100 C200,44.771525 155.228475,0 100,0 C44.771525,0 0,44.771525 0,100 C0,155.228475 44.771525,200 100,200 C155.228475,200 200,155.228475 200,100 Z" stroke-dashoffset="589"></path>
-                            </svg> 
-                        </li>
-                        <li data-name="CSS & SASS" data-percent="88%"> 
-                            <svg viewBox="-10 -10 220 220">
-                                <g fill="none" stroke-width="2" transform="translate(100,100)">
-                                    <path d="M 0,-100 A 100,100 0 0,1 86.6,-50" stroke="url(#cl1)"/>
-                                    <path d="M 86.6,-50 A 100,100 0 0,1 86.6,50" stroke="url(#cl2)"/>
-                                    <path d="M 86.6,50 A 100,100 0 0,1 0,100" stroke="url(#cl3)"/>
-                                    <path d="M 0,100 A 100,100 0 0,1 -86.6,50" stroke="url(#cl4)"/>
-                                    <path d="M -86.6,50 A 100,100 0 0,1 -86.6,-50" stroke="url(#cl5)"/>
-                                    <path d="M -86.6,-50 A 100,100 0 0,1 0,-100" stroke="url(#cl6)"/>
-                                </g>
-                            </svg> 
-                            <svg viewBox="-10 -10 220 220">
-                                <path d="M200,100 C200,44.771525 155.228475,0 100,0 C44.771525,0 0,44.771525 0,100 C0,155.228475 44.771525,200 100,200 C155.228475,200 200,155.228475 200,100 Z" stroke-dashoffset="529"></path>
-                            </svg> 
-                        </li>
-                        <li data-name="JavaScript" data-percent="85%"> 
-                            <svg viewBox="-10 -10 220 220">
-                                <g fill="none" stroke-width="2" transform="translate(100,100)">
-                                    <path d="M 0,-100 A 100,100 0 0,1 86.6,-50" stroke="url(#cl1)"/>
-                                    <path d="M 86.6,-50 A 100,100 0 0,1 86.6,50" stroke="url(#cl2)"/>
-                                    <path d="M 86.6,50 A 100,100 0 0,1 0,100" stroke="url(#cl3)"/>
-                                    <path d="M 0,100 A 100,100 0 0,1 -86.6,50" stroke="url(#cl4)"/>
-                                    <path d="M -86.6,50 A 100,100 0 0,1 -86.6,-50" stroke="url(#cl5)"/>
-                                    <path d="M -86.6,-50 A 100,100 0 0,1 0,-100" stroke="url(#cl6)"/>
-                                </g>
-                            </svg> 
-                            <svg viewBox="-10 -10 220 220">
-                                <path d="M200,100 C200,44.771525 155.228475,0 100,0 C44.771525,0 0,44.771525 0,100 C0,155.228475 44.771525,200 100,200 C155.228475,200 200,155.228475 200,100 Z" stroke-dashoffset="500"></path>
-                            </svg> 
-                        </li>
-                        <li data-name="PHP" data-percent="70%"> 
-                            <svg viewBox="-10 -10 220 220">
-                                <g fill="none" stroke-width="2" transform="translate(100,100)">
-                                    <path d="M 0,-100 A 100,100 0 0,1 86.6,-50" stroke="url(#cl1)"/>
-                                    <path d="M 86.6,-50 A 100,100 0 0,1 86.6,50" stroke="url(#cl2)"/>
-                                    <path d="M 86.6,50 A 100,100 0 0,1 0,100" stroke="url(#cl3)"/>
-                                    <path d="M 0,100 A 100,100 0 0,1 -86.6,50" stroke="url(#cl4)"/>
-                                    <path d="M -86.6,50 A 100,100 0 0,1 -86.6,-50" stroke="url(#cl5)"/>
-                                    <path d="M -86.6,-50 A 100,100 0 0,1 0,-100" stroke="url(#cl6)"/>
-                                </g>
-                            </svg> 
-                            <svg viewBox="-10 -10 220 220">
-                                <path d="M200,100 C200,44.771525 155.228475,0 100,0 C44.771525,0 0,44.771525 0,100 C0,155.228475 44.771525,200 100,200 C155.228475,200 200,155.228475 200,100 Z" stroke-dashoffset="450"></path>
-                            </svg> 
-                        </li>
-                        <li data-name="NodeJS" data-percent="62%"> 
-                            <svg viewBox="-10 -10 220 220">
-                                <g fill="none" stroke-width="2" transform="translate(100,100)">
-                                    <path d="M 0,-100 A 100,100 0 0,1 86.6,-50" stroke="url(#cl1)"/>
-                                    <path d="M 86.6,-50 A 100,100 0 0,1 86.6,50" stroke="url(#cl2)"/>
-                                    <path d="M 86.6,50 A 100,100 0 0,1 0,100" stroke="url(#cl3)"/>
-                                    <path d="M 0,100 A 100,100 0 0,1 -86.6,50" stroke="url(#cl4)"/>
-                                    <path d="M -86.6,50 A 100,100 0 0,1 -86.6,-50" stroke="url(#cl5)"/>
-                                    <path d="M -86.6,-50 A 100,100 0 0,1 0,-100" stroke="url(#cl6)"/>
-                                </g>
-                            </svg> 
-                            <svg viewBox="-10 -10 220 220">
-                                <path d="M200,100 C200,44.771525 155.228475,0 100,0 C44.771525,0 0,44.771525 0,100 C0,155.228475 44.771525,200 100,200 C155.228475,200 200,155.228475 200,100 Z" stroke-dashoffset="400"></path>
-                            </svg> 
-                        </li>
-                        <li data-name="Swift" data-percent="50%"> 
-                            <svg viewBox="-10 -10 220 220">
-                                <g fill="none" stroke-width="2" transform="translate(100,100)">
-                                    <path d="M 0,-100 A 100,100 0 0,1 86.6,-50" stroke="url(#cl1)"/>
-                                    <path d="M 86.6,-50 A 100,100 0 0,1 86.6,50" stroke="url(#cl2)"/>
-                                    <path d="M 86.6,50 A 100,100 0 0,1 0,100" stroke="url(#cl3)"/>
-                                    <path d="M 0,100 A 100,100 0 0,1 -86.6,50" stroke="url(#cl4)"/>
-                                    <path d="M -86.6,50 A 100,100 0 0,1 -86.6,-50" stroke="url(#cl5)"/>
-                                    <path d="M -86.6,-50 A 100,100 0 0,1 0,-100" stroke="url(#cl6)"/>
-                                </g>
-                            </svg> 
-                            <svg viewBox="-10 -10 220 220">
-                                <path d="M200,100 C200,44.771525 155.228475,0 100,0 C44.771525,0 0,44.771525 0,100 C0,155.228475 44.771525,200 100,200 C155.228475,200 200,155.228475 200,100 Z" stroke-dashoffset="315"></path>
-                            </svg> 
-                        </li>
-                    </ul>
-                    <!--  Defining Angle Gradient Colors  --> 
-                    <svg width="0" height="0">
-                        <defs>
-                            <linearGradient id="cl1" gradientUnits="objectBoundingBox" x1="0" y1="0" x2="1" y2="1">
-                                <stop stop-color="#618099"/>
-                                <stop offset="100%" stop-color="#8e6677"/>
-                            </linearGradient>
-                            <linearGradient id="cl2" gradientUnits="objectBoundingBox" x1="0" y1="0" x2="0" y2="1">
-                                <stop stop-color="#8e6677"/>
-                                <stop offset="100%" stop-color="#9b5e67"/>
-                            </linearGradient>
-                            <linearGradient id="cl3" gradientUnits="objectBoundingBox" x1="1" y1="0" x2="0" y2="1">
-                                <stop stop-color="#9b5e67"/>
-                                <stop offset="100%" stop-color="#9c787a"/>
-                            </linearGradient>
-                            <linearGradient id="cl4" gradientUnits="objectBoundingBox" x1="1" y1="1" x2="0" y2="0">
-                                <stop stop-color="#9c787a"/>
-                                <stop offset="100%" stop-color="#817a94"/>
-                            </linearGradient>
-                            <linearGradient id="cl5" gradientUnits="objectBoundingBox" x1="0" y1="1" x2="0" y2="0">
-                                <stop stop-color="#817a94"/>
-                                <stop offset="100%" stop-color="#498a98"/>
-                            </linearGradient>
-                            <linearGradient id="cl6" gradientUnits="objectBoundingBox" x1="0" y1="1" x2="1" y2="0">
-                                <stop stop-color="#498a98"/>
-                                <stop offset="100%" stop-color="#618099"/>
-                            </linearGradient>
-                        </defs>
-                    </svg>
-                    <div><span class="down"><i class="icon-down-open"></i></span></div>
+                    <div><span class="up"><i class="icono-up-open"></i></span></div>
+                    <h1>Skills & <span class="prog">Progress</span></h1>
+                    <p>As a young web developer who loves to learn new technologies, I gained a lot of experience over the years. My skills of services includes Front-end and Back-end development. My strength are <b>HTML5</b>, <b>CSS3</b>, <b>JavaScript</b> (including the new JS framework), <b>Node.JS</b>, <b>PHP</b>, <b>JAVA</b>, <b>Swift</b>.</p>
+                    <div class="rowi">
+                        <div class="pie_prog" role="progressbar" aria-valuemax="100" data-name="Html">
+                            <span class="pie_progress__number">0%</span>
+                        </div>
+                        <div class="pie_progresso" role="progressbar" aria-valuemin="0" aria-valuemax="100" data-name="Css & Sass">
+                            <span class="pie_progress__number">0%</span>
+                        </div>
+                        <div class="pie_progressa" role="progressbar" aria-valuemin="0" aria-valuemax="100" data-name="JavaScript">
+                            <span class="pie_progress__number">0%</span>
+                        </div>
+                        <div class="pie_progressi" role="progressbar" aria-valuemin="0" aria-valuemax="100" data-name="PHP">
+                            <span class="pie_progress__number">0%</span>
+                        </div>
+                        <div class="pie_progressu" role="progressbar" aria-valuemin="0" aria-valuemax="100" data-name="NODE JS">
+                            <span class="pie_progress__number">0%</span>
+                        </div>
+                        <div class="pie_progresse" role="progressbar" aria-valuemin="0" aria-valuemax="100" data-name="Swift">
+                            <span class="pie_progress__number">0%</span>
+                        </div>
+                    </div>
+                    <div class="skills_mobile"></div>
+                    <div><span class="down"><i class="icono-down-open"></i></span></div>
                 </div>
             </section>
             <section class="project-planner">
                 <div id="last_content">
-                    <div><span class="up uppi"><i class="icon-up-open"></i></span></div>
-                    <h1>Hello</h1>
+                    <div><span class="up uppi"><i class="icono-up-open"></i></span></div>
+                    <h1>CONTACT & <b>PROJECT-PLANNER</b></h1>
+                    <p>Do you need to be up to date with the latest technologies and have a beautiful website? Please feel free to use my project planner below to contact me if you have any questions or you want to hire my services as a Freelance Web Developer.</p>
+                    <div id="projectplanner_elements">
+                        <div id="projectplannerbuttonbar">
+                            <h3 style="display: none;">Get started with my <b>Project Planner</b>
+                                <span style="float:right; display: none;">
+                                <a href="javascript:void(0)" class="project-planner-button">Project Planner</a>
+                                </span>
+                            </h3>
+                        </div>
+            
+                        <div class="projectplanner-triangle"></div>
+            
+                        <div id="projectplannerformarea">
+                            <p style="font-weight:300;font-size:18px;color:#fff">What would you like me to help you with?</p>
+            
+                            <div id="ppthreecolumncontainer">
+                                <div>
+                                    <div class="a">
+                                        <div class="inside-pp3-column-left">
+                                            <a href="javascript:void(0)" name="WebsiteDevelopment" class="form-choice-button-active">Website Development</a> <a name="WebsiteWorkflow" href="javascript:void(0)" class="form-choice-button">Web &amp; Workflow</a>
+                                        </div>
+                                    </div>
+                                </div>
+            
+                                <div>
+                                    <div class="b">
+                                        <div class="inside-pp3-column-center">
+                                            <a href="javascript:void(0)" name="SEO" class="form-choice-button">Search Engine Optimisation</a> <a name="SocialMedia" href="javascript:void(0)" class="form-choice-button">Social Media Integration</a>
+                                        </div>
+                                    </div>
+                                </div>
+            
+                                <div>
+                                    <div class="c">
+                                        <div class="inside-pp3-column-right">
+                                            <a href="javascript:void(0)" name="MobileDev" class="form-choice-button-active">Mobile Development</a> <a name="ECommerce" href="javascript:void(0)" class="form-choice-button">E-commerce</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+            
+                            <div id="pptwocolumncontainer">
+                                <!-- Form -->
+            
+                                <form class="formo" style="margin-top:10px;width:940px !important;" action="http://overtongraphics.com/php/email.php" method="post">
+                                    <div>
+                                        <div style="margin-left:20px;" class="a">
+                                            <div class="inside-pp2-column-left">
+                                                <p style="font-weight:300;font-size:18px;color:#fff; margin-left: -151px;">Project Budget<span style="font-size:12px;color:#444444;font-weight:600;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input style="color: #fff; text-align: right; outline:none !important; background-color: transparent; border: none; float: right;" type="text" id="amount"></span></p>
+            
+                                                <div id="slider-one"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+            
+                                    <div>
+                                        <div class="b">
+                                            <div class="inside-pp2-column-right">
+                                                <p style="margin-left:-171px; font-weight:300;font-size:18px;color:#fff">Timescale<span style="font-size:12px;color:#444444;font-weight:600;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input style="color: #fff; text-align: right; float: right; font-weight:600 !important;outline:none !important; background-color: transparent; border: none;" type="text" id="amount2"></span></p>
+            
+                                                <div id="slider-two"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div><!-- Left Column -->
+            
+                            <div class="inside-pp2-column-left">
+                                <p style="font-weight:400;font-size:18px;color:#fff; margin-left: -18em;">Your Details</p>
+            
+                                <div class="form-field">
+                                    <label for="name">Name</label>
+            
+                                    <div class="field-subject">
+                                        <input type="text" name="name" id="name" size="45" maxlength="100" title="Please enter your name." data-h5-errorid="empty-name" tabindex="1"> <span id="nameInfo"></span>
+                                    </div><label for="email">Email</label>
+            
+                                    <div class="field-subject">
+                                        <input type="text" name="email" id="email" size="45" maxlength="100" title="Please enter your email." data-h5-errorid="empty-email" tabindex="1" required=""> <span style="display: none; position:absolute; left: 255px; top:8px; z-index: 999999;" id="emailInfo"><img src="http://dev.staging-ap.s3-website-eu-west-1.amazonaws.com/content/icon-cross.png" alt="icon-cross" width="40" height="38"></span>
+                                    </div><label for="telephone">Telephone</label>
+            
+                                    <div class="field-subject">
+                                        <input type="text" name="telephone" id="telephone" size="45" maxlength="100" title="Please enter your telephone number." data-h5-errorid="empty-telephone" tabindex="1"> <span id="telephoneInfo"></span>
+                                    </div>
+                                </div>
+                            </div><!-- Right Column -->
+            
+                            <div class="inside-pp2-column-right">
+                                <div class="form-comments">
+                                    <label for="comments" id="commentslabel">Comments</label>
+            
+                                    <div class="field-comments">
+                                        <textarea style="resize: none;" wrap="hard" type="text" name="comments" id="comments" title="Please enter your comments." data-h5-errorid="empty-comments" tabindex="1" cols="20" rows="10">
+            </textarea> <span id="commentsInfo"></span>
+                                    </div>
+                                </div>
+                            </div>
+            
+                            <div class="message">
+                                <input name="submit" id="submito" type="submit" value="Lets get started">
+            
+                                <div style=" margin-top: 10em; display: none;" class="loading-ico"><img src="http://dev.staging-ap.s3-website-eu-west-1.amazonaws.com/content/ajax-loader.gif" alt="ajax-loader" width="16" height="16"></div>
+                            </div>
+            
+                            <div class="clearfix"></div><!-- Form -->
+                        </div>
+                        <div class="contact_mobile">
+                            <p>CONTACT ME</p>
+                        </div>
+                    </div>
                 </div>
             </section>
         </div>
+        <script>
+		(function() {
+
+			var dlgtrigger = document.querySelector( '[data-dialog]' ),
+				somedialog = document.getElementById( dlgtrigger.getAttribute( 'data-dialog' ) ),
+				dlg = new DialogFx( somedialog );
+
+			dlgtrigger.addEventListener( 'click', dlg.toggle.bind(dlg) );
+
+		})();
+	</script>
     </body>
 </html>

@@ -1,0 +1,106 @@
+.pie_progress {
+    width: 160px;
+    margin: 10px auto;
+}
+
+@media all and (max-width: 768px) {
+    .pie_progress {
+        width: 80%;
+        max-width: 300px;
+    }
+}
+
+div.rowi div {
+    display: inline-block;
+}
+
+.rowi {
+    padding-top: 4em;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+div.row span.legend {
+    color: #f0e0b0;
+}
+
+.pie_prog:before, .pie_progressa:before, .pie_progresso:before, .pie_progressi:before, .pie_progressu:before, .pie_progresse:before {
+    content: attr(data-name);
+    position: absolute;
+    width: 100%;
+    bottom: -3rem;
+    text-transform: uppercase;
+}
+
+.pie_progresso span {
+    color: #60ffa0;
+}
+
+.pie_progressa span {
+    color: #58e6ff;
+}
+
+.pie_progressi span {
+    color: #0085b6;
+}
+
+.pie_progressu span {
+    color: #05ff76;
+}
+
+.pie_progresse span {
+    color: #0cfffa;
+}
+
+.pie_prog span {
+    color: #0cfffa;
+}
+
+.pie_prog, .pie_progressa, .pie_progressu {
+    top: 10em !important;
+}
+
+.pie_progress {
+  text-align: center;
+  position: relative;
+  -webkit-transform-style: preserve-3d;
+          transform-style: preserve-3d;
+}
+.pie_progress svg {
+  margin: 0 auto;
+}
+.pie_progress__content,
+.pie_progress__number,
+.pie_progress__label,
+.pie_progress__icon {
+  width: 100%;
+  position: absolute;
+  top: 50%;
+  left: 0;
+  -webkit-transform: translateY(-50%);
+      -ms-transform: translateY(-50%);
+       -o-transform: translateY(-50%);
+          transform: translateY(-50%);
+}
+.pie_progress__number {
+  font-size: 42px;
+}
+.pie_progress__label {
+  margin-top: 32px;
+  font-size: 12px;
+}
+.pie_progress__svg {
+  display: inline-block;
+  position: relative;
+  width: 100%;
+  padding-bottom: 100%;
+  vertical-align: middle;
+  overflow: hidden;
+}
+.pie_progress__svg svg {
+  display: inline-block;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+

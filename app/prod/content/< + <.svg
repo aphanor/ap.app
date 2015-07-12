@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="233px" height="166px" viewBox="0 0 233 166" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+    <!-- Generator: Sketch 3.3.1 (12005) - http://www.bohemiancoding.com/sketch -->
+    <title>&lt; + &lt; copy</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <filter x="-50%" y="-50%" width="200%" height="200%" filterUnits="objectBoundingBox" id="filter-1">
+            <feOffset dx="0" dy="5" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="4" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0.322836947   0 0 0 0 0.322836947   0 0 0 0 0.322836947  0 0 0 0.35 0" in="shadowBlurOuter1" type="matrix" result="shadowMatrixOuter1"></feColorMatrix>
+            <feMerge>
+                <feMergeNode in="shadowMatrixOuter1"></feMergeNode>
+                <feMergeNode in="SourceGraphic"></feMergeNode>
+            </feMerge>
+        </filter>
+        <filter x="-50%" y="-50%" width="200%" height="200%" filterUnits="objectBoundingBox" id="filter-2">
+            <feOffset dx="0" dy="5" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="4" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0.322836947   0 0 0 0 0.322836947   0 0 0 0 0.322836947  0 0 0 0.35 0" in="shadowBlurOuter1" type="matrix" result="shadowMatrixOuter1"></feColorMatrix>
+            <feMerge>
+                <feMergeNode in="shadowMatrixOuter1"></feMergeNode>
+                <feMergeNode in="SourceGraphic"></feMergeNode>
+            </feMerge>
+        </filter>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
+        <g id="Desktop-Landscape" sketch:type="MSArtboardGroup" transform="translate(-928.000000, -977.000000)" font-weight="260" font-family="Proxima Nova" fill="white" font-size="200">
+            <g id="&lt;-+-&lt;-copy" sketch:type="MSLayerGroup" transform="translate(930.000000, 897.000000)">
+                <text id="&lt;" filter="url(#filter-1)" sketch:type="MSTextLayer">
+                    <tspan x="0" y="198" fill="#FFFFFF">&lt;</tspan>
+                </text>
+                <text id="&lt;-copy" filter="url(#filter-2)" sketch:type="MSTextLayer" transform="translate(179.000000, 206.000000) rotate(-180.000000) translate(-179.000000, -206.000000) ">
+                    <tspan x="129" y="284" fill="#FFFFFF">&lt;</tspan>
+                </text>
+            </g>
+        </g>
+    </g>
+</svg>
