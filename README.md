@@ -11,4 +11,4 @@ New personal site
 
 - `Staging` Environment 
 
-> [dev.staging-ap](http://dev.staging-ap.s3-website-eu-west-1.amazonaws.com)
+> [dev.staging-ap](http://ec2-52-16-54-212.eu-west-1.compute.amazonaws.com/test.html)
