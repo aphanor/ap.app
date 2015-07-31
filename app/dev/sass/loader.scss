@@ -1,0 +1,22 @@
+@-webkit-keyframes load { 
+    0% {
+        stroke-dashoffset:0
+    }
+}
+@-moz-keyframes load { 
+    0% {
+        stroke-dashoffset:0
+    }
+}
+@keyframes load { 
+    0% {
+        stroke-dashoffset:0
+    }
+}
+
+.progressi svg:nth-child(2) path {
+    -webkit-animation: load 5s;
+    -moz-animation: load 5s;
+    -o-animation: load 5s;
+    animation: load 5s;
+}

@@ -1,348 +1,428 @@
 <!DOCTYPE html>
 <!-- Made by Alexis Phanor -->
-<html lang="en">
+<html ng-app="AP" lang="en">
     <head>
-    <meta charset="UTF-8" />
-    <meta name="keywords" content="" />
-    <meta name="description" content="" />
-    <meta name="robots" content="index,follow" />
-    <meta name="rating" content="general" />
-    <!--[if IE]>
-    <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
-    <!--[if lte IE 7]>
-    <script src="js/IE8.js" type="text/javascript"></script><![endif]-->
-    <!--[if lt IE 7]>
- 
-    <link rel="stylesheet" type="text/css" media="all" href="css/ie6.css"/><![endif]-->
-    <title>Alexis Phanor - Web Developer</title>
-    <link href="http://alexisphanor.com/images/favicon.ico" rel="icon" type="image/x-icon" />
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script>
-    <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-    
-    <!-- Optional theme -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
-    
-    <!-- Latest compiled and minified JavaScript -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-    <script src="prod/js/jquery.visible.min.js"></script>
-    <!-- CSS -->
-    <link rel="stylesheet" type="text/css" href="prod/css/styles.css" />
-    <link rel="stylesheet" type="text/css" href="prod/css/pie.css" />
-    <link rel="stylesheet" type="text/css" href="prod/css/project.css" />
-    <link rel="stylesheet" type="text/css" href="prod/css/vicons-font.css" />
-    <link rel="stylesheet" type="text/css" href="prod/css/svg-home.css" />
-    <link rel="stylesheet" href="prod/css/fontello.css"><!--[if IE 7]><link rel="stylesheet" href="css/fontello-ie7.css"><![endif]-->
-    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
-    <!-- JavaScript -->
-    <script src="prod/js/all.min.js"></script>
-    <script src="prod/js/jquery.onepage-scroll.min.js"></script>
-    <script src="prod/js/type.js"></script>
-    <script src="prod/js/modernizr.custom.js"></script>
-    <script src="prod/js/snap.svg-min.js"></script>
-    <script src="prod/js/dialogFx.js"></script>
-    <script src="prod/js/classie.js"></script>
-    <script src="prod/js/jquery.steps.min.js"></script>
-    <script>
-      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-    
-      ga('create', 'UA-39741636-1', 'auto');
-      ga('send', 'pageview');
-    
-    </script>
-    
-    <style>
-        h1 {
-            font-size: 28px;
-        }
+        <meta charset="UTF-8" />
+        <meta name="keywords" content="Alexis Phanor, Web Developer, Junior Web Developer, Phanor, Web Applications, Web Creation, Freelance Web Developer, Développeur Web, Création de site Web pour particulier, création de site Web, Développeur Indépendant" />
+    	<meta name="description" content="I am a Web Developer who offer his services to different type of clients. Web Applications, Mobile Applications as well as Web Development support help." />
+    	<meta name="robots" content="index,follow" />
+    	<meta name="rating" content="general" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
+        <meta name="viewport" content="width=device-width, initial-scale=1">  
+        <!--[if IE]>
+        <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+        <!--[if lte IE 7]>
+        <script src="js/IE8.js" type="text/javascript"></script><![endif]-->
+        <!--[if lt IE 7]>
+     
+        <link rel="stylesheet" type="text/css" media="all" href="css/ie6.css"/><![endif]-->
+        <title>Alexis Phanor - Web Developer</title>
+        <link href="http://alexisphanor.com/images/favicon.ico" rel="icon" type="image/x-icon" />
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+        <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script>
+        <script src="prod/js/jquery.onepage-scroll.min.js"></script>
+        <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
         
-        .arrows {
-        	width: 60px;
-        	height: 72px;
-        	position: absolute;
-        	left: 50%;
-        	margin-left: -30px;
-        	bottom: 20px;
-        }
+        <!-- Optional theme -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+        <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/animate.css/3.2.0/animate.min.css">
         
-        #last_content, #header_content, #info_content {margin: 0 auto; max-width: 80%;}
-        
-        #info_content {
-            padding-top: 4%;
-            color: #f0e4d9;
-        }
-        
-        #info_content h1 {
-            text-align: center;
-            text-transform: uppercase;
-            margin-bottom: 2em;
-            margin-top: 1em;
-            font-weight: 300;
-            text-rendering: optimizelegibility;
-            -webkit-font-smoothing: antialiased;
-        }
-        
-        span.prog {
-            font-weight: 600;
-        }
-        
-        .arrows path {
-        	stroke: #2994D1;
-        	fill: transparent;
-        	stroke-width: 1px;	
-        	animation: arrow 2s infinite;
-        	-webkit-animation: arrow 2s infinite; 
-        }
-        
-        @keyframes arrow
-        {
-            0% {opacity:0}
-            40% {opacity:1}
-            80% {opacity:0}
-            100% {opacity:0}
-        }
-        
-        @-webkit-keyframes arrow /*Safari and Chrome*/
-        {
-            0% {opacity:0}
-            40% {opacity:1}
-            80% {opacity:0}
-            100% {opacity:0}
-        }
-        
-        .arrows path.a1 {
-        	animation-delay:-1s;
-        	-webkit-animation-delay:-1s; /* Safari 和 Chrome */
-        }
-        
-        .arrows path.a2 {
-        	animation-delay:-0.5s;
-        	-webkit-animation-delay:-0.5s; /* Safari 和 Chrome */
-        }
-        
-        .arrows path.a3 {	
-        	animation-delay:0s;
-        	-webkit-animation-delay:0s; /* Safari 和 Chrome */
-        }
-        
-        .down i, .up i {font-size: 26px; cursor: pointer;}
-        
-        .down i {
-            bottom: 0;
-            position: absolute;
-            left: 50%;
-            margin-left: -16px !important;
-            margin-bottom: 0.5em;
-        }
-        
-        .up i {
-            top: 0;
-            position: absolute;
-            left: 50%;
-            margin-left: -16px !important;
-            margin-top: 0.5em;
-        }
-        
-        .uppi i {color: #1c1e26;}
-        
-        .scroll {display: none;}
-        
-        .project-planner {
-            text-align: center;
-            color: #1c1e26;
-        }
-        
-        .project-planner h1 {
-            margin: 2em auto 1em;
-            text-rendering: optimizelegibility;
-            -webkit-font-smoothing: antialiased;
-            font-weight: 300;
-        }
-                
-        .intro {
-            background-color: #11141f;
-            position: relative;
-            text-transform: uppercase;
-            text-align: center;
-        }
-        .logo {
-            width: 50%;
-            height: 50%;
-            overflow: auto;
-            margin: auto;
-            position: absolute;
-            top: 0; left: 0; bottom: 0; right: 0;
-            text-align: center;
-            padding-top: 3%;
+        <!-- Latest compiled and minified JavaScript -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+        <script src="prod/js/jquery.visible.min.js"></script>
+        <!-- CSS -->
+        <link rel="stylesheet" type="text/css" href="prod/css/all.min.css" />
+        <link rel="stylesheet" type="text/css" href="prod/css/animation.css" />
+        <link rel="stylesheet" type="text/css" href="prod/css/vicons-font.css" />
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+        <!-- JavaScript -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+        <script src="http://cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.18/angular-animate.js"></script>
+        <script src="prod/js/all.min.js"></script>
+        <script src="prod/js/type.js"></script>
+        <script src="prod/js/modernizr.custom.js"></script>
+        <script src="prod/js/snap.svg-min.js"></script>
+        <script src="prod/js/dialogFx.js"></script>
+        <script src="prod/js/classie.js"></script>
+        <script>
+            (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+            })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
             
-        }
+            ga('create', 'UA-39741636-1', 'auto');
+            ga('send', 'pageview');
+        </script>
         
-        .logo h1 {
-            color: #FFF;
-            font-size: 20px;
-        }
-        
-        .logo h2 {
-            color: #f99314;
-            font-size: 18px;
-        }
-        #front-end, #back-end {
-            height: 50%;
-            width: 100%;
-            position: relative;
-            /* Lorem ipsum dolor si: */
-            opacity: 0.79;
-            font-size: 15px;
-            color: #565656;
-            line-height: 20px;
-            font-family: 'Open Sans', sans-serif;
-        }
-        
-        .front-content, .back-content {
-            height: 100%;
-            padding: 2em;
-        }
-        
-        .front-content h1, .back-content h1 {
-            margin-bottom: 1em;
-        }
-        
-        .back-content p {
-            float: right;
-            text-align: right;
-        }
-        
-        .back-content span {
-            text-align: center !important;
-        }
-        
-        #back-end {
-            background-color: #f6f6f6;
-        }
-        
-        .row, .row div {
-            height: 100% !important;
-        }
-        
-        .img_container {
-            text-align: center;  /* align the inline(-block) elements horizontally */
-            font: 0/0 a;         /* remove the gap between inline(-block) elements */
-        }
-        
-        .img_container svg {
-            margin-top: 66px;
-        }
-
-        .img_container:before {    /* create a full-height inline block pseudo=element */
-            content: ' ';
-            display: inline-block;
-            vertical-align: middle;  /* vertical alignment of the inline element */
-            height: 100%;
-        }
-        
-        .img_container img {
-            vertical-align: middle;
-            display: inline-block;
-        }
-        
-        #front-end h1, #back-end h1 {
-            font-weight: 300 !important;
-            font-family: 'Open Sans', sans-serif;
-            text-transform: uppercase;
-            /* FRONTEND DEVELOPMENT: */
-            font-size: 29px;
-            color: #5D5D5D;
-            line-height: 34px;
-            text-rendering: optimizelegibility;
-            -webkit-font-smoothing: antialiased;
-
-        }
-        
-        #front-end h1 span, #back-end h1 span {
-            font-weight: 600;
-            text-transform: uppercase;
-            font-family: 'Open Sans', sans-serif;
-            color: #000;
-            line-height: 34px;
-            margin-left: 8px;
-        }
-        
-        .spany {
-            color: #979797;
-            margin-top: 2em;
-        }
-        
-        svg.sv {
-          display: block;
-          margin: 50px auto;
-        }
-        
-        #loader 
-        { fill: #11141f; }
-        
-        #border 
-        { fill: #FFF; }
-        
-        section.info {
-            background-color: #1c1e26;
-        }
-        
-        .slogan * {
-            display: inline-block;
-            color: #f99314;
-        }
-        
-        h2.quote {
-            margin-right: 0.25em;
-        }
-        div.contact {
-            position: absolute;
-            right: 30px;
-            top: 0px;
-            padding: 10px;
-            color: #fff;
-            font-weight: 500;
-            font-size: 20px;
-            cursor: pointer;
-            height: 40px !important;
-            width: 101px !important;
-        }
-        
-        @keyframes bounce {
-        	0%, 20%, 50%, 80%, 100% {
-            transform: translateY(0);
-          }
-        	40% {
-            transform: translateY(-30px);
-          }
-        	60% {
-            transform: translateY(-15px);
-          }
-        }
-        
-        .bounce {
-          animation: bounce 5s infinite;
-        }
-    </style>
-    <script>
-        setTimeout(function() { 
-            $('.logo svg').fadeOut(); 
-        }, 4000) 
-        $(document).ready(function(){
-            $(".logo h2").typed({
-                strings: ["Front-end &amp; Back-end Developer"],
-                typeSpeed: 40,
-                startDelay: 5
-            });
-        })
-        
-    </script>
+        <style>
+            h1 {
+                font-size: 28px;
+            }
+            
+            .arrows {
+            	width: 60px;
+            	height: 72px;
+            	position: absolute;
+            	left: 50%;
+            	margin-left: -30px;
+            	bottom: 20px;
+            }
+            
+            #last_content, #header_content, #info_content {margin: 0 auto; max-width: 80%;}
+            
+            #info_content {
+                padding-top: 4%;
+                color: #f0e4d9;
+            }
+            
+            #info_content h1 {
+                text-align: center;
+                text-transform: uppercase;
+                margin-bottom: 2em;
+                margin-top: 1em;
+                font-weight: 300;
+                text-rendering: optimizelegibility;
+                -webkit-font-smoothing: antialiased;
+            }
+            
+            span.prog {
+                font-weight: 600;
+            }
+            
+            .arrows path {
+            	stroke: #2994D1;
+            	fill: transparent;
+            	stroke-width: 1px;	
+            	animation: arrow 2s infinite;
+            	-webkit-animation: arrow 2s infinite; 
+            }
+            
+            @keyframes arrow
+            {
+                0% {opacity:0}
+                40% {opacity:1}
+                80% {opacity:0}
+                100% {opacity:0}
+            }
+            
+            @-webkit-keyframes arrow /*Safari and Chrome*/
+            {
+                0% {opacity:0}
+                40% {opacity:1}
+                80% {opacity:0}
+                100% {opacity:0}
+            }
+            
+            .arrows path.a1 {
+            	animation-delay:-1s;
+            	-webkit-animation-delay:-1s; /* Safari 和 Chrome */
+            }
+            
+            .arrows path.a2 {
+            	animation-delay:-0.5s;
+            	-webkit-animation-delay:-0.5s; /* Safari 和 Chrome */
+            }
+            
+            .arrows path.a3 {	
+            	animation-delay:0s;
+            	-webkit-animation-delay:0s; /* Safari 和 Chrome */
+            }
+            
+            .down i, .up i {font-size: 26px; cursor: pointer;}
+            
+            .down i {
+                bottom: 0;
+                position: absolute;
+                left: 50%;
+                margin-left: -16px !important;
+                margin-bottom: 0.5em;
+            }
+            
+            .up i {
+                top: 0;
+                position: absolute;
+                left: 50%;
+                margin-left: -16px !important;
+                margin-top: 0.5em;
+            }
+            
+            .uppi i {color: #1c1e26;}
+            
+            .scroll {display: none;}
+            
+            .project-planner {
+                text-align: center;
+                color: #1c1e26;
+            }
+            
+            .project-planner h1 {
+                margin: 2em auto 1em;
+                text-rendering: optimizelegibility;
+                -webkit-font-smoothing: antialiased;
+                font-weight: 300;
+            }
+                    
+            .intro {
+                background-color: #11141f;
+                position: relative;
+                text-transform: uppercase;
+                text-align: center;
+            }
+            .logo {
+                width: 50%;
+                height: 50%;
+                overflow: auto;
+                margin: auto;
+                position: absolute;
+                top: 0; left: 0; bottom: 0; right: 0;
+                text-align: center;
+                padding-top: 3%;
+                
+            }
+            
+            .logo h1 {
+                color: #FFF;
+                font-size: 20px;
+            }
+            
+            .logo h2 {
+                color: #f99314;
+                font-size: 18px;
+            }
+            #front-end, #back-end {
+                height: 50%;
+                width: 100%;
+                position: relative;
+                /* Lorem ipsum dolor si: */
+                opacity: 0.79;
+                font-size: 15px;
+                color: #565656;
+                line-height: 20px;
+                font-family: 'Open Sans', sans-serif;
+            }
+            
+            .front-content, .back-content {
+                height: 100%;
+                padding: 2em;
+            }
+            
+            .front-content h1, .back-content h1 {
+                margin-bottom: 1em;
+            }
+            
+            .back-content p {
+                float: right;
+                text-align: right;
+            }
+            
+            .back-content span {
+                text-align: center !important;
+            }
+            
+            #back-end {
+                background-color: #f6f6f6;
+            }
+            
+            .row, .row div {
+                height: 100% !important;
+            }
+            
+            .img_container {
+                text-align: center;  /* align the inline(-block) elements horizontally */
+                font: 0/0 a;         /* remove the gap between inline(-block) elements */
+            }
+            
+            .img_container svg {
+                margin-top: 66px;
+            }
+    
+            .img_container:before {    /* create a full-height inline block pseudo=element */
+                content: ' ';
+                display: inline-block;
+                vertical-align: middle;  /* vertical alignment of the inline element */
+                height: 100%;
+            }
+            
+            .img_container img {
+                vertical-align: middle;
+                display: inline-block;
+            }
+            
+            #front-end h1, #back-end h1 {
+                font-weight: 300 !important;
+                font-family: 'Open Sans', sans-serif;
+                text-transform: uppercase;
+                /* FRONTEND DEVELOPMENT: */
+                font-size: 29px;
+                color: #5D5D5D;
+                line-height: 34px;
+                text-rendering: optimizelegibility;
+                -webkit-font-smoothing: antialiased;
+    
+            }
+            
+            #front-end h1 span, #back-end h1 span {
+                font-weight: 600;
+                text-transform: uppercase;
+                font-family: 'Open Sans', sans-serif;
+                color: #000;
+                line-height: 34px;
+                margin-left: 8px;
+            }
+            
+            .spany {
+                color: #979797;
+                margin-top: 2em;
+            }
+            
+            svg.sv {
+              display: block;
+              margin: 50px auto;
+            }
+            
+            #loader 
+            { fill: #11141f; }
+            
+            #border 
+            { fill: #FFF; }
+            
+            section.info {
+                background-color: #1c1e26;
+            }
+            
+            .slogan * {
+                display: inline-block;
+                color: #f99314;
+            }
+            
+            h2.quote {
+                margin-right: 0.25em;
+            }
+            div.contact {
+                position: absolute;
+                right: 30px;
+                top: 0px;
+                padding: 10px;
+                color: #fff;
+                font-weight: 500;
+                font-size: 20px;
+                cursor: pointer;
+                height: 40px !important;
+                width: 101px !important;
+            }
+            
+            @keyframes bounce {
+            	0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0);
+              }
+            	40% {
+                transform: translateY(-30px);
+              }
+            	60% {
+                transform: translateY(-15px);
+              }
+            }
+            
+            .bounce {
+              animation: bounce 5s infinite;
+            }
+            
+            textarea {
+            	margin-bottom:2em;
+            	border:1px #a3d39c solid !important;
+            	outline:none;
+            	text-transform:uppercase;
+            	padding:2em;
+            	text-align:center;
+            	-webkit-box-sizing:border-box;
+            	-moz-box-sizing:border-box;
+            	box-sizing:border-box;
+            	width:100%;
+            	border: none;
+                overflow: auto;
+                -webkit-box-shadow: none;
+                -moz-box-shadow: none;
+                box-shadow: none;
+                font-size: 12px;
+                font-weight: 300 !important;
+            }
+            
+            textarea:focus,textarea:after {
+            	outline-color: transparent;
+                outline-style: none;
+            }
+            
+            textarea::-webkit-input-placeholder {
+            	text-transform:uppercase;
+            	font-weight:300;
+            	letter-spacing:2px;
+            	color:#000;
+            	outline:none;
+            }
+            
+            textarea:-moz-placeholder {
+            /* Firefox 18- */
+            	text-transform:uppercase;
+            	color:#000;
+            }
+            
+            textarea::-moz-placeholder {
+            /* Firefox 19+ */
+            	text-transform:uppercase;
+            	color:#000;
+            }
+            
+            textarea:-ms-input-placeholder {
+            	text-transform:uppercase;
+            	color:#000;
+            }
+            
+            .textarea-cont {
+            	padding:2em 9em 0 9em;
+        	    height: 190px;
+            }
+            
+            .congrat {
+            	display:none;
+                font-size: 30px;
+                margin-top: 3em;
+                font-weight: 500;
+            }
+            
+            .submitto {
+                margin-top: 2em;
+            }
+            
+            /*svg#Layer_1 {
+                width: 100%;
+                height: 100%;
+            }*/
+            
+            div#last_content {
+                padding-top: 2em;
+            }
+            
+            /*svg#Layer_2 {
+                width: 100%;
+                height: 100%;
+            }*/
+        </style>
+        <script>
+            setTimeout(function() { 
+                $('.logo svg').fadeOut(); 
+            }, 4000) 
+            $(document).ready(function(){
+                $(".logo h2").typed({
+                    strings: ["Front-end &amp; Back-end Developer"],
+                    typeSpeed: 40,
+                    startDelay: 5
+                });
+            })
+            
+        </script>
     </head>
     <body>
         <div class="main onepage-wrapper">
@@ -376,7 +456,7 @@
                     <button class="button button--sacnite button--round-l"><i class="button__icon icon icon-user"></i><span>User</span></button>
                 </div>
                 <div class="logo">
-                    <img src="prod/content/logo_svg.svg" alt="aphanor" />
+                    <img src="prod/content/logo_svg.svg" alt="Alexis Phanor" />
                     <h1>Alexis Phanor</h1>
                     <div class="slogan"><h2 class="quote"></h2></div>
                     <svg class='sv' width="50" viewbox="0 0 250 250">
@@ -401,8 +481,8 @@
                             <div class="col-md-6">
                                 <div class="front-content">
                                     <h1>FRONT-END<span>DEVELOPMENT</span></h1>
-                                    <p>My first induction to Web Development was when I started working as Front-end Developer. Having worked with the latest technologies such as <b>HTML5</b>, <b>CSS3</b>, <b>SASS</b> and <b>JavaScript</b> (including <b>BackbonesJS</b>, <b>Coffee Script</b> & <b>AngularJS</b>) in the past 5 years, I feel I have gained lot of experience in this sector.</p>
-                                    <p>The addition of external libraries like Bootstrap, CSS media queries to made it easy to make create fast website layout and responsive design (compatible on all desktop and mobile devices).</p>
+                                    <p>My first induction to Web Development was when I started working as Front-end Developer. Having worked with the latest technologies such as <b>HTML5</b>, <b>CSS3</b>, <b>SASS</b> and <b>JavaScript</b> (including <b>BackbonesJS</b>, <b>Coffee Script</b> & <b>AngularJS</b>) in the past 5 years, I feel I have gained lots of experience in this sector.</p>
+                                    <p>The addition of external libraries like <b>Bootstrap</b>, <b>LESS</b> mobile framework made it easy to create and build faster layout for websites with responsive design (compatible on all desktops and mobile devices).</p>
                                     <button onclick="window.open('http://alexisphanor.com/v2/portfolio.html', '_blank');" class="button button--itzel button--text-thick"><i class="button__icon icono-code"></i><span>Portfolio</span></button>
                                 </div>
                             </div>
@@ -411,12 +491,12 @@
                                     <div class="circle"> 
                                         <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 	 width="369.402px" height="184.8px" viewBox="0 0 369.402 184.8" enable-background="new 0 0 369.402 184.8" xml:space="preserve">
-<line fill="none" stroke="#000000" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="126.401" y1="176.8" x2="4" y2="101.8"/>
-<line fill="none" stroke="#000000" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="4" y1="101.8" x2="127.045" y2="30.405"/>
-<line fill="none" stroke="#000000" stroke-width="6" stroke-linejoin="round" stroke-miterlimit="10" x1="141.8" y1="180.8" x2="233.8" y2="4"/>
-<line fill="none" stroke="#000000" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="243" y1="180.8" x2="365.402" y2="105.8"/>
-<line fill="none" stroke="#000000" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="365.401" y1="105.8" x2="243" y2="30.8"/>
-</svg>
+                                            <line fill="none" stroke="#000000" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="126.401" y1="176.8" x2="4" y2="101.8"/>
+                                            <line fill="none" stroke="#000000" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="4" y1="101.8" x2="127.045" y2="30.405"/>
+                                            <line fill="none" stroke="#000000" stroke-width="6" stroke-linejoin="round" stroke-miterlimit="10" x1="141.8" y1="180.8" x2="233.8" y2="4"/>
+                                            <line fill="none" stroke="#000000" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="243" y1="180.8" x2="365.402" y2="105.8"/>
+                                            <line fill="none" stroke="#000000" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="365.401" y1="105.8" x2="243" y2="30.8"/>
+                                        </svg>
                                     </div>
                                 </div>
                             </div>
@@ -428,7 +508,7 @@
                         <div class="container-fluid">
                             <div class="col-md-6">
                                 <div class="img_container">
-                                        <svg version="1.1" width="200" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 635.3 844.6" enable-background="new 0 0 635.3 844.6" xml:space="preserve"> 
+                                        <svg version="1.1" id="Layer_2" width="200" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 635.3 844.6" enable-background="new 0 0 635.3 844.6" xml:space="preserve"> 
                                         <path fill="none" stroke="#010202" stroke-width="20" stroke-linejoin="round" stroke-miterlimit="10" d="M259.3,834.6
                                         
                                         c0,0-93.9,4.9-142.4-74c-25.5-41.5-27-117-27-117l0.5-143.5c0,0-1-65-80.3-77.7l0,0c79.3-12.7,79.9-77.7,79.9-77.7l-0.5-143.5
@@ -445,7 +525,7 @@
                             <div class="col-md-6">
                                 <div class="back-content">
                                     <h1>BACK-END<span>DEVELOPMENT</span></h1>
-                                    <p>As a Web Developer, I was always willing to learn more, thus I started learning <b>PHP</b> a couple years ago and also worked with <b>.NET</b> and <b>Java</b>. In recent years, I have concentrated all my efforts on learning Node.JS which I believe is a powerful alternative to those languages and is the future of Web Development. The big bonus is that <b>Node.JS</b> is 100% written in <b>JavaScript</b>, which is very good for me coming from a front-end background.</p>
+                                    <p>As a Web Developer, I was always willing to learn more, thus I started learning <b>PHP</b> a couple of years ago. I also worked with <b>.NET</b> and <b>Java</b>. In recent years, I have concentrated all my efforts on learning <b>Node.JS</b> which I believe is a powerful alternative to those languages and is the future of Web Development. The big bonus is that <b>Node.JS</b> is 100% written in <b>JavaScript</b>, which is very good for me coming from a front-end background.</p>
                                     <button onclick="window.open('https://github.com/aphanor/', '_blank');" class="button buto button--itzel button--text-thick"><i class="button__icon icono-github"></i><span>Recent Projects</span></button>
                                 </div>
                             </div>
@@ -456,145 +536,129 @@
             <section class="info">
                 <div id="info_content">
                     <div><span class="up"><i class="icono-up-open"></i></span></div>
-                    <h1>Skills & <span class="prog">Progress</span></h1>
-                    <p>As a young web developer who loves to learn new technologies, I gained a lot of experience over the years. My skills of services includes Front-end and Back-end development. My strength are <b>HTML5</b>, <b>CSS3</b>, <b>JavaScript</b> (including the new JS framework), <b>Node.JS</b>, <b>PHP</b>, <b>JAVA</b>, <b>Swift</b>.</p>
-                    <div class="rowi">
-                        <div class="pie_prog" role="progressbar" aria-valuemax="100" data-name="Html">
-                            <span class="pie_progress__number">0%</span>
+                    <div class="mobile_view">
+                        <h1>Skills & <span class="prog">Progress</span></h1>
+                        <p>As a young web developer who loves to learn new technologies, I gained a lot of experience over the years. My skills include Front-end and Back-end development. My strength are <b>HTML5</b>, <b>CSS3</b>, <b>JavaScript</b> (including the new JS frameworks), <b>Node.JS</b>, <b>PHP</b>, <b>JAVA</b>, <b>Swift</b>.</p>
+                        <div class="rowi">
+                            <div class="pie_prog" role="progressbar" aria-valuemax="100" data-name="Html">
+                                <span class="pie_progress__number">0%</span>
+                            </div>
+                            <div class="pie_progresso" role="progressbar" aria-valuemin="0" aria-valuemax="100" data-name="Css & Sass">
+                                <span class="pie_progress__number">0%</span>
+                            </div>
+                            <div class="pie_progressa" role="progressbar" aria-valuemin="0" aria-valuemax="100" data-name="JavaScript">
+                                <span class="pie_progress__number">0%</span>
+                            </div>
+                            <div class="pie_progressi" role="progressbar" aria-valuemin="0" aria-valuemax="100" data-name="PHP">
+                                <span class="pie_progress__number">0%</span>
+                            </div>
+                            <div class="pie_progressu" role="progressbar" aria-valuemin="0" aria-valuemax="100" data-name="NODE JS">
+                                <span class="pie_progress__number">0%</span>
+                            </div>
+                            <div class="pie_progresse" role="progressbar" aria-valuemin="0" aria-valuemax="100" data-name="Swift">
+                                <span class="pie_progress__number">0%</span>
+                            </div>
                         </div>
-                        <div class="pie_progresso" role="progressbar" aria-valuemin="0" aria-valuemax="100" data-name="Css & Sass">
-                            <span class="pie_progress__number">0%</span>
-                        </div>
-                        <div class="pie_progressa" role="progressbar" aria-valuemin="0" aria-valuemax="100" data-name="JavaScript">
-                            <span class="pie_progress__number">0%</span>
-                        </div>
-                        <div class="pie_progressi" role="progressbar" aria-valuemin="0" aria-valuemax="100" data-name="PHP">
-                            <span class="pie_progress__number">0%</span>
-                        </div>
-                        <div class="pie_progressu" role="progressbar" aria-valuemin="0" aria-valuemax="100" data-name="NODE JS">
-                            <span class="pie_progress__number">0%</span>
-                        </div>
-                        <div class="pie_progresse" role="progressbar" aria-valuemin="0" aria-valuemax="100" data-name="Swift">
-                            <span class="pie_progress__number">0%</span>
+                        <div class="skills_mobile">
+                            <img src="http://dev.staging-ap.s3-website-eu-west-1.amazonaws.com/content/skills_mobile.png" />
                         </div>
                     </div>
-                    <div class="skills_mobile"></div>
                     <div><span class="down"><i class="icono-down-open"></i></span></div>
                 </div>
             </section>
             <section class="project-planner">
                 <div id="last_content">
                     <div><span class="up uppi"><i class="icono-up-open"></i></span></div>
-                    <h1>CONTACT & <b>PROJECT-PLANNER</b></h1>
-                    <p>Do you need to be up to date with the latest technologies and have a beautiful website? Please feel free to use my project planner below to contact me if you have any questions or you want to hire my services as a Freelance Web Developer.</p>
-                    <div id="projectplanner_elements">
-                        <div id="projectplannerbuttonbar">
-                            <h3 style="display: none;">Get started with my <b>Project Planner</b>
-                                <span style="float:right; display: none;">
-                                <a href="javascript:void(0)" class="project-planner-button">Project Planner</a>
-                                </span>
-                            </h3>
-                        </div>
-            
-                        <div class="projectplanner-triangle"></div>
-            
-                        <div id="projectplannerformarea">
-                            <p style="font-weight:300;font-size:18px;color:#fff">What would you like me to help you with?</p>
-            
-                            <div id="ppthreecolumncontainer">
-                                <div>
-                                    <div class="a">
-                                        <div class="inside-pp3-column-left">
-                                            <a href="javascript:void(0)" name="WebsiteDevelopment" class="form-choice-button-active">Website Development</a> <a name="WebsiteWorkflow" href="javascript:void(0)" class="form-choice-button">Web &amp; Workflow</a>
-                                        </div>
-                                    </div>
-                                </div>
-            
-                                <div>
-                                    <div class="b">
-                                        <div class="inside-pp3-column-center">
-                                            <a href="javascript:void(0)" name="SEO" class="form-choice-button">Search Engine Optimisation</a> <a name="SocialMedia" href="javascript:void(0)" class="form-choice-button">Social Media Integration</a>
-                                        </div>
-                                    </div>
-                                </div>
-            
-                                <div>
-                                    <div class="c">
-                                        <div class="inside-pp3-column-right">
-                                            <a href="javascript:void(0)" name="MobileDev" class="form-choice-button-active">Mobile Development</a> <a name="ECommerce" href="javascript:void(0)" class="form-choice-button">E-commerce</a>
-                                        </div>
-                                    </div>
-                                </div>
+                    <h1><span>CONTACT & <b>PROJECT-PLANNER</b></span></h1>
+                    <div class="non_mobile">
+                        <p>Do you need to be up to date with the latest technologies and have a beautiful website? Please feel free to use my project planner below to contact me if you have any questions or you want to hire my services as a <b>Freelance Web Developer</b>.</p>
+                        <div id="projectplanner_elements">
+                            <div id="projectplannerbuttonbar">
+                                <h3 style="display: none;">Get started with my <b>Project Planner</b>
+                                    <span style="float:right; display: none;">
+                                    <a href="javascript:void(0)" class="project-planner-button">Project Planner</a>
+                                    </span>
+                                </h3>
                             </div>
-            
-                            <div id="pptwocolumncontainer">
-                                <!-- Form -->
-            
-                                <form class="formo" style="margin-top:10px;width:940px !important;" action="http://overtongraphics.com/php/email.php" method="post">
-                                    <div>
-                                        <div style="margin-left:20px;" class="a">
-                                            <div class="inside-pp2-column-left">
-                                                <p style="font-weight:300;font-size:18px;color:#fff; margin-left: -151px;">Project Budget<span style="font-size:12px;color:#444444;font-weight:600;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input style="color: #fff; text-align: right; outline:none !important; background-color: transparent; border: none; float: right;" type="text" id="amount"></span></p>
-            
-                                                <div id="slider-one"></div>
-                                            </div>
-                                        </div>
-                                    </div>
-            
-                                    <div>
-                                        <div class="b">
-                                            <div class="inside-pp2-column-right">
-                                                <p style="margin-left:-171px; font-weight:300;font-size:18px;color:#fff">Timescale<span style="font-size:12px;color:#444444;font-weight:600;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input style="color: #fff; text-align: right; float: right; font-weight:600 !important;outline:none !important; background-color: transparent; border: none;" type="text" id="amount2"></span></p>
-            
-                                                <div id="slider-two"></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </form>
-                            </div><!-- Left Column -->
-            
-                            <div class="inside-pp2-column-left">
-                                <p style="font-weight:400;font-size:18px;color:#fff; margin-left: -18em;">Your Details</p>
-            
-                                <div class="form-field">
-                                    <label for="name">Name</label>
-            
-                                    <div class="field-subject">
-                                        <input type="text" name="name" id="name" size="45" maxlength="100" title="Please enter your name." data-h5-errorid="empty-name" tabindex="1"> <span id="nameInfo"></span>
-                                    </div><label for="email">Email</label>
-            
-                                    <div class="field-subject">
-                                        <input type="text" name="email" id="email" size="45" maxlength="100" title="Please enter your email." data-h5-errorid="empty-email" tabindex="1" required=""> <span style="display: none; position:absolute; left: 255px; top:8px; z-index: 999999;" id="emailInfo"><img src="http://dev.staging-ap.s3-website-eu-west-1.amazonaws.com/content/icon-cross.png" alt="icon-cross" width="40" height="38"></span>
-                                    </div><label for="telephone">Telephone</label>
-            
-                                    <div class="field-subject">
-                                        <input type="text" name="telephone" id="telephone" size="45" maxlength="100" title="Please enter your telephone number." data-h5-errorid="empty-telephone" tabindex="1"> <span id="telephoneInfo"></span>
-                                    </div>
-                                </div>
-                            </div><!-- Right Column -->
-            
-                            <div class="inside-pp2-column-right">
-                                <div class="form-comments">
-                                    <label for="comments" id="commentslabel">Comments</label>
-            
-                                    <div class="field-comments">
-                                        <textarea style="resize: none;" wrap="hard" type="text" name="comments" id="comments" title="Please enter your comments." data-h5-errorid="empty-comments" tabindex="1" cols="20" rows="10">
-            </textarea> <span id="commentsInfo"></span>
-                                    </div>
-                                </div>
+                            <div>
+                                <p><span style="color: red; font-weight: bold;">New !</span> Why not try my brand-new project planner <a href="/project-planner.html">here</a>.</p>
                             </div>
-            
-                            <div class="message">
-                                <input name="submit" id="submito" type="submit" value="Lets get started">
-            
-                                <div style=" margin-top: 10em; display: none;" class="loading-ico"><img src="http://dev.staging-ap.s3-website-eu-west-1.amazonaws.com/content/ajax-loader.gif" alt="ajax-loader" width="16" height="16"></div>
+
+                                
                             </div>
+                            <div class="the_form">
+                                <form ng-controller="EmailCtrl" class="clearfix" id="contact-form" role="form" name="form_sub" novalidate> 
+                                    
+                                    <span class="input input--ruri">
+                    					<input ng-model="email.nameuh" name="name" id="name" class="input__field input__field--ruri" type="text" ng-required="true" />
+                    					<label class="input__label input__label--ruri">
+                    						<span class="input__label-content input__label-content--ruri">Name</span>
+                    					</label>
+                                        </span>
+                    				</span>
+                    				
+                    				<span class="input input--ruri">
+                    					<input name="email" ng-model="email.from" class="input__field input__field--ruri" type="email" ng-required="true" />
+                    					<label class="input__label input__label--ruri" for="input-26">
+                    						<span class="input__label-content input__label-content--ruri">Email</span>
+                    					</label>
+                    				</span>
+                    				
+                					<div class="textarea-cont"> 
+                						<textarea rows="15" ng-model="email.text" name="message" id="message" placeholder="Your message here..." onfocus="this.placeholder = ''" onblur="this.placeholder = 'Your message here...'" ng-required="true"></textarea> 
+                					</div>
+                					
+                					<p ng-show="form_sub.name.$error.required || form_sub.message.$error.required ||  
+            form_sub.email.$dirty && form_sub.email.$invalid">Note: The send button will only appear when the form is fully filled in.</p>
             
-                            <div class="clearfix"></div><!-- Form -->
+                                    <span ng-show="form_sub.email.$dirty && form_sub.email.$invalid">
+                                        <span class="errors" ng-show="form_sub.email.$error.required">Email is required.</span>
+                                        <span class="errors" ng-show="form_sub.email.$error.email">Invalid email address.</span>
+                                    </span>
+                					
+                					<div class="submitto">
+                    					<span ng-hide="form_sub.name.$error.required || form_sub.message.$error.required ||  
+            form_sub.email.$dirty && form_sub.email.$invalid">
+                        					<button class="submit" ng-disabled="form_sub.name.$error.required || form_sub.message.$error.required ||  
+                form_sub.email.$dirty && form_sub.email.$invalid" ng-click="submitEmail()"step-finish>Send</button>
+                    					</span>
+                					</div>
+                					
+                					<div class="loader" title="0">
+                					  <svg version="1.1" id="loader-1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                					   width="100px" height="60px" viewBox="0 0 40 40" enable-background="new 0 0 40 40" xml:space="preserve">
+                					  <path opacity="0.2" fill="#000" d="M20.201,5.169c-8.254,0-14.946,6.692-14.946,14.946c0,8.255,6.692,14.946,14.946,14.946
+                					    s14.946-6.691,14.946-14.946C35.146,11.861,28.455,5.169,20.201,5.169z M20.201,31.749c-6.425,0-11.634-5.208-11.634-11.634
+                					    c0-6.425,5.209-11.634,11.634-11.634c6.425,0,11.633,5.209,11.633,11.634C31.834,26.541,26.626,31.749,20.201,31.749z"/>
+                					  <path fill="#000" d="M26.013,10.047l1.654-2.866c-2.198-1.272-4.743-2.012-7.466-2.012h0v3.312h0
+                					    C22.32,8.481,24.301,9.057,26.013,10.047z">
+                					    <animateTransform attributeType="xml"
+                					      attributeName="transform"
+                					      type="rotate"
+                					      from="0 20 20"
+                					      to="360 20 20"
+                					      dur="0.5s"
+                					      repeatCount="indefinite"/>
+                					    </path>
+                					  </svg>
+                					</div>
+                				</form>
+                            </div>
+                            <p class="congrat">Your message has been sent successfully.</p>
                         </div>
-                        <div class="contact_mobile">
-                            <p>CONTACT ME</p>
-                        </div>
+                    </div>
+                    <div class="contact_mobile">
+                        <ul class="links-container">
+                    		<li>
+                    			<a class="linkedin" href="https://uk.linkedin.com/in/alexisphanor"><i class="fa fa-linkedin-square"></i> LinkedIn</a>
+                    		</li>
+                    		<li>
+                    			<a class="github" href="https://github.com/aphanor/"><i class="fa fa-github-square"></i> Github</a>
+                    		</li>
+                    		<li>
+                    			<a class="google" href="https://plus.google.com/u/0/110870683980041798119"><i class="fa fa-google-plus"></i> Google +</a>
+                    		</li>
+                    	</ul>
                     </div>
                 </div>
             </section>
@@ -610,5 +674,62 @@
 
 		})();
 	</script>
+	<script>
+    	$(document).ready(function(){
+    		
+    		setTimeout(function(){
+    			$('.submit').click(function(){
+    			    $('.submitto').fadeOut(function(){
+    			        $('.loader').show()
+    			        setTimeout(function(){
+        			        $('.the_form').fadeOut(function(){
+            			        $('.congrat').show();
+        			        })
+    			        }, 2000)
+    			    });
+    			})
+    			$('.loader').hide()
+    			
+    		}, 1000)
+    		
+    		
+    		$('textarea').click(function() {
+        		$(this).css('border', '1px #a3d39c solid', 'important');
+    		});
+    		
+    		(function() {
+    			if (!String.prototype.trim) {
+    				(function() {
+    					// Make sure we trim BOM and NBSP
+    					var rtrim = /^[\s\uFEFF\xA0]+|[\s\uFEFF\xA0]+$/g;
+    					String.prototype.trim = function() {
+    						return this.replace(rtrim, '');
+    					};
+    				})();
+    			}
+    
+    			[].slice.call( document.querySelectorAll( 'input.input__field' ) ).forEach( function( inputEl ) {
+    				// in case the input is already filled..
+    				if( inputEl.value.trim() !== '' ) {
+    					classie.add( inputEl.parentNode, 'input--filled' );
+    				}
+    
+    				// events:
+    				inputEl.addEventListener( 'focus', onInputFocus );
+    				inputEl.addEventListener( 'blur', onInputBlur );
+    			} );
+    
+    			function onInputFocus( ev ) {
+    				classie.add( ev.target.parentNode, 'input--filled' );
+    			}
+    
+    			function onInputBlur( ev ) {
+    				if( ev.target.value.trim() === '' ) {
+    					classie.remove( ev.target.parentNode, 'input--filled' );
+    				}
+    			}
+    		})();
+        });
+    </script>
     </body>
 </html>

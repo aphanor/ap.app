@@ -10,7 +10,26 @@ $(document).ready(function(){
     
     setTimeout(function(){ $('.scroll').fadeIn(1000) }, 1000);
     
-    var done = false;
+    var scrolly;
+
+    function scroller() {
+        scrolly = setTimeout(function() { $("div.main").moveTo(2) }, 4400);
+    }
+	
+	if(!$.cookie('cookie')) { 
+        $.cookie('cookie', '1', { expires: 1, path: '/' });
+        scroller();
+    } else {
+        $('.logo svg').hide(); 
+    }
+    
+    function stopScroller() {
+        clearTimeout(scrolly);
+    }
+    
+    $('button.button--sacnite').click(function(){
+        stopScroller()
+    })
     
     $("div.main").onepage_scroll({
         sectionContainer: "section",
@@ -32,18 +51,27 @@ $(document).ready(function(){
             loader()
             clearTimeout(scrolly)
             
-            if($('section.project-planner').visible(true)) {
-                $('div#projectplannerformarea').slideDown(500, 'swing');
+            if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+                $('section.project-planner').hide();
+                $('.img_container').hide();
+            }
+            else {
+                if($('section.project-planner').visible(true)) {
+                    $('div#projectplannerformarea').slideDown(500, 'swing');
+                }
             }
             
             $('button.button--sacnite').addClass('bounce');
             
-            $('.contact').hover(function() { $('button.button--sacnite').removeClass('bounce'); clearTimeout(scrolly); });
-            
-            $('.contact').click(function(){
-                clearTimeout(scrolly)
-                StopInterval()
-            })
+            $('body').on({
+                mouseenter: function() {
+                    $(this).find('button.button--sacnite').removeClass('bounce');
+                    clearTimeout(scrolly);
+                },
+                mouseleave: function() {
+                    $(this).find('button.button--sacnite').addClass('bounce');
+                }
+            }, 'button.button--sacnite');
             
             /*var intervalContact;
     
@@ -192,17 +220,5 @@ $(document).ready(function(){
     });
     
     //setTimeout(function() { $("div.main").moveTo(2) }, 4400) 
-    
-    var scrolly;
-
-    function scroller() {
-        scrolly = setTimeout(function() { $("div.main").moveTo(2) }, 4400);
-    }
-    
-    scroller()
-    
-    function stopScroller() {
-        clearTimeout(scrolly);
-    }
     
 });
