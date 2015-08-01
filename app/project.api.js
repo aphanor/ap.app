@@ -53,7 +53,7 @@ AP.controller('EmailCtrl', ['$scope', '$http', function($scope, $http) {
             console.log("Sent ok");
         })
         .error(function(data, status) {
-            console.log("Error");
+            console.log("Error " + data);
         })
     };
 }]);

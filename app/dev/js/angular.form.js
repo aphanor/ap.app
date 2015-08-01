@@ -5,10 +5,10 @@ AP.controller('EmailCtrl', ['$scope', '$http', function($scope, $http) {
         //Request
         $http.post('/email', $scope.email) 
         .success(function(data, status) {
-            console.log("Sent ok");
+            console.log("Sent ok: "+data);
         })
         .error(function(data, status) {
-            console.log("Error");
+            console.log("Error: "+data);
         })
     };
 }]);
