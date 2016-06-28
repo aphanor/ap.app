@@ -740,33 +740,13 @@ px      68    160    252    344    436    528    620    712    */
     	height: 100% !important;
 	}
 	
-	#projectplannerformarea, .rowi, #back-end, .non_mobile {
+	#projectplannerformarea, .rowi, #back-end .mob, #front-end .mob, .non_mobile {
     	display: none !important;
 	}
 	
 	.contact_mobile {
     	display: block;
-    	margin-top: 2em !important;
-    	position: absolute;
-        top: 5%;
-        transform: translateY(-50%);
-        width: 80%;
-	}
-	
-	.mobile_view {
-    	position: absolute;
-        top: 5%;
-        transform: translateY(-50%);
-        width: 80% !important;
-	}
-	
-	#last_content h1 {
-    	position: absolute;
-        top: 20%;
-        width: 60%;
-        left: 0;
-        right: 0;
-        margin: 0 auto;
+    	margin-top: 2em  auto !important;
 	}
 	
 	#last_content h1 span {
@@ -784,6 +764,14 @@ px      68    160    252    344    436    528    620    712    */
 	
 	div.circle svg {
     	width: 80%;
+    }
+    
+    section.info {
+        min-height: 100% !important;
+    }
+    
+    .header p {
+        font-size: 80%;
     }
 	
 }
@@ -814,7 +802,7 @@ px      68    160    252    */
     	height: 100% !important;
 	}
 	
-	#projectplannerformarea, .rowi, #back-end, .non_mobile {
+	#projectplannerformarea, .rowi, #back-end .mob, #front-end .mob, .non_mobile, .button--itzel {
     	display: none !important;
 	}
 	
@@ -829,28 +817,8 @@ px      68    160    252    */
 	}
 	
 	.mobile_view {
-    	position: absolute;
-        top: 5%;
-        transform: translateY(-50%);
-        width: 80% !important;
-	}
-	
-	.contact_mobile {
     	display: block;
-    	margin-top: 2em !important;
-    	position: absolute;
-        top: 5%;
-        transform: translateY(-50%);
-        width: 80%;
-	}
-	
-	#last_content h1 {
-    	position: absolute;
-        top: 20%;
-        left: 0;
-        right: 0;
-        margin: 0 auto;
-        width: 60%;
+    	margin-top: 2em  auto !important;
 	}
 	
 	#last_content h1 span {
@@ -868,6 +836,10 @@ px      68    160    252    */
 	
 	div.circle svg {
     	width: 80%;
+    }
+    
+    section.info {
+        min-height: 100% !important;
     }
 	
 }
@@ -894,7 +866,7 @@ px      68    160    252    344    436    */
     	font-size: 20px !important;
 	}
 	
-	#projectplannerformarea, .rowi, #back-end, .non_mobile {
+	#projectplannerformarea, .rowi, #back-end .mob, #front-end .mob, .non_mobile, .button--itzel {
     	display: none !important;
 	}
 	
@@ -910,27 +882,7 @@ px      68    160    252    344    436    */
 	
 	.contact_mobile {
     	display: block;
-    	margin-top: 2em !important;
-    	position: absolute;
-        top: 5%;
-        transform: translateY(-50%);
-        width: 80%;
-	}
-	
-	.mobile_view {
-    	position: absolute;
-        top: 5%;
-        transform: translateY(-50%);
-        width: 80% !important;
-	}
-	
-	#last_content h1 {
-    	position: absolute;
-        top: 20%;
-        left: 0;
-        right: 0;
-        margin: 0 auto;
-        width: 60%;
+    	margin-top: 2em  auto !important;
 	}
 	
 	#last_content h1 span {
@@ -949,4 +901,9 @@ px      68    160    252    344    436    */
 	div.circle svg {
     	width: 80%;
     }
+    
+    section.info {
+        min-height: 100% !important;
+    }
+    
 }

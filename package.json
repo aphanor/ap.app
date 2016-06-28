@@ -44,10 +44,12 @@
   },
   "dependencies": {
     "body-parser": "^1.13.2",
+    "bower": "^1.7.9",
     "dot-env": "0.0.1",
     "dotenv": "^1.2.0",
     "express": "^4.13.1",
     "gulp-changed": "^1.2.1",
-    "sendgrid": "^1.9.2"
+    "sendgrid": "^1.9.2",
+    "universal-analytics": "^0.3.11"
   }
 }

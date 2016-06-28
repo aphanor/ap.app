@@ -47,16 +47,21 @@
         <script src="prod/js/snap.svg-min.js"></script>
         <script src="prod/js/dialogFx.js"></script>
         <script src="prod/js/classie.js"></script>
+        <script src="prod/js/jquery.browser.min.js"></script>
+        <script>
+            if($.browser.mobile) {
+                window.location.href = '/mobile.html'
+            }
+        </script>
         <script>
             (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
             (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
             m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
             })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
             
-            ga('create', 'UA-39741636-1', 'auto');
+            ga('create', 'UA-39741636-2', 'auto');
             ga('send', 'pageview');
         </script>
-        
         <style>
             h1 {
                 font-size: 28px;
@@ -420,8 +425,7 @@
                     typeSpeed: 40,
                     startDelay: 5
                 });
-            })
-            
+            })       
         </script>
     </head>
     <body>
@@ -483,10 +487,10 @@
                                     <h1>FRONT-END<span>DEVELOPMENT</span></h1>
                                     <p>My first induction to Web Development was when I started working as Front-end Developer. Having worked with the latest technologies such as <b>HTML5</b>, <b>CSS3</b>, <b>SASS</b> and <b>JavaScript</b> (including <b>BackbonesJS</b>, <b>Coffee Script</b> & <b>AngularJS</b>) in the past 5 years, I feel I have gained lots of experience in this sector.</p>
                                     <p>The addition of external libraries like <b>Bootstrap</b>, <b>LESS</b> mobile framework made it easy to create and build faster layout for websites with responsive design (compatible on all desktops and mobile devices).</p>
-                                    <button onclick="window.open('http://alexisphanor.com/v2/portfolio.html', '_blank');" class="button button--itzel button--text-thick"><i class="button__icon icono-code"></i><span>Portfolio</span></button>
+                                    <button onclick="window.open('http://alexisphanor.com/v2/portfolio.html', '_blank');" class="button button--itzel button--text-thick portfolioEvent"><i class="button__icon icono-code"></i><span>Portfolio</span></button>
                                 </div>
                             </div>
-                            <div class="col-md-6">
+                            <div class="col-md-6 mob">
                                 <div class="img_container">
                                     <div class="circle"> 
                                         <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
@@ -506,7 +510,7 @@
 				<div id="back-end">
                     <div class="row">
                         <div class="container-fluid">
-                            <div class="col-md-6">
+                            <div class="col-md-6 mob">
                                 <div class="img_container">
                                         <svg version="1.1" id="Layer_2" width="200" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 635.3 844.6" enable-background="new 0 0 635.3 844.6" xml:space="preserve"> 
                                         <path fill="none" stroke="#010202" stroke-width="20" stroke-linejoin="round" stroke-miterlimit="10" d="M259.3,834.6
@@ -526,7 +530,7 @@
                                 <div class="back-content">
                                     <h1>BACK-END<span>DEVELOPMENT</span></h1>
                                     <p>As a Web Developer, I was always willing to learn more, thus I started learning <b>PHP</b> a couple of years ago. I also worked with <b>.NET</b> and <b>Java</b>. In recent years, I have concentrated all my efforts on learning <b>Node.JS</b> which I believe is a powerful alternative to those languages and is the future of Web Development. The big bonus is that <b>Node.JS</b> is 100% written in <b>JavaScript</b>, which is very good for me coming from a front-end background.</p>
-                                    <button onclick="window.open('https://github.com/aphanor/', '_blank');" class="button buto button--itzel button--text-thick"><i class="button__icon icono-github"></i><span>Recent Projects</span></button>
+                                    <button onclick="window.open('https://github.com/aphanor/', '_blank');" class="button buto button--itzel button--text-thick git"><i class="button__icon icono-github"></i><span>Recent Projects</span></button>
                                 </div>
                             </div>
                         </div>
@@ -539,7 +543,7 @@
                     <div class="mobile_view">
                         <h1>Skills & <span class="prog">Progress</span></h1>
                         <p>As a young web developer who loves to learn new technologies, I gained a lot of experience over the years. My skills include Front-end and Back-end development. My strength are <b>HTML5</b>, <b>CSS3</b>, <b>JavaScript</b> (including the new JS frameworks), <b>Node.JS</b>, <b>PHP</b>, <b>JAVA</b>, <b>Swift</b>.</p>
-                        <div class="rowi">
+                        <div class="rowi" style="display: none;">
                             <div class="pie_prog" role="progressbar" aria-valuemax="100" data-name="Html">
                                 <span class="pie_progress__number">0%</span>
                             </div>
@@ -675,8 +679,7 @@
 		})();
 	</script>
 	<script>
-    	$(document).ready(function(){
-    		
+    	$(document).ready(function(){		
     		setTimeout(function(){
     			$('.submit').click(function(){
     			    $('.submitto').fadeOut(function(){
@@ -729,6 +732,26 @@
     				}
     			}
     		})();
+    		
+    		// Google Analytics listener
+    		
+    		$('button.git').on('click', function() {
+                ga('send', {
+                    'hitType': 'event',          // Required.
+                    'eventCategory': 'button',   // Required.
+                    'eventAction': 'click',      // Required.
+                    'eventLabel': 'GitHub'
+                });
+            });
+            
+            $('button.portfolioEvent').on('click', function() {
+                ga('send', {
+                    'hitType': 'event',          // Required.
+                    'eventCategory': 'button',   // Required.
+                    'eventAction': 'click',      // Required.
+                    'eventLabel': 'Portfolio'
+                });
+            });
         });
     </script>
     </body>

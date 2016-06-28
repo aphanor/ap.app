@@ -36,7 +36,7 @@ function thankYouEmail(dest, from, destName) {
     
     email.addTo(client);
     email.setFromName('Alexis Phanor');
-    email.setFrom(client);
+    email.setFrom(me);
     email.setSubject('Alexis Phanor - Thank you for your email!');
     email.setText('I will get back to you as soon as possible. Have a lovely day.');
     email.setHtml('<div style="text-align: center; color: #FFF;"><h4>Thank you <span style="color:#FFA500;">'+clientName+'</span>.</h4><p>I will get back to you as soon as possible. Have a lovely day.</p></div>');
@@ -57,7 +57,7 @@ function thankYouEmail(dest, from, destName) {
         console.log(from);
         console.log(destName);
     }
-        console.log(json);     
+        console.log(json); 
     });
 }
 

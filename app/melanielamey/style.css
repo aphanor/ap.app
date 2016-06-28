@@ -1,0 +1,212 @@
+body {
+    font-family: "freight-sans-pro-n4","freight-sans-pro",Arial,serif,sans-serif !important;
+}
+
+.container-fluid {
+    padding: 0 !important;
+}
+
+.links {
+    width: 80%;
+    float: left;
+    height: 60px;
+}
+
+div#nums {
+    float: left;
+    font-size: 11px;
+    font-weight: 400;
+    padding-top: 2em;
+}
+
+#language {
+    height: 60px;
+    float: right;
+    margin-right: 2em;
+}
+
+#nav.row {
+    height: 60px;
+}
+
+#nav {
+    border-bottom: 1px solid #f0f0f0;
+    top: 0;
+    position: fixed;
+    background-color: #FFF;
+    width: 100%;
+    z-index: 99999;
+}
+
+span#logo {
+    font-family: "aw-conqueror-didot";
+    font-size: 30px;
+    color: #FFF;
+}
+
+span#logo p {
+    padding-left: 0.5em;
+    padding-top: 0.25em;
+}
+
+.main-logo {
+    background-color: #282828;
+    width: 100px;
+    height: 60px;
+    float: left;
+}
+
+#pre-content {
+    background-image: url('http://basekit-image.s3.amazonaws.com/live126391_englishgeorgiancountryhouse.jpg');
+    background-position: center center;
+    background-repeat: no-repeat;
+    height: 450px;
+}
+
+.content-pre {
+    text-align: center;
+    font-family: "freight-sans-pro-n4","freight-sans-pro",Arial,serif,sans-serif;
+}
+
+#pre-content p {
+    color: #FFF;
+    padding-bottom: 1em;
+    border-bottom: 1px #FFF solid;
+    width: 100px;
+    margin: 0 auto;
+    padding-top: 1em;
+    border-top: 1px #FFF solid;
+}
+
+#pre-content h5 {
+    border-top: 1px solid #FFF;
+    padding-top: 1em;
+    color: #FFF;
+    width: 220px;
+    margin: 2em auto;
+    text-shadow: 2px 4px 3px rgba(0,0,0,0.3);
+}
+
+#pre-content h1 {
+    font-family: "aw-conqueror-didot";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 79px;
+    color: #fff;
+    line-height: 2.2em;
+    letter-spacing: 3.96px;
+    padding-bottom: 26.5px;
+    margin-bottom: 5.5rem;
+    padding-top: 12rem;
+    position: relative;
+    text-shadow: 2px 4px 3px rgba(0,0,0,0.3);
+}
+
+ul, ol {
+    list-style: none;
+}
+
+.page-navigation li a, .lang {
+    font-family: "freight-sans-pro-n4","freight-sans-pro",Arial,serif,sans-serif;
+    font-style: normal;
+    color: #1c1c1c;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 60px;
+    letter-spacing: 0.2px;
+    display: block;
+    position: relative;
+    -webkit-transition: all 0.2s ease-in;
+    -khtml-transition: all 0.2s ease-in;
+    -moz-transition: all 0.2s ease-in;
+    -ms-transition: all 0.2s ease-in;
+    -o-transition: all 0.2s ease-in;
+    transition: all 0.2s ease-in;
+}
+
+.page-navigation li {
+    display: inline-block;
+    margin-left: 50px;
+}
+
+section#content {
+    background-color: #f5f5f5;
+}
+
+#content h3 {
+    text-align: center;
+    padding-bottom: 2rem;
+    font-size: 32px;
+    color: #000;
+    font-family: "aw-conqueror-didot";
+    padding-top: 1em;
+    line-height: 38px;
+}
+
+div#prr {
+    margin: 0 13%;
+    padding-bottom: 2em;
+}
+
+div.post-left {
+    padding: 1em 2em;
+}
+
+section#post-content {
+    min-height: 173px;
+}
+
+div.post-right {
+    padding-top: 0.5em;
+}
+
+#pre-footer {
+    padding: 0 3em 2em;
+    background-color: #1c1c1c;
+    color: #fff;
+}
+
+#pre-footer h3 {
+    font-size: 13px !important;
+    font-style: normal;
+    font-weight: 400;
+    color: #858585;
+    text-transform: uppercase;
+    font-size: 11px;
+    padding-bottom: 2rem;
+    letter-spacing: 1.5px;
+}
+
+#pre-footer p {
+    font-size: 11px;
+    text-indent: 20px;
+}
+
+#pre-footer.col-md-3, #pre-footer.col-md-5, #pre-footer.col-md-4 {
+} 
+
+#pre-footer span {
+    float: right;
+    margin-right: 4em;
+    font-size: 12px;
+    border: 1px solid #FFF;
+    border-bottom: 1px solid #FFF;
+    padding: 4px 6px;
+}
+
+img.footer-logo {
+    float: right;
+    padding-top: 2em;
+}
+
+#footer {
+    padding: 2rem 0;
+    background-color: #151515;
+    color: #fff;
+    width: 100%;
+}
+
+#footer p {
+    text-align: center;
+    font-size: 10px;
+}

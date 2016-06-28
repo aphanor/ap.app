@@ -2,4 +2,3 @@ Sitemap: http://www.alexisphanor.com/sitemap.xml
 
 User-agent: *
 Disallow: /assets/
-Crawl-Delay: 300

@@ -41,6 +41,7 @@ $(document).ready(function(){
         afterMove: function(index) {
             function loader() {
                 if($('section.info').visible(true)) { 
+                    $('.rowi').fadeIn(800);
                     $('.pie_progress').asPieProgress('start');
                     $(".pie_progressi").asPieProgress('start');
                     $(".pie_progresso").asPieProgress('start');

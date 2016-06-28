@@ -1,0 +1,136 @@
+@font-face {
+    font-family: GibsonLight;
+    src: url("../css/GibsonLight-Regular.ttf");
+}
+
+body {
+    width: 100%;
+    margin: 0;
+}
+
+ul li {
+    list-style: none;
+    margin-bottom: 1em;
+}
+
+td, th {
+    vertical-align: middle !important;
+    text-align: center;
+}
+
+tr th {
+    text-align: center !important;
+}
+
+h1, h2, h3, h4, footer {
+    font-family: GibsonLight, Helvetica, sans-serif !important;
+}
+
+.container-fluid {
+    padding: 0 !important;
+}
+
+.row {
+    width: 90% !important;
+    margin: 0 auto !important;
+}
+
+.container-fluid h1 {
+    font-size: 250%;
+    line-height: 1.3em;
+    margin-top: 0 !important;
+    color: #00AB8E;
+    text-transform: uppercase;
+    margin: 1em 0 .6em;
+    word-spacing: 0.1em;
+    font-weight: normal;
+    text-align: center;
+}
+
+.container-fluid h4 {
+    color: #00AB8E;
+    text-align: center;
+}
+
+.text-muted {
+    text-align: center !important;
+}
+
+.apicreator {
+    width: 40% !important;
+    margin: 1em auto;
+    text-align: center;
+}
+
+div.apibutton {
+    margin-top: 2em !important;
+}
+
+.apibuilder, .apichecker, .products {
+    font-weight: bold;
+    font-size: 20px;
+    margin-bottom: 1em;
+}
+
+.api_links {
+    width: 13%;
+    margin: 0 auto;
+}
+
+.api_URL {
+    width: 100% !important;
+    margin: 2em;
+    text-align: center;
+}
+
+header {
+    background-color: #003D4C;
+    background-position: top right;
+    background-repeat: repeat-y;
+    border-bottom: 6px solid #00ab8e;
+    height: 54px;
+    width: 100%;
+    margin: 0 auto 2em auto;
+}
+
+div#branding-logo {
+    background-image: url('https://d1yacy4j66eg2g.cloudfront.net/img/logo.png');
+    background-repeat: no-repeat;
+    background-position-x: -2px;
+    width: 293px;
+    height: 34px;
+    margin: 6px auto;
+}
+
+p.bg-danger {
+    padding: 1em;
+}
+
+button.btn.btn-primary.btn-lg.btn-block {
+    width: 100px;
+    height: 100%;
+    font-size: 13px;
+    letter-spacing: 2px;
+    font-weight: 300;
+    margin: 0 auto;
+}
+
+form.form-inline {
+    float: left;
+    width: 100%;
+    text-align: left;
+    margin-top: 1em;
+}
+
+.apicreator.form-control {
+    margin-bottom: 1em;
+}
+
+footer {
+    margin-top: 2em;
+}
+
+footer p {
+    font-weight: 900;
+    text-align: center;
+}

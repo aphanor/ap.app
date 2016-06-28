@@ -1,3 +1,5 @@
+require('dotenv').load();
+
 var gulp = require('gulp'),
     gutil = require('gulp-util'),
     webserver = require('gulp-webserver'),
@@ -30,112 +32,203 @@ var all_html = ['app/*.html'];
 
 var amazon_aws = ['app/prod/**'];
 
-gulp.task('prod', function() {
-    gulp.src('app/index.html')
-        .pipe(replace('"prod/', '"'))
-        .pipe(gulp.dest('app/prod/'));
-});
+// ============= Main Site ============= //
+// ***
+// ***
+// ***
+// ***
+// ***
+// ***
+// ***
 
-//Final Deployment
- 
-var options = {
-  user: 'alex6596',
-  password: 'Mada972!',
-  port: '21',
-  host: 'alexisphanor.com',
-  uploadPath: '/'
-};
-
-gulp.task('push', ['prod'], function() { 
-    gutil.log(gutil.colors.cyan('Deploying to prod...'));
-    setTimeout(function() {
-        return gulp.src('app/prod/**/**')
-            .pipe(ftp({
-                host: 'alexisphanor.com',
-                user: 'alex6596',
-                pass: 'Mada972!'
+    gulp.task('prod', function() {
+        gulp.src('app/index.html')
+            .pipe(replace('"prod/', '"'))
+            .pipe(gulp.dest('app/prod/'));
+    });
+    
+    //Final Deployment - Not needed anymore 
+    /*
+     
+    var options = {
+      port: '21',
+      host: 'alexisphanor.com',
+      uploadPath: '/'
+    };
+    
+    gulp.task('push', ['prod'], function() { 
+        gutil.log(gutil.colors.cyan('Deploying to prod...'));
+        setTimeout(function() {
+            return gulp.src('app/prod/**')
+                .pipe(ftp({
+                    host: 'alexisphanor.com'
+                }))
+                .pipe(gutil.noop());
+        }, 800)
+    });
+    
+    */
+    
+    //Amazon S3 configuration
+    gulp.task('aws', ['prod'], function() { 
+        aws = JSON.parse(fs.readFileSync('./aws.json'));
+        gutil.log(gutil.colors.cyan('Starting Upload...'));
+        setTimeout(function() {
+            gulp.src(amazon_aws)
+                .pipe(changed('/**', {hasChanged: changed.compareSha1Digest}))
+                .pipe(s3(aws).on('error', gutil.log));
+        }, 800)
+    });
+     
+    // Sass & CSS configuration
+    gulp.task('sass', function () {
+        return sass('app/dev/sass/', {style: 'compressed', sourcemap: false})
+            .on('error', function (err) {
+                console.error('Error!', err.message);
+            })
+            .pipe(concat('all.css'))
+            .pipe(rename({
+                extname: '.min.css'
             }))
-            .pipe(gutil.noop());
-    }, 800)
-});
-
-//Amazon S3 configuration
-gulp.task('aws', ['prod'], function() { 
-    aws = JSON.parse(fs.readFileSync('./aws.json'));
-    gutil.log(gutil.colors.cyan('Starting Upload...'));
-    setTimeout(function() {
-        gulp.src(amazon_aws)
-            .pipe(changed('/**', {hasChanged: changed.compareSha1Digest}))
-            .pipe(s3(aws).on('error', gutil.log));
-    }, 800)
-});
- 
-// Sass & CSS configuration
-gulp.task('sass', function () {
-    return sass('app/dev/sass/', {style: 'compressed', sourcemap: false})
-        .on('error', function (err) {
-            console.error('Error!', err.message);
-        })
-        .pipe(concat('all.css', options.sourceRoot))
+            .pipe(gulp.dest('app/prod/css/'));
+    });
+    
+    
+    // Uglify configuration 
+    gulp.task('compress', function() {
+        return gulp.src(['app/dev/js/*.js', '!app/dev/js/*.min.js', '!app/dev/sass/jquery.onepage-scroll.js'])
+        .pipe(uglify().on('error', gutil.log))
+        .pipe(concat('all.js'))
         .pipe(rename({
-            extname: '.min.css'
+            extname: '.min.js'
         }))
-        .pipe(gulp.dest('app/prod/css/'));
-});
-
-
-// Uglify configuration 
-gulp.task('compress', function() {
-    return gulp.src(['app/dev/js/*.js', '!app/dev/js/*.min.js', '!app/dev/sass/jquery.onepage-scroll.js'])
-    .pipe(uglify().on('error', gutil.log))
-    .pipe(concat('all.js'))
-    .pipe(rename({
-        extname: '.min.js'
-    }))
-    .pipe(gulp.dest('app/prod/js'));
-});
-
-// Watch items
-gulp.task('js', function() {
-    gulp.src(all_js)
-});
-
-gulp.task('html', function() {
-    gulp.src(all_html)
-});
-
-gulp.task('css', function() {
-    gulp.src(all_css)
-});
-
-// Watch task
-gulp.task('watch', function() {
-    //livereload.listen();
-    gulp.watch('app/dev/js/**/*', ['compress']).on('change', function(file) { //livereload.changed(file.path);
-        gutil.log(gutil.colors.yellow('JS changed' + ' (' + file.path + ')'));
+        .pipe(gulp.dest('app/prod/js'));
     });
     
-    /*gulp.watch(all_css, ['css']).on('change', function(file) { //livereload.changed(file.path);
-        gutil.log(gutil.colors.yellow('CSS changed' + ' (' + file.path + ')'));
-    });*/
-    
-    gulp.watch(['app/*.html','app/dev/views/*.html'], ['html']).on('change', function(file) { //livereload.changed(file.path);
-        gutil.log(gutil.colors.cyan('HTML changed' + ' (' + file.path + ')'));
+    // Watch items
+    gulp.task('js', function() {
+        gulp.src(all_js)
     });
     
-    gulp.watch(all_sass, ['sass']).on('change', function(file) { //livereload.changed(file.path);
-        gutil.log(gutil.colors.grey('SASS changed' + ' (' + file.path + ')'));
+    gulp.task('html', function() {
+        gulp.src(all_html)
     });
-});
+    
+    gulp.task('css', function() {
+        gulp.src(all_css)
+    });
+    
+    // Watch task
+    gulp.task('watch', function() {
+        //livereload.listen();
+        gulp.watch('app/dev/js/**/*', ['compress']).on('change', function(file) { //livereload.changed(file.path);
+            gutil.log(gutil.colors.yellow('JS changed' + ' (' + file.path + ')'));
+        });
+        
+        /*gulp.watch(all_css, ['css']).on('change', function(file) { //livereload.changed(file.path);
+            gutil.log(gutil.colors.yellow('CSS changed' + ' (' + file.path + ')'));
+        });*/
+        
+        gulp.watch(['app/*.html','app/dev/views/*.html'], ['html']).on('change', function(file) { //livereload.changed(file.path);
+            gutil.log(gutil.colors.cyan('HTML changed' + ' (' + file.path + ')'));
+        });
+        
+        gulp.watch(all_sass, ['sass']).on('change', function(file) { //livereload.changed(file.path);
+            gutil.log(gutil.colors.grey('SASS changed' + ' (' + file.path + ')'));
+        });
+    });
+    
+    // Webserver
+    gulp.task('webserver', ['sass'], function() {
+        gulp.src('app/')
+        .pipe(webserver({
+        	livereload: true,
+        	open: true
+        }));
+    });
+    
+    // Set of tasks
+    gulp.task('default', ['compress', 'watch', 'html', 'js', 'webserver']);
 
-// Webserver
-gulp.task('webserver', ['sass'], function() {
-    gulp.src('app/')
-    .pipe(webserver({
-    	livereload: true,
-    	open: true
-    }));
-});
+// ***
+// ***
+// ***
+// ***
+// ***
+// ***
+// ***
+// ============= End - Main Site ============= //
 
-// Set of tasks
-gulp.task('default', ['compress', 'watch', 'html', 'js', 'webserver']);
+
+// ============= BV API APP ============= //
+// ***
+// ***
+// ***
+// ***
+// ***
+// ***
+// ***
+
+    // Sass & CSS configuration
+    gulp.task('mini-sass', function () {
+        return sass('app/bvapp/sass/', {style: 'compressed', sourcemap: false})
+            .on('error', function (err) {
+                console.error('Error!', err.message);
+            })
+            .pipe(concat('style.css'))
+            .pipe(rename({
+                extname: '.min.css'
+            }))
+            .pipe(gulp.dest('app/bvapp/css/'));
+    });
+    
+    // Uglify configuration 
+    gulp.task('minify', function() {
+        return gulp.src(['app/bvapp/js/*.js', '!app/bvapp/js/*.min.js'])
+        .pipe(uglify().on('error', gutil.log))
+        .pipe(concat('all.js'))
+        .pipe(rename({
+            extname: '.min.js'
+        }))
+        .pipe(gulp.dest('app/bvapp/js'));
+    });
+    
+    gulp.task('htm', function() {
+        gulp.src('app/bvapp/*.html')
+    });
+    
+    // Watch task
+    gulp.task('check', function() {
+        //livereload.listen();
+        gulp.watch('app/bvapp/js/**/*', ['minify']).on('change', function(file) { //livereload.changed(file.path);
+            gutil.log(gutil.colors.yellow('JS has been updated' + ' (' + file.path + ')'));
+        });
+        
+        gulp.watch(['app/bvapp/*.html'], ['htm']).on('change', function(file) { //livereload.changed(file.path);
+            gutil.log(gutil.colors.cyan('HTML has been updated' + ' (' + file.path + ')'));
+        });
+        
+        gulp.watch(['app/bvapp/sass/**/*'], ['mini-sass']).on('change', function(file) { //livereload.changed(file.path);
+            gutil.log(gutil.colors.grey('SASS has been updated' + ' (' + file.path + ')'));
+        });
+    });
+    
+    // Webserver
+    gulp.task('server', ['mini-sass'], function() {
+        gulp.src('app/bvapp/')
+        .pipe(webserver({
+        	livereload: true,
+        	open: true
+        }));
+    });
+    
+    gulp.task('bvapi', ['minify', 'mini-sass' , 'check', 'server']);
+
+// ***
+// ***
+// ***
+// ***
+// ***
+// ***
+// ***
+// ============= End - BV API APP ============= //

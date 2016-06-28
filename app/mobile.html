@@ -1,0 +1,754 @@
+<!DOCTYPE html>
+<!-- Made by Alexis Phanor -->
+<html ng-app="AP" lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="keywords" content="Alexis Phanor, Web Developer, Junior Web Developer, Phanor, Web Applications, Web Creation, Freelance Web Developer, Développeur Web, Création de site Web pour particulier, création de site Web, Développeur Indépendant" />
+    	<meta name="description" content="I am a Web Developer who offer his services to different type of clients. Web Applications, Mobile Applications as well as Web Development support help." />
+    	<meta name="robots" content="index,follow" />
+    	<meta name="rating" content="general" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
+        <meta name="viewport" content="width=device-width, initial-scale=1">  
+        <!--[if IE]>
+        <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+        <!--[if lte IE 7]>
+        <script src="js/IE8.js" type="text/javascript"></script><![endif]-->
+        <!--[if lt IE 7]>
+     
+        <link rel="stylesheet" type="text/css" media="all" href="css/ie6.css"/><![endif]-->
+        <title>Alexis Phanor - Web Developer</title>
+        <link href="http://alexisphanor.com/images/favicon.ico" rel="icon" type="image/x-icon" />
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+        <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script>
+        <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+        
+        <!-- Optional theme -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+        <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/animate.css/3.2.0/animate.min.css">
+        
+        <!-- Latest compiled and minified JavaScript -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+        <script src="prod/js/jquery.visible.min.js"></script>
+        <!-- CSS -->
+        <link rel="stylesheet" type="text/css" href="prod/css/style2.css" />
+        <link rel="stylesheet" type="text/css" href="prod/css/animation.css" />
+        <link rel="stylesheet" type="text/css" href="prod/css/vicons-font.css" />
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+        <!-- JavaScript -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+        <script src="http://cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.18/angular-animate.js"></script>
+        <script src="dev/js/angular.form.js"></script>
+        <script src="dev/js/jquery-asPieProgress%20copy.js"></script>
+        <script src="dev/js/pie.js"></script>
+        <script src="prod/js/type.js"></script>
+        <script src="prod/js/modernizr.custom.js"></script>
+        <script src="prod/js/snap.svg-min.js"></script>
+        <script src="prod/js/dialogFx.js"></script>
+        <script src="prod/js/classie.js"></script>
+        <script src="prod/js/jquery.appear.js"></script>
+        <style>
+            h1 {
+                font-size: 28px;
+            }
+            
+            .arrows {
+            	width: 60px;
+            	height: 72px;
+            	position: absolute;
+            	left: 50%;
+            	margin-left: -30px;
+            	bottom: 20px;
+            }
+            
+            #last_content, #header_content, #info_content {margin: 0 auto; max-width: 80%;}
+            
+            #info_content {
+                padding-top: 4%;
+                color: #f0e4d9;
+            }
+            
+            #info_content h1 {
+                text-align: center;
+                text-transform: uppercase;
+                margin-bottom: 2em;
+                margin-top: 1em;
+                font-weight: 300;
+                text-rendering: optimizelegibility;
+                -webkit-font-smoothing: antialiased;
+            }
+            
+            span.prog {
+                font-weight: 600;
+            }
+            
+            .arrows path {
+            	stroke: #2994D1;
+            	fill: transparent;
+            	stroke-width: 1px;	
+            	animation: arrow 2s infinite;
+            	-webkit-animation: arrow 2s infinite; 
+            }
+            
+            @keyframes arrow
+            {
+                0% {opacity:0}
+                40% {opacity:1}
+                80% {opacity:0}
+                100% {opacity:0}
+            }
+            
+            @-webkit-keyframes arrow /*Safari and Chrome*/
+            {
+                0% {opacity:0}
+                40% {opacity:1}
+                80% {opacity:0}
+                100% {opacity:0}
+            }
+            
+            .arrows path.a1 {
+            	animation-delay:-1s;
+            	-webkit-animation-delay:-1s; /* Safari 和 Chrome */
+            }
+            
+            .arrows path.a2 {
+            	animation-delay:-0.5s;
+            	-webkit-animation-delay:-0.5s; /* Safari 和 Chrome */
+            }
+            
+            .arrows path.a3 {	
+            	animation-delay:0s;
+            	-webkit-animation-delay:0s; /* Safari 和 Chrome */
+            }
+            
+            .down i, .up i {font-size: 26px; cursor: pointer;}
+            
+            .down i {
+                bottom: 0;
+                position: absolute;
+                left: 50%;
+                margin-left: -16px !important;
+                margin-bottom: 0.5em;
+            }
+            
+            .up i {
+                top: 0;
+                position: absolute;
+                left: 50%;
+                margin-left: -16px !important;
+                margin-top: 0.5em;
+            }
+            
+            .uppi i {color: #1c1e26;}
+            
+            .scroll {display: none;}
+            
+            .project-planner {
+                text-align: center;
+                color: #1c1e26;
+            }
+            
+            .project-planner h1 {
+                margin: 2em auto 1em;
+                text-rendering: optimizelegibility;
+                -webkit-font-smoothing: antialiased;
+                font-weight: 300;
+            }
+                    
+            .intro {
+                background-color: #11141f;
+                position: relative;
+                text-transform: uppercase;
+                text-align: center;
+            }
+            .logo {
+                width: 50%;
+                height: 50%;
+                overflow: hidden;
+                margin: auto;
+                position: absolute;
+                top: 0; left: 0; bottom: 0; right: 0;
+                text-align: center;
+                padding-top: 3%;
+                
+            }
+            
+            .logo h1 {
+                color: #FFF;
+                font-size: 20px;
+            }
+            
+            .logo h2 {
+                color: #f99314;
+                font-size: 18px;
+            }
+            #front-end, #back-end {
+                height: 50%;
+                width: 100%;
+                position: relative;
+                /* Lorem ipsum dolor si: */
+                opacity: 0.79;
+                font-size: 15px;
+                color: #565656;
+                line-height: 20px;
+                font-family: 'Open Sans', sans-serif;
+            }
+            
+            .front-content, .back-content {
+                height: 100%;
+                padding: 2em;
+            }
+            
+            .front-content h1, .back-content h1 {
+                margin-bottom: 1em;
+            }
+            
+            .back-content p {
+                float: right;
+                text-align: right;
+            }
+            
+            .back-content span {
+                text-align: center !important;
+            }
+            
+            #back-end {
+                background-color: #f6f6f6;
+            }
+            
+            .row, .row div {
+                height: 100% !important;
+            }
+            
+            .img_container {
+                text-align: center;  /* align the inline(-block) elements horizontally */
+                font: 0/0 a;         /* remove the gap between inline(-block) elements */
+            }
+            
+            .img_container svg {
+                margin-top: 66px;
+            }
+    
+            .img_container:before {    /* create a full-height inline block pseudo=element */
+                content: ' ';
+                display: inline-block;
+                vertical-align: middle;  /* vertical alignment of the inline element */
+                height: 100%;
+            }
+            
+            .img_container img {
+                vertical-align: middle;
+                display: inline-block;
+            }
+            
+            #front-end h1, #back-end h1 {
+                font-weight: 300 !important;
+                font-family: 'Open Sans', sans-serif;
+                text-transform: uppercase;
+                /* FRONTEND DEVELOPMENT: */
+                font-size: 29px;
+                color: #5D5D5D;
+                line-height: 34px;
+                text-rendering: optimizelegibility;
+                -webkit-font-smoothing: antialiased;
+    
+            }
+            
+            #front-end h1 span, #back-end h1 span {
+                font-weight: 600;
+                text-transform: uppercase;
+                font-family: 'Open Sans', sans-serif;
+                color: #000;
+                line-height: 34px;
+                margin-left: 8px;
+            }
+            
+            .spany {
+                color: #979797;
+                margin-top: 2em;
+            }
+            
+            svg.sv {
+              display: block;
+              margin: 50px auto;
+            }
+            
+            #loader 
+            { fill: #11141f; }
+            
+            #border 
+            { fill: #FFF; }
+            
+            section.info {
+                background-color: #1c1e26;
+                min-height: 780px;
+            }
+            
+            .slogan * {
+                display: inline-block;
+                color: #f99314;
+            }
+            
+            h2.quote {
+                margin-right: 0.25em;
+            }
+            div.contact {
+                position: absolute;
+                right: 30px;
+                top: 0px;
+                padding: 10px;
+                color: #fff;
+                font-weight: 500;
+                font-size: 20px;
+                cursor: pointer;
+                height: 40px !important;
+                width: 101px !important;
+            }
+            
+            @keyframes bounce {
+            	0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0);
+              }
+            	40% {
+                transform: translateY(-30px);
+              }
+            	60% {
+                transform: translateY(-15px);
+              }
+            }
+            
+            .bounce {
+              animation: bounce 5s infinite;
+            }
+            
+            textarea {
+            	margin-bottom:2em;
+            	border:1px #a3d39c solid !important;
+            	outline:none;
+            	text-transform:uppercase;
+            	padding:2em;
+            	text-align:center;
+            	-webkit-box-sizing:border-box;
+            	-moz-box-sizing:border-box;
+            	box-sizing:border-box;
+            	width:100%;
+            	border: none;
+                overflow: auto;
+                -webkit-box-shadow: none;
+                -moz-box-shadow: none;
+                box-shadow: none;
+                font-size: 12px;
+                font-weight: 300 !important;
+            }
+            
+            textarea:focus,textarea:after {
+            	outline-color: transparent;
+                outline-style: none;
+            }
+            
+            textarea::-webkit-input-placeholder {
+            	text-transform:uppercase;
+            	font-weight:300;
+            	letter-spacing:2px;
+            	color:#000;
+            	outline:none;
+            }
+            
+            textarea:-moz-placeholder {
+            /* Firefox 18- */
+            	text-transform:uppercase;
+            	color:#000;
+            }
+            
+            textarea::-moz-placeholder {
+            /* Firefox 19+ */
+            	text-transform:uppercase;
+            	color:#000;
+            }
+            
+            textarea:-ms-input-placeholder {
+            	text-transform:uppercase;
+            	color:#000;
+            }
+            
+            .textarea-cont {
+            	padding:2em 9em 0 9em;
+        	    height: 190px;
+            }
+            
+            .congrat {
+            	display:none;
+                font-size: 30px;
+                margin-top: 3em;
+                font-weight: 500;
+            }
+            
+            .submitto {
+                margin-top: 2em;
+            }
+            
+            /*svg#Layer_1 {
+                width: 100%;
+                height: 100%;
+            }*/
+            
+            div#last_content {
+                padding-top: 2em;
+            }
+            
+            /*svg#Layer_2 {
+                width: 100%;
+                height: 100%;
+            }*/
+        </style>
+        <script>
+            setTimeout(function() { 
+                $('.logo svg').fadeOut(); 
+            }, 4000) 
+            $(document).ready(function(){
+                $(".logo h2").typed({
+                    strings: ["Front-end &amp; Back-end Developer"],
+                    typeSpeed: 40,
+                    startDelay: 5
+                });
+            })
+            
+            $(document).ready(function(){
+                
+            	
+            	if(!$.cookie('cookie')) { 
+                    $.cookie('cookie', '1', { expires: 1, path: '/' });
+                } else {
+                    $('.logo svg').hide(); 
+                }
+                
+                setInterval(function(){ 
+                    if($('.mobile_view').is(':appeared')) {
+                        $('.rowi').fadeIn(1000);
+                        $('.pie_progress').asPieProgress('start');
+                        $(".pie_progressi").asPieProgress('start');
+                        $(".pie_progresso").asPieProgress('start');
+                        $(".pie_progressa").asPieProgress('start');
+                        $(".pie_progressu").asPieProgress('start');
+                	}
+                }, 500);
+                
+                if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+                    $('section.project-planner').hide();
+                    $('.img_container').hide();
+                }
+                else {
+                    if($('section.project-planner').visible(true)) {
+                        $('div#projectplannerformarea').slideDown(500, 'swing');
+                    }
+                }
+                
+                $('button.button--sacnite').addClass('bounce');
+                
+                $('body').on({
+                    mouseenter: function() {
+                        $(this).find('button.button--sacnite').removeClass('bounce');
+                    },
+                    mouseleave: function() {
+                        $(this).find('button.button--sacnite').addClass('bounce');
+                    }
+                }, 'button.button--sacnite');
+                /*! SVG Pie Timer 0.9.1 | Anders Grimsrud, grint.no | MIT License | github.com/agrimsrud/svgPieTimer.js */
+                
+                ;(function(w) {
+                
+                    'use strict';
+                
+                    // Date.now fix by Ari Fuchs, afuchs.tumblr.com/post/23550124774/date-now-in-ie8
+                
+                    Date.now = Date.now || function() { return +new Date };
+                
+                    // Draw SVG path
+                  
+                    function draw(element, rate) {
+                        var count = element.length,
+                            angle = 360 * rate;
+                
+                        angle %= 360;
+                
+                        var rad = (angle * Math.PI / 180), 
+                            x = Math.sin(rad) * 125, 
+                            y = Math.cos(rad) * - 125, 
+                            mid = (angle > 180) ? 1 : 0, 
+                            shape = 'M 0 0 v -125 A 125 125 1 ' 
+                                   + mid + ' 1 ' 
+                                   +  x  + ' ' 
+                                   +  y  + ' z';
+                
+                        // If array of elements, draw each one
+                      
+                        if(element instanceof Array)
+                            while(count--)
+                                element[count].setAttribute('d', shape)
+                        else
+                            element.setAttribute('d', shape)
+                    }
+                
+                    // Prepare timer
+                    // Define in global scope
+                  
+                    w.svgPieTimer = function(props) {
+                
+                        var element = props.element,
+                            duration = props.duration || 1000,
+                            n = props.loops;
+                
+                        // Optional warning
+                        
+                        if(!element) throw "SVG Pie Timer: Error - element required"
+                
+                        // This part might be confusing:
+                        // If n==0, do infinite loops
+                        // In other cases where n is set, do n loops
+                        // If n is not set, do 1 loop
+                        // Do it this way to prevent mixing n==0 and !n
+                        
+                        n = (n==0) ? 0 : n ? n : 1;
+                
+                        var end = Date.now() + duration * n,
+                            totaldur = duration * n;
+                
+                        // Animate frame by frame
+                      
+                        (function frame() {
+                            var current = Date.now(),
+                                remaining = end - current,
+                
+                                // Now set rotation rate
+                                // E.g. 50% of first loop returns 1.5
+                                // E.g. 75% of sixth loop returns 6.75
+                                // Has to return >0 for SVG to be drawn correctly
+                                // If you need the current loop, use Math.floor(rate)
+                
+                                rate = n + 1 - remaining / duration;
+                
+                            // As requestAnimationFrame will draw whenever capable, 
+                            // the animation might end before it reaches 100%.
+                            // Let's simulate completeness on the last visual
+                            // frame of the loop, regardless of actual progress
+                          
+                            if(remaining < 60) {
+                                
+                                // 1.0 might break, set to slightly lower than 1
+                                // Update: Set to slightly lower than n instead
+                              
+                                draw(element, n - 0.0001);
+                              
+                              
+                                // Stop animating when we reach n loops (if n is set)
+                             
+                                if(remaining < totaldur && n) return
+                            }
+                   
+                            // To reverse, uncomment this line
+                            //rate = 360 - rate;
+                          
+                            // Draw
+                            draw(element, rate);
+                          
+                            // Request next frame
+                          
+                           requestAnimationFrame(frame);
+                        }());
+                    }
+                
+                })(window, undefined);
+                
+                var loader = document.getElementById('loader'),
+                    border = document.getElementById('border');
+                
+                svgPieTimer({
+                    // Element (Required) SVG sub element to animate. Accepts array.
+                    element: [loader, border],
+                    
+                    // Duration (Optional) In milliseconds. Defaults to 1000.
+                    duration: 4000,
+                    
+                    // Loops (Optional) Defaults to 1. Set to 0 for infinite.
+                    loops: 1
+                });
+                
+                //setTimeout(function() { $("div.main").moveTo(2) }, 4400) 
+                
+            });
+        </script>
+    </head>
+    <body>
+        <div class="main">
+            <section class="intro">
+                <div id="somedialog" class="dialog">
+					<div class="dialog__overlay"></div>
+					<div class="dialog__content">
+						<div class="morph-shape">
+							<svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 560 280" preserveAspectRatio="none">
+								<rect x="3" y="3" fill="none" width="556" height="276"/>
+							</svg>
+						</div>
+						<div class="dialog-inner">
+							<h2><strong>Get in</strong> touch!</h2>
+							<ul class="links-container">
+                        		<li>
+                        			<a class="linkedin" href="https://uk.linkedin.com/in/alexisphanor"><i class="fa fa-linkedin-square"></i> LinkedIn</a>
+                        		</li>
+                        		<li>
+                        			<a class="github" href="https://github.com/aphanor/"><i class="fa fa-github-square"></i> Github</a>
+                        		</li>
+                        		<li>
+                        			<a class="google" href="https://plus.google.com/u/0/110870683980041798119"><i class="fa fa-google-plus"></i> Google +</a>
+                        		</li>
+                        	</ul>
+							<div><button class="action" data-dialog-close>Close</button></div>
+						</div>
+					</div>
+				</div>
+                <div data-dialog="somedialog" class="contact trigger">
+                    <button class="button button--sacnite button--round-l"><i class="button__icon icon icon-user"></i><span>User</span></button>
+                </div>
+                <div class="logo">
+                    <img src="prod/content/logo_svg.svg" alt="Alexis Phanor" />
+                    <h1>Alexis Phanor</h1>
+                    <div class="slogan"><h2 class="quote"></h2></div>
+                    <svg class='sv' width="50" viewbox="0 0 250 250">
+                        <path id="border" transform="translate(125, 125)"/>
+                        <path id="loader" transform="translate(125, 125) scale(.94)"/>
+                    </svg>
+                </div>
+                <div class="scroll">
+                    <span class="down">
+                    <svg class="arrows">
+						<path class="a1" d="M0 0 L30 32 L60 0"></path>
+						<path class="a2" d="M0 20 L30 52 L60 20"></path>
+						<path class="a3" d="M0 40 L30 72 L60 40"></path>
+					</svg>
+    				</span>
+                </div>
+            </section>
+            <section class="header">
+                <div id="front-end">
+                    <div class="row">
+                        <div class="container-fluid">
+                            <div class="col-md-6">
+                                <div class="front-content">
+                                    <h1>FRONT-END<span>DEVELOPMENT</span></h1>
+                                    <p>My first induction to Web Development was when I started working as Front-end Developer. Having worked with the latest technologies such as <b>HTML5</b>, <b>CSS3</b>, <b>SASS</b> and <b>JavaScript</b> (including <b>BackbonesJS</b>, <b>Coffee Script</b> & <b>AngularJS</b>) in the past 5 years, I feel I have gained lots of experience in this sector.</p>
+                                    <p>The addition of external libraries like <b>Bootstrap</b>, <b>LESS</b> mobile framework made it easy to create and build faster layout for websites with responsive design (compatible on all desktops and mobile devices).</p>
+                                    <button onclick="window.open('http://alexisphanor.com/v2/portfolio.html', '_blank');" class="button button--itzel button--text-thick"><i class="button__icon icono-code"></i><span>Portfolio</span></button>
+                                </div>
+                            </div>
+                            <div class="col-md-6 mob">
+                                <div class="img_container">
+                                    <div class="circle"> 
+                                        <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 width="369.402px" height="184.8px" viewBox="0 0 369.402 184.8" enable-background="new 0 0 369.402 184.8" xml:space="preserve">
+                                            <line fill="none" stroke="#000000" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="126.401" y1="176.8" x2="4" y2="101.8"/>
+                                            <line fill="none" stroke="#000000" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="4" y1="101.8" x2="127.045" y2="30.405"/>
+                                            <line fill="none" stroke="#000000" stroke-width="6" stroke-linejoin="round" stroke-miterlimit="10" x1="141.8" y1="180.8" x2="233.8" y2="4"/>
+                                            <line fill="none" stroke="#000000" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="243" y1="180.8" x2="365.402" y2="105.8"/>
+                                            <line fill="none" stroke="#000000" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="365.401" y1="105.8" x2="243" y2="30.8"/>
+                                        </svg>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+				</div>
+				<div id="back-end">
+                    <div class="row">
+                        <div class="container-fluid">
+                            <div class="col-md-6 mob">
+                                <div class="img_container">
+                                        <svg version="1.1" id="Layer_2" width="200" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 635.3 844.6" enable-background="new 0 0 635.3 844.6" xml:space="preserve"> 
+                                        <path fill="none" stroke="#010202" stroke-width="20" stroke-linejoin="round" stroke-miterlimit="10" d="M259.3,834.6
+                                        
+                                        c0,0-93.9,4.9-142.4-74c-25.5-41.5-27-117-27-117l0.5-143.5c0,0-1-65-80.3-77.7l0,0c79.3-12.7,79.9-77.7,79.9-77.7l-0.5-143.5
+                                        
+                                        c0,0,1.5-75.5,27-117c48.5-78.9,142.4-74,142.4-74" style="stroke-dasharray: 1107.41015625px, 1107.41015625px; stroke-dashoffset: 0px;"></path> 
+                                        <path fill="none" stroke="#010202" stroke-width="20" stroke-linejoin="round" stroke-miterlimit="10" d="M376,834.6
+                                        
+                                        c0,0,93.9,4.9,142.4-74c25.5-41.5,27-117,27-117l-0.5-143.5c0,0,1-65,80.3-77.7l0,0c-79.3-12.7-79.9-77.7-79.9-77.7l0.5-143.5
+                                        
+                                        c0,0-1.5-75.5-27-117c-48.5-78.9-142.4-74-142.4-74" style="stroke-dasharray: 1107.41015625px, 1107.41015625px; stroke-dashoffset: 0px;"></path>
+                                        </svg>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="back-content">
+                                    <h1>BACK-END<span>DEVELOPMENT</span></h1>
+                                    <p>As a Web Developer, I was always willing to learn more, thus I started learning <b>PHP</b> a couple of years ago. I also worked with <b>.NET</b> and <b>Java</b>. In recent years, I have concentrated all my efforts on learning <b>Node.JS</b> which I believe is a powerful alternative to those languages and is the future of Web Development. The big bonus is that <b>Node.JS</b> is 100% written in <b>JavaScript</b>, which is very good for me coming from a front-end background.</p>
+                                    <button onclick="window.open('https://github.com/aphanor/', '_blank');" class="button buto button--itzel button--text-thick"><i class="button__icon icono-github"></i><span>Recent Projects</span></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+				</div>
+            </section>
+            <section class="info">
+                <div id="info_content">
+                    <div class="mobile_view">
+                        <h1>Skills & <span class="prog">Progress</span></h1>
+                        <p>As a young web developer who loves to learn new technologies, I gained a lot of experience over the years. My skills include Front-end and Back-end development. My strength are <b>HTML5</b>, <b>CSS3</b>, <b>JavaScript</b> (including the new JS frameworks), <b>Node.JS</b>, <b>PHP</b>, <b>JAVA</b>, <b>Swift</b>.</p>
+                        <div class="rowi" style="display: none;">
+                            <div class="pie_prog" role="progressbar" aria-valuemax="100" data-name="Html">
+                                <span class="pie_progress__number">0%</span>
+                            </div>
+                            <div class="pie_progresso" role="progressbar" aria-valuemin="0" aria-valuemax="100" data-name="Css & Sass">
+                                <span class="pie_progress__number">0%</span>
+                            </div>
+                            <div class="pie_progressa" role="progressbar" aria-valuemin="0" aria-valuemax="100" data-name="JavaScript">
+                                <span class="pie_progress__number">0%</span>
+                            </div>
+                            <div class="pie_progressi" role="progressbar" aria-valuemin="0" aria-valuemax="100" data-name="PHP">
+                                <span class="pie_progress__number">0%</span>
+                            </div>
+                            <div class="pie_progressu" role="progressbar" aria-valuemin="0" aria-valuemax="100" data-name="NODE JS">
+                                <span class="pie_progress__number">0%</span>
+                            </div>
+                            <div class="pie_progresse" role="progressbar" aria-valuemin="0" aria-valuemax="100" data-name="Swift">
+                                <span class="pie_progress__number">0%</span>
+                            </div>
+                        </div>
+                        <div class="skills_mobile">
+                            <img src="http://dev.staging-ap.s3-website-eu-west-1.amazonaws.com/content/skills_mobile.png" />
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section class="project-planner">
+                <div id="last_content">
+                    <h1><span>CONTACT & <b>PROJECT-PLANNER</b></span></h1>
+                    <div class="contact_mobile">
+                        <ul class="links-container">
+                    		<li>
+                    			<a class="linkedin" href="https://uk.linkedin.com/in/alexisphanor"><i class="fa fa-linkedin-square"></i> LinkedIn</a>
+                    		</li>
+                    		<li>
+                    			<a class="github" href="https://github.com/aphanor/"><i class="fa fa-github-square"></i> Github</a>
+                    		</li>
+                    		<li>
+                    			<a class="google" href="https://plus.google.com/u/0/110870683980041798119"><i class="fa fa-google-plus"></i> Google +</a>
+                    		</li>
+                    	</ul>
+                    </div>
+                </div>
+            </section>
+        </div>
+        <script>
+		(function() {
+
+			var dlgtrigger = document.querySelector( '[data-dialog]' ),
+				somedialog = document.getElementById( dlgtrigger.getAttribute( 'data-dialog' ) ),
+				dlg = new DialogFx( somedialog );
+
+			dlgtrigger.addEventListener( 'click', dlg.toggle.bind(dlg) );
+
+		})();
+	</script>
+    </body>
+</html>
