@@ -1,0 +1,182 @@
+<div class="row">
+    <p><a ng-href="#/bvapp/"><i class="fa fa-angle-double-left" aria-hidden="true"></i> Back </a></p>
+    <h1>API URL Builder</h1>
+    
+    <!-- *************** Sample API KEY *************** -->
+    <div class="apisample"><code ng-hide="data || dataAuth || dataQA ">Sample staging key: kuy3zj9pr3n7i0wxajrzj04xo</code></div>
+    
+    <!-- *************** API input field *************** -->
+    <div ng-hide="data || dataAuth || dataQA" class="apicreator">
+        <input class="form-control" type="text" ng-model="passkey" placeholder="Enter your client's API key here">
+        <br>
+        <form class="form-inline">
+            <div class="form-group">
+                <label>Content Type:</label>
+                <select class="form-control" ng-init="types = type[0]" ng-model="types" ng-options="types for types in type"></select>
+            </div>
+        </form>
+        <form class="form-inline">    
+            <div class="checkbox">
+                <label>
+                    <b>Staging:</b>
+                </label>
+                <input type="checkbox" ng-model="staging">
+            </div>
+        </form>
+        <div class="apibutton">
+            <button type="submit" ng-click="submitAPI()" type="button" class="btn btn-primary btn-lg active">Build API call</button>
+            <span class="bg-danger" ng-show="errormessage">{{errormessage}}</span>
+        </div>
+    </div>
+    <!-- End - API input field -->
+    
+    <!-- *************** Error Message *************** --><p class="bg-danger" ng-show="noapi && !data">{{noapi}}</p>
+    
+    <!-- *************** Reviews *************** -->
+        <div ng-show="data" id="reviews_container">
+            <div class="api_URL">
+                <code>{{bv_api}}<span ng-show="passkey">&passkey={{passkey}}</span><span ng-show="productid">&filter=productid:{{productid}}</span><span ng-show="questionid">&filter=id{{questionid}}</span><span ng-show="locale">&locale={{locale}}</span><span ng-show="limit">&limit={{limit}}</span><span ng-show="excludeFamily == true">&excludeFamily=true</span></code>
+            </div>
+            <div class="col-xs-6 col-md-4">
+                <h4>API Configuration:</h4>
+                <div class="config">
+                    <div class="form-group">
+                        <label>Product ID:</label>
+                        <input class="form-control" type="text" ng-model="productid" placeholder="E.g {{first_id}}">
+                    </div>
+                    <div class="form-group">
+                        <label>Locale:</label>
+                        <select class="form-control" ng-init="locale = locales[0]" ng-model="locale" ng-options="locs for locs in locales"></select>
+                    </div>
+                    <div class="form-group">
+                        <label>Limit:</label>
+                        <select class="form-control" ng-init="limit = limites[0]" ng-model="limit" ng-options="limit for limit in limites"></select>
+                    </div>
+                    <div class="checkbox">
+                        <label>
+                            <input type="checkbox" ng-model="excludeFamily">Exclude family
+                        </label>
+                    </div>
+                </div>
+                <button type="button" class="btn btn-primary btn-lg btn-block" ng-click="reloadPage();">Reset</button>
+            </div>
+            <div class="col-xs-12 col-md-8" style="border-left: 2px solid #ddd;">
+                <h4>Some reviews for this API Key:</h4>
+                <div class="apiresponse">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr> 
+                                <th>#</th> <th>Product ID</th> <th>Review Text</th> <th>Syndicated</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="x in data_test.Results">
+                                <th scope="row">{{$index + 1}}</th>
+                                <td>{{x.ProductId}}</td> <td>{{x.ReviewText}}</td> <td>{{x.IsSyndicated}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    <!-- End reviews -->
+    
+    <!-- *************** Questions *************** -->
+        <div ng-show="dataQA" id="questions_container">
+            <div class="col-xs-6 col-md-4">
+                <h4>API Configuration:</h4>
+                <div class="config">
+                    <div class="form-group">
+                        <label>Product ID:</label>
+                        <input class="form-control" type="text" ng-model="productid" placeholder="E.g {{first_id}}">
+                    </div>
+                    <div class="form-group">
+                        <label>Question ID:</label>
+                        <input class="form-control" type="text" ng-model="questionid" placeholder="E.g {{q_id}}">
+                    </div>
+                    <div class="form-group">
+                        <label>Locale:</label>
+                        <select class="form-control" ng-init="locale = locales[0]" ng-model="locale" ng-options="locs for locs in locales"></select>
+                    </div>
+                    <div class="form-group">
+                        <label>Limit:</label>
+                        <select class="form-control" ng-init="limit = limites[0]" ng-model="limit" ng-options="limit for limit in limites"></select>
+                    </div>
+                    <div class="checkbox">
+                        <label>
+                            <input type="checkbox" ng-model="excludeFamily">Exclude family
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-12 col-md-8" style="border-left: 2px solid #ddd;">
+                <h4>Some reviews for this API Key:</h4>
+                <div class="apiresponse">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr> 
+                                <th>#</th> <th>Question ID</th> <th>Question Text</th> <th>Author</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="x in dataQA.Results">
+                                <th scope="row">{{$index + 1}}</th>
+                                <td>{{x.Id}}</td> <td>{{x.QuestionSummary}}</td> <td>{{x.UserNickname}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    <!-- End questions -->
+    
+    <!-- *************** Authors *************** -->
+        <div ng-show="dataAuth" id="authors_container">
+            <div class="col-xs-6 col-md-4">
+                <h4>API Configuration:</h4>
+                <div class="config">
+                    <div class="form-group">
+                        <label>Product ID:</label>
+                        <input class="form-control" type="text" ng-model="productid" placeholder="Your product id goes here">
+                    </div>
+                    <div class="form-group">
+                        <label>Locale:</label>
+                        <select class="form-control" ng-init="locale = locales[0]" ng-model="locale" ng-options="locs for locs in locales"></select>
+                    </div>
+                    <div class="form-group">
+                        <label>Limit:</label>
+                        <select class="form-control" ng-init="limit = limites[0]" ng-model="limit" ng-options="limit for limit in limites"></select>
+                    </div>
+                    <div class="checkbox">
+                        <label>
+                            <input type="checkbox" ng-model="excludeFamily">Exclude family
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-12 col-md-8" style="border-left: 2px solid #ddd;">
+                <h4>Some reviews for this API Key:</h4>
+                <div class="apiresponse">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr> 
+                                <th>#</th> <th>Product ID</th> <th>Review Text</th> <th>Syndicated</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="x in data.Results">
+                                <th scope="row">{{$index + 1}}</th>
+                                <td>{{x.ProductId}}</td> <td>{{x.ReviewText}}</td> <td>{{x.IsSyndicated}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    <!-- End authors -->
+    
+    <!-- *************** Products *************** -->
+    <!-- End Products -->
+    
+    
+</div>

@@ -1,0 +1,112 @@
+<div class="row">
+    <p><a ng-href="#/bvapp"><i class="fa fa-angle-double-left" aria-hidden="true"></i> Back </a></p>
+    <h1>API Checker</h1>
+    
+    
+    <!-- *************** API input field *************** -->
+    <div ng-hide="apidata" class="apicreator">
+        <input class="form-control" type="text" ng-model="api_URL" placeholder="Enter your client's API URL here">
+        <div class="apibutton">
+            <button type="submit" ng-click="checkAPI()" class="btn btn-primary btn-lg active">Check API call</button>
+        </div>
+    </div>
+    <!-- End - API input field -->
+    
+    <!-- *************** API Response Content *************** -->
+        <!-- First Part -->
+        <div ng-show="ProductsAttributes" id="products_from_api">
+            <h4>Product(s): </h4>
+            <div ng-repeat="(key, value) in ProductsData" class="products_inf col-md-2">
+<!--
+                <h4><a ng-href="{{value.ProductPageUrl}}">{{value.Name}}</a></h4>
+                <div class="row">
+                    <div class="products_img"><img ng-src="{{value.ImageUrl}}" alt="{{value.Name}}" class="img-rounded"></div>
+                </div>
+-->
+                <div class="products_img"><img src="http://www.alexisphanor.com/prod/content/notfound.png" height="80" ng-show="value.ImageUrl === null"><a ng-href="{{value.ProductPageUrl}}"></p><img ng-hide="value.ImageUrl === null" ng-src="{{value.ImageUrl}}" alt="{{value.Name}}" class="img-rounded"></a></div>
+                <p class="p_info bg-primary"><small><b>Product Id:</b> {{key}}</small> <small ng-show="value.EAN.length > 0">| <b>EAN(s):</b> {{value.EAN}}</small> <small ng-show="value.FamilyIds.length > 0">| <b>Family Id(s):</b><span ng-repeat="(key, value) in value.FamilyIds"> {{value}}{{$last ? '' : ', '}}</span></small></p>
+            </div>
+        </div>
+        <!-- End First Part -->
+        
+        <!-- Second Part -->
+        <div id="api_tablor" ng-show="apidata">
+            <div class="col-xs-6 col-md-3">
+                <h4>API Info:</h4>
+                <p><b>Client:</b> <a ng-href="{{clientURL}}">{{client}}</a></p>
+                <p><b>Total reviews:</b> {{totalReviews}}</p>
+                <p><b>Locale:</b> {{Locale}}</p>
+                <p><b>Ratings Only:</b> {{IRO}}</p>
+                <p><b>API Call Limit:</b> {{apicalllimit}}</p>
+                <p><b>Number of pages:</b> {{page}}</p>
+                <div style="margin: 2em 0;" ng-show="ProductsAttributes">
+                    <h4>Products info:</h4>
+                    <li style="list-style: none;" ng-repeat="(key, value) in ProductsData"><small>{{value.Name}} - <b>{{key}}</b></small></li>
+                </div>
+                <div ng-if="SCount > 0">
+                    <h4>Syndicated content:</h4>
+                    <p>There are {{SCount}} syndicated reviews in this API call.</p>
+                    <uib-accordion close-others="oneAtATime">
+                        <uib-accordion-group is-open="status.open">
+                            <uib-accordion-heading>Syndication Source<i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': status.open, 'glyphicon-chevron-right': !status.open}"></i></uib-accordion-heading>
+                            <ul class="syndicated">
+                                <li ng-repeat="y in SourcesSyndicated"><b>Review ID:</b> {{y.id}} <br> <b>Source:</b> <a ng-href="{{y.source}}">{{y.source}}</a></li>
+                            </ul>
+                        </uib-accordion-group>
+                    </uib-accordion>
+                </div>
+                <div ng-if="SCount == 0">
+                    <h4>Syndicated content:</h4>
+                    <p>There are no syndicated reviews.</p>
+                </div>
+                <br>
+                <button type="button" class="btn btn-primary btn-lg btn-block" ng-click="reloadPage();">Reset</button>
+            </div>
+            <div class="col-xs-12 col-md-9" style="border-left: 2px solid #ddd;">
+                <h4>API Response:</h4>
+                <div class="apiresponse">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr> 
+                                <th>#</th> <th>PID</th> <th>ReviewID</th> <th>Rating</th> <th>Reviews</th> <th>Syndicated</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="r in apidata.Results" ng-class="(r.IsRatingsOnly === true) ? 'danger' : '' || (r.IsSyndicated === true) ? 'success' : '' || (r.ClientResponses.length >0) ? 'active' : ''">
+                                <th scope="row">{{$index + 1}}</th>
+                                <td>{{r.ProductId}}</td>
+                                <td>{{r.Id}}</td>
+                                <td>{{r.Rating}}</td>
+                                <td>
+                                    <h5>{{r.Title}}</h5>
+                                    <div ng-show="r.ReviewText.length > 0">
+                                        <hm-read-more
+                                            hm-text="{{r.ReviewText}}" 
+                                            hm-limit="120" 
+                                            hm-more-text="+ read more" 
+                                            hm-less-text="- read less"
+                                            hm-dots-class="dots"
+                                            hm-link-class="links">
+                                        </hm-read-more>
+                                    </div>
+                                    <uib-accordion close-others="oneAtATime" ng-show="r.ClientResponses.length > 0">
+                                        <uib-accordion-group is-open="status.isFirstOpen" is-disabled="status.isFirstDisabled">
+                                            <uib-accordion-heading>Client Response:<i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': status.open, 'glyphicon-chevron-right': !status.open}"></i></uib-accordion-heading>
+                                            <div class="reviewresponse" ng-repeat="(key, value) in r.ClientResponses">
+                                                <p ng-bind-html="value.Response"></p>
+                                            </div>
+                                        </uib-accordion-group>
+                                    </uib-accordion>
+                                    <p ng-show="r.IsRatingsOnly === true"><small class="text-warning">... Ratings only review ...</small></p>
+                                </td> 
+                                <td>{{r.IsSyndicated}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <!-- End Second Part -->
+        
+    <!-- End - API Response Content -->
+</div>
