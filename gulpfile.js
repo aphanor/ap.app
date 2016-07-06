@@ -204,7 +204,7 @@ var amazon_aws = ['app/prod/**'];
             gutil.log(gutil.colors.yellow('JS has been updated' + ' (' + file.path + ')'));
         });
         
-        gulp.watch(['app/bvapp/*.html'], ['htm']).on('change', function(file) { //livereload.changed(file.path);
+        gulp.watch(['app/bvapp/*.html', 'app/bvapp/views/*.html'], ['htm']).on('change', function(file) { //livereload.changed(file.path);
             gutil.log(gutil.colors.cyan('HTML has been updated' + ' (' + file.path + ')'));
         });
         

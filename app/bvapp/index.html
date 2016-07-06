@@ -1,11 +1,15 @@
 <!DOCTYPE html>
 <html lang="en" ng-app="bvapp">
+    <!--
+    ╔═══════════════════════════╗
+    ║                           ║
+    ║ MADE BY ALEXIS PHANOR     ║
+    ║                           ║
+    ╚═══════════════════════════╝
+    -->
     <head>
-        <meta charset="UTF-8" />
-        <meta name="keywords" content="" />
-        <meta name="description" content="" />
-        <meta name="robots" content="noindex,nofollow" />
-        <meta name="rating" content="general" />
+        <meta charset="UTF-8">
+        <meta name="robots" content="noindex,nofollow">
         <!--[if IE]>
         <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
         <!--[if lte IE 7]>
@@ -14,16 +18,33 @@
      
         <link rel="stylesheet" type="text/css" media="all" href="css/ie6.css"/><![endif]-->
         <title>BVAPI - APP</title>
-        <link href="http://alexisphanor.com/images/favicon.ico" rel="icon" type="image/x-icon" />
-        <link rel="stylesheet" type="text/css" href="css/style.min.css" />
-        <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.7/angular.min.js"></script>
+        <link href="http://alexisphanor.com/images/favicon.ico" rel="icon" type="image/x-icon">
+        <!-- CSS Files -->
+        <link rel="stylesheet" type="text/css" href="css/style.min.css">
+        <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+        <link rel='stylesheet' href="//cdnjs.cloudflare.com/ajax/libs/angular-loading-bar/0.9.0/loading-bar.min.css" type='text/css' media='all'>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/angular-material/1.0.9/angular-material.min.css">
+        <!-- End CSS Files -->
+        
+        <!-- Javascript Dependencies -->
+        <script type="text/javascript" src="js/d3-ease.v0.6.min.js" charset="utf-8"></script>
+        <script type="text/javascript" src="js/segment.min.js"></script>
+        <script type="text/javascript" src="js/letters.min.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/js-cookie/2.1.2/js.cookie.min.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.7/angular.min.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.7/angular-route.min.js"></script>
         <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.7/angular-animate.min.js"></script>
-        <link rel='stylesheet' href="//cdnjs.cloudflare.com/ajax/libs/angular-loading-bar/0.9.0/loading-bar.min.css" type='text/css' media='all' />
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/1.3.3/ui-bootstrap.min.js"></script>
+        <script type="text/javascript" src="//angular-ui.github.io/bootstrap/ui-bootstrap-tpls-1.3.3.js"></script>
         <script type='text/javascript' src="//cdnjs.cloudflare.com/ajax/libs/angular-loading-bar/0.9.0/loading-bar.min.js"></script>
-        <script src="https://use.fontawesome.com/0733c518bd.js"></script>
-        <script src="js/all.min.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular-sanitize/1.5.7/angular-sanitize.min.js"></script>
+        <script type="text/javascript" src="https://use.fontawesome.com/0733c518bd.js"></script>
+        <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/angular-sanitize/1.5.7/angular-sanitize.min.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular-materialize/0.1.9/angular-materialize.min.js"></script>
+        <script type="text/javascript" src="https://rawgit.com/ismarslomic/angular-read-more/master/dist/readmore.min.js"></script>
+        <script type="text/javascript" src="js/all.min.js"></script>
+        <!-- End JS -->
     </head>
     <body>
         <div ng-controller="bvapi" class="container-fluid">
@@ -31,20 +52,22 @@
                 <div id="branding-logo"></div>
             </header>
             
-            <div class="row">
-                <h1>API HELPER</h1>
-                <div class="api_links">
-                    <div class="apibuilder">
-                        <i class="fa fa-pencil-square-o" aria-hidden="true"></i> <a href="apibuilder/">API Builder</a>
-                    </div>
-                    <div class="apichecker">
-                        <i class="fa fa-chevron-right" aria-hidden="true"></i> <a href="apichecker/">API Checker</a>
-                    </div>
-                </div>
-            </div>
+            <section ng-view class="view-animate mainer"></section>
+            <section class="bvappcontainer">
+                <div class="center-bv"><p class="bv">Bazaarvoice</p></div>
+            </section>
+            
             <footer>
-                <p>© Alexis Phanor for Bazaarvoice. All rights reserved.</p>
+                <div class="footer">
+                    <p><small>© Alexis Phanor for Bazaarvoice. All rights reserved.</small></p>
+                </div>
             </footer>
         </div>
+        <script type="text/javascript">
+            var el=document.querySelector(".bv"),options={size:200,weight:8,rounded:!0,color:"#003D4C",duration:1.5,delay:[0,1],fade:1,easing:d3_ease.easeCubicInOut.ease,individualDelays:!0},bvapp=new Letters(el,options);
+        </script>
+        <script type="text/javascript">
+            var cookiez=Cookies.get("fadein"),viewedAPI=Cookies.get("viewed");if("undefined"==typeof cookiez||"true"!=cookiez){Cookies.set("fadein","true",{expires:1,path:""});var fancybv=$("header, footer");fancybv.css("visibility","hidden"),bvapp.show(),setTimeout(function(){fancybv.css({opacity:0,visibility:"visible"}).delay(1e3).animate({opacity:1},2e3)},800),setTimeout(function(){Cookies.set("viewed","true",{expires:1,path:""})},4e3)}"true"==viewedAPI&&bvapp.showInstantly();
+        </script>
     </body>
 </html>
