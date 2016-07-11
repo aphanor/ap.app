@@ -14,6 +14,8 @@
     
     <!-- *************** API Response Content *************** -->
         <!-- First Part -->
+        <p class="bg-danger" ng-show="errormessage">{{errormessage}}</p>
+        
         <div ng-show="ProductsAttributes" id="products_from_api">
             <h4>Product(s): </h4>
             <div ng-repeat="(key, value) in ProductsData" class="products_inf col-md-2">
@@ -23,15 +25,24 @@
                     <div class="products_img"><img ng-src="{{value.ImageUrl}}" alt="{{value.Name}}" class="img-rounded"></div>
                 </div>
 -->
-                <div class="products_img"><img src="http://www.alexisphanor.com/prod/content/notfound.png" height="80" ng-show="value.ImageUrl === null"><a ng-href="{{value.ProductPageUrl}}"></p><img ng-hide="value.ImageUrl === null" ng-src="{{value.ImageUrl}}" alt="{{value.Name}}" class="img-rounded"></a></div>
-                <p class="p_info bg-primary"><small><b>Product Id:</b> {{key}}</small> <small ng-show="value.EAN.length > 0">| <b>EAN(s):</b> {{value.EAN}}</small> <small ng-show="value.FamilyIds.length > 0">| <b>Family Id(s):</b><span ng-repeat="(key, value) in value.FamilyIds"> {{value}}{{$last ? '' : ', '}}</span></small></p>
+                <div class="products_img">
+                    <img src="http://www.alexisphanor.com/prod/content/notfound.png" height="80" ng-show="value.ImageUrl === null">
+                    <a ng-href="{{value.ProductPageUrl}}">
+                        <img ng-hide="value.ImageUrl === null" ng-src="{{value.ImageUrl}}" alt="{{value.Name}}" class="img-rounded">
+                    </a>
+                </div>
+                <p ng-class="(value.Active === false) ? 'bg-danger' : 'bg-primary'" class="p_info">
+                    <small><b>Product Id:</b> {{key}}</small>
+                    <small ng-show="value.EAN.length > 0">| <b>EAN(s):</b> {{value.EAN}}</small>
+                    <small ng-show="value.FamilyIds.length > 0">| <b>Family Id(s):</b><span ng-repeat="(key, value) in value.FamilyIds"> {{value}}{{$last ? '' : ', '}}</span></small><small ng-show="value.Active === false"> - <i class="fa fa-exclamation" aria-hidden="true"></i> <i class="fa fa-exclamation" aria-hidden="true"></i> <b>INACTIVE</b></small>
+                </p>
             </div>
         </div>
         <!-- End First Part -->
         
         <!-- Second Part -->
-        <div id="api_tablor" ng-show="apidata">
-            <div class="col-xs-6 col-md-3">
+        <div id="api_tablor" ng-show="apidata && !errormessage">
+            <div class="col-xs-6 col-md-3 api-info">
                 <h4>API Info:</h4>
                 <p><b>Client:</b> <a ng-href="{{clientURL}}">{{client}}</a></p>
                 <p><b>Total reviews:</b> {{totalReviews}}</p>
@@ -39,9 +50,11 @@
                 <p><b>Ratings Only:</b> {{IRO}}</p>
                 <p><b>API Call Limit:</b> {{apicalllimit}}</p>
                 <p><b>Number of pages:</b> {{page}}</p>
-                <div style="margin: 2em 0;" ng-show="ProductsAttributes">
+                <div class="productAttri" style="margin: 2em 0;" ng-show="ProductsAttributes">
                     <h4>Products info:</h4>
-                    <li style="list-style: none;" ng-repeat="(key, value) in ProductsData"><small>{{value.Name}} - <b>{{key}}</b></small></li>
+                    <li style="list-style: none;" ng-repeat="(key, value) in ProductsData">
+                        <p ng-class="(value.Active === false) ? 'bg-danger' : 'bg-success'"><span tooltip-placement="top" uib-tooltip="{{value.Name}}" class="prodtName"> {{ value.Name | limitTo: 20 }}{{value.Name.length > 20 ? '...' : ''}}</span> <kbd class="initialism">{{key}}</kbd></p>
+                    </li>
                 </div>
                 <div ng-if="SCount > 0">
                     <h4>Syndicated content:</h4>
@@ -50,7 +63,9 @@
                         <uib-accordion-group is-open="status.open">
                             <uib-accordion-heading>Syndication Source<i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': status.open, 'glyphicon-chevron-right': !status.open}"></i></uib-accordion-heading>
                             <ul class="syndicated">
-                                <li ng-repeat="y in SourcesSyndicated"><b>Review ID:</b> {{y.id}} <br> <b>Source:</b> <a ng-href="{{y.source}}">{{y.source}}</a></li>
+                                <li ng-repeat="y in SourcesSyndicated">
+                                <p><b>Review ID:</b> {{y.id}} <br> <b>Source:</b> <a ng-href="{{y.source}}">{{y.source}}</a></p>
+                                </li>
                             </ul>
                         </uib-accordion-group>
                     </uib-accordion>
@@ -58,6 +73,27 @@
                 <div ng-if="SCount == 0">
                     <h4>Syndicated content:</h4>
                     <p>There are no syndicated reviews.</p>
+                </div>
+                <div class="paginate" ng-show="paginations.length > 0">
+                    <uib-accordion close-others="oneAtATime">
+                        <uib-accordion-group is-open="status.open">
+                            <uib-accordion-heading style="font-size: 18px;">Pagination links: <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': status.open, 'glyphicon-chevron-right': !status.open}"></i></uib-accordion-heading>
+                            <ul class="">
+                                <li ng-repeat="pg in paginations">
+                                <a target="_blank" class="text-info" ng-href="{{pg.url}}">
+                                    <pre><i class="fa fa-chevron-right" aria-hidden="true"></i> Page {{$index + 1}}</pre>
+                                </a>
+                                <!-- Target -->
+                                <input id="foo{{$index + 1}}" value="{{pg.url}}">
+                                
+                                <!-- Trigger -->
+                                <button style="background-color: #FFF;" class="btn" uib-tooltip="Copied!" tooltip-trigger="click" tooltip-placement="right" ngclipboard data-clipboard-target="#foo{{$index + 1}}">
+                                    <i class="fa fa-clipboard" aria-hidden="true"></i>
+                                </button>
+                                </li>
+                            </ul>
+                        </uib-accordion-group>
+                    </uib-accordion>
                 </div>
                 <br>
                 <button type="button" class="btn btn-primary btn-lg btn-block" ng-click="reloadPage();">Reset</button>

@@ -96,13 +96,41 @@ div#products_from_api {
     /* width: 100px; */
 }
 
-.p_info.bg-success, .p_info.bg-primary {
+.p_info.bg-success, .p_info.bg-primary, .p_info.bg-danger {
     padding: 10px !important;
     /* position: absolute; */
     /* width: 90%; */
     bottom: 0;
     border-radius: 4px;
     margin-bottom: 40px;
+}
+
+kbd {
+    float: right !important;
+    right: 0;
+}
+
+.paginate {
+    margin: 2em 0;
+}
+
+.paginate ul {
+    padding: 0;
+}
+
+.paginate h4.panel-title {
+    font-size: 18px !important;
+}
+
+.products_inf.col-md-2 {
+    min-height: 250px;
+}
+
+.productAttri { 
+    p.bg-danger, p.bg-success {
+        padding: 6px;
+        border-radius: 4px;
+    } 
 }
 
 div#products_from_api h4 {
@@ -147,6 +175,10 @@ div#products_from_api h4 {
 .container-fluid h4 {
     color: #00AB8E;
     text-align: center;
+}
+
+.api-info {
+    font-size: 13px !important;
 }
 
 .text-muted {

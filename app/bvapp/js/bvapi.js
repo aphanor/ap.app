@@ -1,7 +1,7 @@
 BV.controller('bvapi', ['$scope', '$http', '$window', '$q', '$rootScope', '$routeParams', '$location', '$route', '$timeout', function($scope, $http, $window, $q, $rootScope, $routeParams, $location, $route, $timeout) {
     $rootScope.cookey = Cookies.get("viewed");
     $scope.reloadPage = function(){window.location.reload();}
-    $scope.locales = ["en_GB", "en_US", "fr_FR", "de_DE", "es_ES", "it_IT"];
+    $scope.locales = ["", "en_GB", "en_US", "fr_FR", "de_DE", "es_ES", "it_IT"];
     $scope.type = ["reviews", "questions"];
     $scope.limites = ["5", "10", "50", "100"];
     $scope.api;
@@ -88,104 +88,117 @@ BV.controller('bvapi', ['$scope', '$http', '$window', '$q', '$rootScope', '$rout
                 
                 $scope.apidata = response.data;
                 
-                if ($scope.api_URL.indexOf("reviews.json") != -1) {
-                    $scope.apidata = response.data;
-                    console.log($scope.apidata);
-                    $scope.results = $scope.apidata.Results;
-                    $scope.totalReviews = $scope.apidata.TotalResults;
-                    $scope.Locale = $scope.apidata.Locale;
-                    $scope.ratingsOnly = $scope.apidata.IsRatingsOnly;
-                    $scope.apicalllimit = $scope.apidata.Limit;
-                    
-                    if ($scope.apidata.Includes.Products.length > 0 || $scope.apidata.Includes.ProductsOrder.length > 0) {
-                        $scope.ProductsData = $scope.apidata.Includes.Products;
-                        $scope.ProductsAttributes = $scope.apidata.Includes.ProductsOrder;
-                    }
-                    
-                    $scope.SCount = 0;
-                    $scope.IRO = 0;
-                    $scope.objectData = [];
-                    angular.forEach($scope.results, function(value, key) {    
-                        $scope.resultsData = JSON.stringify(value.IsSyndicated);
-                        $scope.ratingsOnlyReview = JSON.stringify(value.IsRatingsOnly);
+                if(response.data.HasErrors == true) {
+                    $scope.errormessage = response.data.Errors["0"].Message;
+                    $scope.errorCheck = response.data.HasErrors;
+                } else 
+                {
+                    if ($scope.api_URL.indexOf("reviews.json") != -1) {
+                        $scope.apidata = response.data;
+                        console.log($scope.apidata);
+                        $scope.results = $scope.apidata.Results;
+                        $scope.totalReviews = $scope.apidata.TotalResults;
+                        $scope.Locale = $scope.apidata.Locale;
+                        $scope.ratingsOnly = $scope.apidata.IsRatingsOnly;
+                        $scope.apicalllimit = $scope.apidata.Limit;
                         
-                        if ($scope.ratingsOnlyReview == "true") {
-                            $scope.IRO++
+                        if ($scope.apidata.Includes.Products.length > 0 || $scope.apidata.Includes.ProductsOrder.length > 0) {
+                            $scope.ProductsData = $scope.apidata.Includes.Products;
+                            $scope.ProductsAttributes = $scope.apidata.Includes.ProductsOrder;
                         }
                         
-                        if ($scope.resultsData == "true") {
-                            $scope.SCount++
-                            $scope.SReviews = {};
-                            $scope.SReviews ["id"] = value.Id;
-                            $scope.SReviews ["source"] = value.SyndicationSource.Name;
-                    
-                            $scope.objectData.push($scope.SReviews);
-                        }
-                
-                    });
-                    
-                    var up = false;
-                    
-                    angular.forEach($scope.apidata.Includes.Products, function(value, key) {
-                        
-                        var reg = /^(?:https?:\/\/)?(?:[^@\/\n]+@)?(?:www\.)?([^:\/\n]+)/gm;
-                            if(up != true) {
-                                var url = value.ProductPageUrl;
-                                up = true;
+                        $scope.SCount = 0;
+                        $scope.IRO = 0;
+                        $scope.objectData = [];
+                        angular.forEach($scope.results, function(value, key) {    
+                            $scope.resultsData = JSON.stringify(value.IsSyndicated);
+                            $scope.ratingsOnlyReview = JSON.stringify(value.IsRatingsOnly);
+                            
+                            if ($scope.ratingsOnlyReview == "true") {
+                                $scope.IRO++
                             }
-                        var url = value.ProductPageUrl;
-                        var regex = new RegExp(reg);
-                        var resulti = regex.exec(url);
+                            
+                            if ($scope.resultsData == "true") {
+                                $scope.SCount++
+                                $scope.SReviews = {};
+                                $scope.SReviews ["id"] = value.Id;
+                                $scope.SReviews ["source"] = value.SyndicationSource.Name;
                         
-                        if (resulti[1] != "null") {
-                            $scope.clientURL = resulti[0];
-                            $scope.client = resulti[1];   
-                        }
-                    });
+                                $scope.objectData.push($scope.SReviews);
+                            }
                     
-                    $scope.limit = $scope.apidata.Limit;
-                    $scope.page = ($scope.apidata.TotalResults / $scope.limit);
-                    
-                    if($scope.page != Math.floor($scope.page)) {
-                        $scope.page = Math.floor($scope.page) + 1;
-                        for (i = 0; i < $scope.page; i++) { 
-                            if(i == 0) {
-                                var api_URL = $scope.api_URL;
-                                $scope.pager = {
-                                    urls : [{url: api_URL}]
-                                };
-                            } else {
-                                $scope.Offset = i * $scope.limit;
-                                console.log("Offset: " + $scope.Offset);
-                                $scope.pager.urls.push({'url' : $scope.api_URL + "&offset=" + $scope.Offset});
+                        });
+                        
+                        var up = false;
+                        
+                        angular.forEach($scope.apidata.Includes.Products, function(value, key) {
+                            
+                            var reg = /^(?:https?:\/\/)?(?:[^@\/\n]+@)?(?:www\.)?([^:\/\n]+)/gm;
+                                if(up != true) {
+                                    var url = value.ProductPageUrl;
+                                    up = true;
+                                }
+                            var url = value.ProductPageUrl;
+                            var regex = new RegExp(reg);
+                            var resulti = regex.exec(url);
+                            
+                            if (resulti[1] != "null") {
+                                $scope.clientURL = resulti[0];
+                                $scope.client = resulti[1];   
+                            }
+                        });
+                        
+                        $scope.limit = $scope.apidata.Limit;
+                        $scope.page = ($scope.apidata.TotalResults / $scope.limit);
+                        
+                        if($scope.page != Math.floor($scope.page)) {
+                            $scope.page = Math.floor($scope.page) + 1;
+                            for (i = 0; i < $scope.page; i++) { 
+                                if(i == 0) {
+                                    var api_URL = $scope.api_URL;
+                                    $scope.pager = {
+                                        urls : [{url: api_URL}]
+                                    };
+                                } else {
+                                    $scope.Offset = i * $scope.limit;
+                                    console.log("Offset: " + $scope.Offset);
+                                    $scope.pager.urls.push({'url' : $scope.api_URL + "&offset=" + $scope.Offset});
+                                }
                             }
                         }
+                        
+                        console.log($scope.pager.urls);
+                        $scope.paginations = $scope.pager.urls;
+                        
+                        $q.all($scope.objectData).then(function () {
+                            $scope.SourcesSyndicated = $scope.objectData;
+                        });
+                        
+                    } else if ($scope.api_URL.indexOf(".xml?") != -1) {
+                        $scope.api_URL = $scope.api_URL.replace(".xml?", ".json?");
+                        $timeout(checkAPIURL (), 500);
+                    } else if ($scope.api_URL.indexOf("questions.json") != -1) {
+                        console.log($scope.apidata);
+                        $scope.errormessage = "Not supported yet"; 
+                    } else if ($scope.api_URL.indexOf("statistics.json") != -1) {
+                        console.log($scope.apidata);
+                        $scope.errormessage = "Not supported yet";
+                    } else if($scope.api_URL.indexOf("reviewcomments.json") != -1) {
+                        console.log($scope.apidata);
+                        $scope.errormessage = "Not supported yet";
+                    } else if($scope.api_URL.indexOf("answers.json") != -1) {
+                        console.log($scope.apidata);
+                        $scope.errormessage = "Not supported yet";
+                    } else if ($scope.api_URL.indexOf("authors.json") != -1) {
+                        console.log($scope.apidata);
+                        $scope.errormessage = "Not supported yet";
+                    } else if ($scope.api_URL.indexOf("products.json") != -1) {
+                        console.log($scope.apidata);
+                        $scope.errormessage = "Not supported yet";
+                    } else {
+                        $scope.errormessage = "Invalid API call";
                     }
-                    
-                    console.log($scope.pager);
-                    
-                    $q.all($scope.objectData).then(function () {
-                        $scope.SourcesSyndicated = $scope.objectData;
-                    });
-                    
-                } else if ($scope.api_URL.indexOf(".xml?") != -1) {
-                    $scope.api_URL = $scope.api_URL.replace(".xml?", ".json?");
-                    $timeout(checkAPIURL (), 500);
-                } else if ($scope.api_URL.indexOf("questions.json") != -1) {
-                    console.log($scope.apidata);
-                } else if ($scope.api_URL.indexOf("statistics.json") != -1) {
-                    console.log($scope.apidata);
-                } else if($scope.api_URL.indexOf("reviewcomments.json") != -1) {
-                    console.log($scope.apidata);
-                } else if($scope.api_URL.indexOf("answers.json") != -1) {
-                    console.log($scope.apidata);
-                } else if ($scope.api_URL.indexOf("authors.json") != -1) {
-                    console.log($scope.apidata);
-                } else if ($scope.api_URL.indexOf("products.json") != -1) {
-                    console.log($scope.apidata);
-                } else {
-                    $scope.errormessage = "Invalid API call";
-                }
+                } 
     
             });
         }

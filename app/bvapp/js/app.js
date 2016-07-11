@@ -1,4 +1,4 @@
-var BV = angular.module('bvapp', ['angular-loading-bar', 'ngAnimate', 'ngRoute', 'ui.bootstrap', 'ngSanitize', 'hm.readmore']);
+var BV = angular.module('bvapp', ['angular-loading-bar', 'ngAnimate', 'ngRoute', 'ui.bootstrap', 'ngSanitize', 'hm.readmore', 'ngclipboard']);
 
 BV.config(['$routeProvider', '$locationProvider', function($routeProvider, $locationProvider) {
     $routeProvider.when('/apichecker', {
