@@ -7,7 +7,7 @@
     <div ng-hide="apidata" class="apicreator">
         <input class="form-control" type="text" ng-model="api_URL" placeholder="Enter your client's API URL here">
         <div class="apibutton">
-            <button type="submit" ng-click="checkAPI(api_URL)" class="btn btn-primary btn-lg active">Check API call</button>
+            <button type="submit" ng-click="checkAPI()" class="btn btn-primary btn-lg active">Check API call</button>
         </div>
     </div>
     <!-- End - API input field -->
@@ -47,7 +47,7 @@
                 <p><b>Client:</b> <a ng-href="{{clientURL}}">{{client}}</a></p>
                 <p><b>Total reviews:</b> {{totalReviews}}</p>
                 <p><b>Locale:</b> {{Locale}}</p>
-                <p><b>Ratings Only:</b> {{RatingsOnly}}</p>
+                <p><b>Ratings Only:</b> {{IRO}}</p>
                 <p><b>API Call Limit:</b> {{apicalllimit}}</p>
                 <p><b>Number of pages:</b> {{page}}</p>
                 <div class="productAttri" style="margin: 2em 0;" ng-show="ProductsAttributes">
@@ -56,23 +56,21 @@
                         <p ng-class="(value.Active === false) ? 'bg-danger' : 'bg-success'"><span tooltip-placement="top" uib-tooltip="{{value.Name}}" class="prodtName"> {{ value.Name | limitTo: 20 }}{{value.Name.length > 20 ? '...' : ''}}</span> <kbd class="initialism">{{key}}</kbd></p>
                     </li>
                 </div>
-                <div ng-if="SyndicationCount > 0">
+                <div ng-if="SCount > 0">
                     <h4>Syndicated content:</h4>
-                    <p>There are {{SyndicationCount}} syndicated reviews in this API call.</p>
-                    <div id="syndicatedcontent">
-                        <uib-accordion close-others="oneAtATime">
-                            <uib-accordion-group is-open="status.open">
-                                <uib-accordion-heading>Syndication Source<i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': status.open, 'glyphicon-chevron-right': !status.open}"></i></uib-accordion-heading>
-                                <ul class="syndicated">
-                                    <li ng-repeat="y in SourcesSyndicated">
-                                    <p><b>Review ID:</b> {{y.id}} <br> <b>Source:</b> <a ng-href="{{y.source}}">{{y.source}}</a></p>
-                                    </li>
-                                </ul>
-                            </uib-accordion-group>
-                        </uib-accordion>
-                    </div>
+                    <p>There are {{SCount}} syndicated reviews in this API call.</p>
+                    <uib-accordion close-others="oneAtATime">
+                        <uib-accordion-group is-open="status.open">
+                            <uib-accordion-heading>Syndication Source<i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': status.open, 'glyphicon-chevron-right': !status.open}"></i></uib-accordion-heading>
+                            <ul class="syndicated">
+                                <li ng-repeat="y in SourcesSyndicated">
+                                <p><b>Review ID:</b> {{y.id}} <br> <b>Source:</b> <a ng-href="{{y.source}}">{{y.source}}</a></p>
+                                </li>
+                            </ul>
+                        </uib-accordion-group>
+                    </uib-accordion>
                 </div>
-                <div ng-if="SyndicationCount == 0">
+                <div ng-if="SCount == 0">
                     <h4>Syndicated content:</h4>
                     <p>There are no syndicated reviews.</p>
                 </div>

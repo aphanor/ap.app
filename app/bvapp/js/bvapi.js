@@ -1,219 +1,244 @@
-BV.controller('bvapi', ['$scope', '$http', '$window', '$q', '$rootScope', '$routeParams', '$location', '$route', '$timeout', function($scope, $http, $window, $q, $rootScope, $routeParams, $location, $route, $timeout) {
-    $rootScope.cookey = Cookies.get("viewed");
+/*
+    ******************************* BV API - Main View Controller *******************************
+*/
+
+BV.controller('bvapi', ['$scope', 'APIapp', function($scope, APIapp) {
+    
+    $scope.cookey = Cookies.get("viewed");
     $scope.reloadPage = function(){window.location.reload();}
+    
     $scope.locales = ["", "en_GB", "en_US", "fr_FR", "de_DE", "es_ES", "it_IT"];
     $scope.type = ["reviews", "questions"];
     $scope.limites = ["5", "10", "50", "100"];
-    $scope.api;
-    $scope.prod_api ="http://api.bazaarvoice.com/data/";
-    $scope.stg_api ="http://stg.api.bazaarvoice.com/data/";
     
-    $scope.oneAtATime = true;
-    $scope.status = {
+    $scope.submitAPI = function() {
+        APIapp.apibuilder($scope.passkey, $scope.types, $scope.staging);
+    }
+    
+    $scope.checkAPI = function() {
+        
+        APIapp.apichecker($scope.api_URL);
+    };
+}]);
+
+
+/*
+    ******************************* BV API - Factory & Directives *******************************
+*/
+
+BV.factory("APIapp",['$http', '$window', '$q', '$rootScope', '$routeParams', '$location', '$route', '$timeout', function($http, $window, $q, $rootScope, $routeParams, $location, $route, $timeout) {
+    
+    $rootScope.oneAtATime = true;
+    $rootScope.status = {
         isCustomHeaderOpen: false,
         isFirstOpen: true,
         isFirstDisabled: false
     };
     
-    $scope.submitAPI = function() {
+    return {
+        apibuilder: function(apikey, apitype, stagingcheck) {
+            
+            $rootScope.api;
+            $rootScope.prod_api ="http://api.bazaarvoice.com/data/";
+            $rootScope.stg_api ="http://stg.api.bazaarvoice.com/data/";
+            
+            $rootScope.passkey = apikey;
+            $rootScope.types = apitype;
+            $rootScope.staging = stagingcheck;
         
-        $scope.passkey;
-        
-        // Test results
-        if ($scope.staging == true) {
-            $scope.bv_api = $scope.stg_api + $scope.types + ".json?apiversion=5.4";
-            $scope.api = $scope.stg_api + $scope.types + ".json?apiversion=5.4&passkey=";
-            getData()
-            $http.get($scope.stg_api + $scope.types + ".json?apiversion=5.4&passkey=" + $scope.passkey + "&limit=5").then(function(response) {
-                $scope.data_test = response.data;
-                console.log($scope.data_test);
-            });
-        } else {
-            $scope.bv_api = $scope.prod_api + $scope.types + ".json?apiversion=5.4";
-            $scope.api = $scope.prod_api + $scope.types + ".json?apiversion=5.4&passkey=";
-            getData()
-            $http.get($scope.prod_api + $scope.types + ".json?apiversion=5.4&passkey=" + $scope.passkey + "&limit=5").then(function(response) {
-                $scope.data_test = response.data;
-                console.log($scope.data_test);
-            });
-        }
-        
-        function getData() {
-            if ($scope.passkey.length > 14) {
-                $http.get($scope.api + $scope.passkey).then(function(response) {
-                    
-                    console.log(response.data.HasErrors)
-                    $scope.check = response.data.HasErrors;
-                    $scope.apiURL = $scope.api + $scope.passkey;
-                    
-                    if($scope.check == false) {   
-                        if ($scope.types == "reviews") {
-                            $scope.data = response.data;
-                            $scope.first_id = $scope.data.Results[0].ProductId;
-                            console.log(response.data);
-                        } else if ($scope.types == "questions") {
-                            $scope.dataQA = response.data;
-                            console.log($scope.dataQA);
-                            $scope.first_id = $scope.dataQA.Results[0].ProductId;
-                            $scope.q_first = $scope.dataQA.Results[0].Id;   
-                        } else if ($scope.types == "authors") {
-                            $scope.dataAuth = response.data;
-                        } else if($scope.types == "products") {
-                            $scope.dataProducts = response.data;
-                        }
-                    } else {
-                        $scope.noapi = response.data.Errors["0"].Message;
-                    }
-                    
+    // *************** Environment check *************** 
+            if ($rootScope.staging == true) {
+                $rootScope.bv_api = $rootScope.stg_api + $rootScope.types + ".json?apiversion=5.4";
+                $rootScope.api = $rootScope.stg_api + $rootScope.types + ".json?apiversion=5.4&passkey=";
+                getData()
+                $http.get($rootScope.stg_api + $rootScope.types + ".json?apiversion=5.4&passkey=" + $rootScope.passkey + "&limit=5").then(function(response) {
+                    $rootScope.data_test = response.data;
+                    console.log($rootScope.data_test);
                 });
-            } 
-            else {
-                $scope.errormessage = "Invalid API KEY";
+            } else {
+                $rootScope.bv_api = $rootScope.prod_api + $rootScope.types + ".json?apiversion=5.4";
+                $rootScope.api = $rootScope.prod_api + $rootScope.types + ".json?apiversion=5.4&passkey=";
+                getData()
+                $http.get($rootScope.prod_api + $rootScope.types + ".json?apiversion=5.4&passkey=" + $rootScope.passkey + "&limit=5").then(function(response) {
+                    $rootScope.data_test = response.data;
+                    console.log($rootScope.data_test);
+                });
+            }
+    // *************** END of check ***************
+            
+            function getData() {
+                if ($rootScope.passkey.length > 14) {
+                    $http.get($rootScope.api + $rootScope.passkey).then(function(response) {
+                        
+                        console.log(response.data.HasErrors)
+                        $rootScope.check = response.data.HasErrors;
+                        $rootScope.apiURL = $rootScope.api + $rootScope.passkey;
+                        
+                        if($rootScope.check == false) {   
+                            if ($rootScope.types == "reviews") {
+                                $rootScope.data = response.data;
+                                $rootScope.first_id = $rootScope.data.Results[0].ProductId;
+                                console.log(response.data);
+                            } else if ($rootScope.types == "questions") {
+                                $rootScope.dataQA = response.data;
+                                console.log($rootScope.dataQA);
+                                $rootScope.first_id = $rootScope.dataQA.Results[0].ProductId;
+                                $rootScope.q_first = $rootScope.dataQA.Results[0].Id;   
+                            } else if ($rootScope.types == "authors") {
+                                $rootScope.dataAuth = response.data;
+                            } else if($rootScope.types == "products") {
+                                $rootScope.dataProducts = response.data;
+                            }
+                        } else {
+                            $rootScope.noapi = response.data.Errors["0"].Message;
+                        }
+                        
+                    });
+                } 
+                else {
+                    $rootScope.errormessage = "Invalid API KEY";
+                }
+            }
+        },
+        apichecker: function(URLAPI) {
+            
+            console.log(URLAPI);
+            
+            $rootScope.api_URL = URLAPI;
+            
+            if ($rootScope.api_URL.indexOf("&include=products") != -1) {
+                checkAPIURL ()
+            } else {
+                $rootScope.api_URL = $rootScope.api_URL + "&include=products";
+                checkAPIURL ();
+            }
+            
+            function checkAPIURL () {     
+                $http.get($rootScope.api_URL).then(function(response) { 
+                    
+                    $rootScope.apidata = response.data;
+                    
+                    if(response.data.HasErrors == true) {
+                        $rootScope.errormessage = response.data.Errors["0"].Message;
+                        $rootScope.errorCheck = response.data.HasErrors;
+                    } else 
+                    {
+                        if ($rootScope.api_URL.indexOf("reviews.json") != -1) {
+                            
+                            $rootScope.apidata = response.data;
+                            $rootScope.results = $rootScope.apidata.Results;
+                            $rootScope.totalReviews = $rootScope.apidata.TotalResults;
+                            $rootScope.Locale = $rootScope.apidata.Locale;
+                            $rootScope.ratingsOnly = $rootScope.apidata.IsRatingsOnly;
+                            $rootScope.apicalllimit = $rootScope.apidata.Limit;
+                            
+                            $rootScope.SyndicationCount = 0;
+                            $rootScope.RatingsOnly = 0;
+                            $rootScope.objectData = [];
+                            
+                            var up = false;
+                            
+                            if ($rootScope.apidata.Includes.Products.length > 0 || $rootScope.apidata.Includes.ProductsOrder.length > 0) {
+                                $rootScope.ProductsData = $rootScope.apidata.Includes.Products;
+                                $rootScope.ProductsAttributes = $rootScope.apidata.Includes.ProductsOrder;
+                            }
+                            
+    // *************** Syndication function ***************
+                            angular.forEach($rootScope.results, function(value, key) {    
+                                $rootScope.resultsData = JSON.stringify(value.IsSyndicated);
+                                $rootScope.ratingsOnlyReview = JSON.stringify(value.IsRatingsOnly);
+                                
+                                if ($rootScope.ratingsOnlyReview == "true") {
+                                    $rootScope.RatingsOnly++
+                                }
+                                
+                                if ($rootScope.resultsData == "true") {
+                                    $rootScope.SyndicationCount++
+                                    $rootScope.SReviews = {};
+                                    $rootScope.SReviews ["id"] = value.Id;
+                                    $rootScope.SReviews ["source"] = value.SyndicationSource.Name;
+                            
+                                    $rootScope.objectData.push($rootScope.SReviews);
+                                }
+                        
+                            });
+                            
+                            $q.all($rootScope.objectData).then(function () {
+                                $rootScope.SourcesSyndicated = $rootScope.objectData;
+                            });  
+    // *************** END Syndication ***************
+                            
+                            
+    // *************** Client's Info function ***************
+                            angular.forEach($rootScope.apidata.Includes.Products, function(value, key) {
+                                
+                                var reg = /^(?:https?:\/\/)?(?:[^@\/\n]+@)?(?:www\.)?([^:\/\n]+)/gm;
+                                    if(up != true) {
+                                        var url = value.ProductPageUrl;
+                                        up = true;
+                                    }
+                                var url = value.ProductPageUrl;
+                                var regex = new RegExp(reg);
+                                var resulti = regex.exec(url);
+                                
+                                if (resulti[1] != "null") {
+                                    $rootScope.clientURL = resulti[0];
+                                    $rootScope.client = resulti[1];   
+                                }
+                            });
+                            
+    // *************** END Syndication ***************
+                            
+    // *************** Pagination function ***************
+                            $rootScope.limit = $rootScope.apidata.Limit;
+                            $rootScope.page = ($rootScope.apidata.TotalResults / $rootScope.limit);
+                            
+                            if($rootScope.page != Math.floor($rootScope.page)) {
+                                $rootScope.page = Math.floor($rootScope.page) + 1;
+                                for (i = 0; i < $rootScope.page; i++) { 
+                                    if(i == 0) {
+                                        var api_URL = $rootScope.api_URL;
+                                        $rootScope.pager = {
+                                            urls : [{url: api_URL}]
+                                        };
+                                    } else {
+                                        $rootScope.Offset = i * $rootScope.limit;
+                                        $rootScope.pager.urls.push({'url' : $rootScope.api_URL + "&offset=" + $rootScope.Offset});
+                                    }
+                                }
+                            }
+                            
+                            $rootScope.paginations = $rootScope.pager.urls;
+    // *************** END Pagination ***************
+                            
+                        } else if ($rootScope.api_URL.indexOf(".xml?") != -1) {
+                            $rootScope.api_URL = $rootScope.api_URL.replace(".xml?", ".json?");
+                            $timeout(checkAPIURL (), 500);
+                        } else if ($rootScope.api_URL.indexOf("questions.json") != -1) {
+                            console.log($rootScope.apidata);
+                            $rootScope.errormessage = "Not supported yet"; 
+                        } else if ($rootScope.api_URL.indexOf("statistics.json") != -1) {
+                            console.log($rootScope.apidata);
+                            $rootScope.errormessage = "Not supported yet";
+                        } else if($rootScope.api_URL.indexOf("reviewcomments.json") != -1) {
+                            console.log($rootScope.apidata);
+                            $rootScope.errormessage = "Not supported yet";
+                        } else if($rootScope.api_URL.indexOf("answers.json") != -1) {
+                            console.log($rootScope.apidata);
+                            $rootScope.errormessage = "Not supported yet";
+                        } else if ($rootScope.api_URL.indexOf("authors.json") != -1) {
+                            console.log($rootScope.apidata);
+                            $rootScope.errormessage = "Not supported yet";
+                        } else if ($rootScope.api_URL.indexOf("products.json") != -1) {
+                            console.log($rootScope.apidata);
+                            $rootScope.errormessage = "Not supported yet";
+                        } else {
+                            $rootScope.errormessage = "Invalid API call";
+                        }
+                    } 
+        
+                });
             }
         }
-        
-    };
-    
-    $scope.checkAPI = function() {
-        
-        if ($scope.api_URL.indexOf("&include=products") != -1) {
-            checkAPIURL ()
-        } else {
-            $scope.api_URL = $scope.api_URL + "&include=products";
-            checkAPIURL ();
-        }
-        
-        function checkAPIURL () {     
-            $http.get($scope.api_URL).then(function(response) { 
-                
-                $scope.apidata = response.data;
-                
-                if(response.data.HasErrors == true) {
-                    $scope.errormessage = response.data.Errors["0"].Message;
-                    $scope.errorCheck = response.data.HasErrors;
-                } else 
-                {
-                    if ($scope.api_URL.indexOf("reviews.json") != -1) {
-                        $scope.apidata = response.data;
-                        console.log($scope.apidata);
-                        $scope.results = $scope.apidata.Results;
-                        $scope.totalReviews = $scope.apidata.TotalResults;
-                        $scope.Locale = $scope.apidata.Locale;
-                        $scope.ratingsOnly = $scope.apidata.IsRatingsOnly;
-                        $scope.apicalllimit = $scope.apidata.Limit;
-                        
-                        if ($scope.apidata.Includes.Products.length > 0 || $scope.apidata.Includes.ProductsOrder.length > 0) {
-                            $scope.ProductsData = $scope.apidata.Includes.Products;
-                            $scope.ProductsAttributes = $scope.apidata.Includes.ProductsOrder;
-                        }
-                        
-                        $scope.SCount = 0;
-                        $scope.IRO = 0;
-                        $scope.objectData = [];
-                        angular.forEach($scope.results, function(value, key) {    
-                            $scope.resultsData = JSON.stringify(value.IsSyndicated);
-                            $scope.ratingsOnlyReview = JSON.stringify(value.IsRatingsOnly);
-                            
-                            if ($scope.ratingsOnlyReview == "true") {
-                                $scope.IRO++
-                            }
-                            
-                            if ($scope.resultsData == "true") {
-                                $scope.SCount++
-                                $scope.SReviews = {};
-                                $scope.SReviews ["id"] = value.Id;
-                                $scope.SReviews ["source"] = value.SyndicationSource.Name;
-                        
-                                $scope.objectData.push($scope.SReviews);
-                            }
-                    
-                        });
-                        
-                        var up = false;
-                        
-                        angular.forEach($scope.apidata.Includes.Products, function(value, key) {
-                            
-                            var reg = /^(?:https?:\/\/)?(?:[^@\/\n]+@)?(?:www\.)?([^:\/\n]+)/gm;
-                                if(up != true) {
-                                    var url = value.ProductPageUrl;
-                                    up = true;
-                                }
-                            var url = value.ProductPageUrl;
-                            var regex = new RegExp(reg);
-                            var resulti = regex.exec(url);
-                            
-                            if (resulti[1] != "null") {
-                                $scope.clientURL = resulti[0];
-                                $scope.client = resulti[1];   
-                            }
-                        });
-                        
-                        $scope.limit = $scope.apidata.Limit;
-                        $scope.page = ($scope.apidata.TotalResults / $scope.limit);
-                        
-                        if($scope.page != Math.floor($scope.page)) {
-                            $scope.page = Math.floor($scope.page) + 1;
-                            for (i = 0; i < $scope.page; i++) { 
-                                if(i == 0) {
-                                    var api_URL = $scope.api_URL;
-                                    $scope.pager = {
-                                        urls : [{url: api_URL}]
-                                    };
-                                } else {
-                                    $scope.Offset = i * $scope.limit;
-                                    console.log("Offset: " + $scope.Offset);
-                                    $scope.pager.urls.push({'url' : $scope.api_URL + "&offset=" + $scope.Offset});
-                                }
-                            }
-                        }
-                        
-                        console.log($scope.pager.urls);
-                        $scope.paginations = $scope.pager.urls;
-                        
-                        $q.all($scope.objectData).then(function () {
-                            $scope.SourcesSyndicated = $scope.objectData;
-                        });
-                        
-                    } else if ($scope.api_URL.indexOf(".xml?") != -1) {
-                        $scope.api_URL = $scope.api_URL.replace(".xml?", ".json?");
-                        $timeout(checkAPIURL (), 500);
-                    } else if ($scope.api_URL.indexOf("questions.json") != -1) {
-                        console.log($scope.apidata);
-                        $scope.errormessage = "Not supported yet"; 
-                    } else if ($scope.api_URL.indexOf("statistics.json") != -1) {
-                        console.log($scope.apidata);
-                        $scope.errormessage = "Not supported yet";
-                    } else if($scope.api_URL.indexOf("reviewcomments.json") != -1) {
-                        console.log($scope.apidata);
-                        $scope.errormessage = "Not supported yet";
-                    } else if($scope.api_URL.indexOf("answers.json") != -1) {
-                        console.log($scope.apidata);
-                        $scope.errormessage = "Not supported yet";
-                    } else if ($scope.api_URL.indexOf("authors.json") != -1) {
-                        console.log($scope.apidata);
-                        $scope.errormessage = "Not supported yet";
-                    } else if ($scope.api_URL.indexOf("products.json") != -1) {
-                        console.log($scope.apidata);
-                        $scope.errormessage = "Not supported yet";
-                    } else {
-                        $scope.errormessage = "Invalid API call";
-                    }
-                } 
-    
-            });
-        }
-    };
-}]);
-/*
-BV.controller('MainController', function($scope) {
-
-    $scope.api = {
-      output: '',
-      productid: ''
-    };
-
-    $scope.updateOutput = function() {
-      $scope.api.output = 'api.bazaarvoice.com?id=' + $scope.api.productid ;
     }
-});
-*/
+ }]); 
