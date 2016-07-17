@@ -1,6 +1,9 @@
 var BV = angular.module('bvapp', ['angular-loading-bar', 'ngAnimate', 'ngRoute', 'ui.bootstrap', 'ngSanitize', 'hm.readmore', 'ngclipboard']);
 
-BV.config(['$routeProvider', '$locationProvider', function($routeProvider, $locationProvider) {
+BV.config(['$routeProvider', '$locationProvider', function($routeProvider, $locationProvider) {   
+    
+    // $locationProvider.hashPrefix('!');
+    
     $routeProvider.when('/apichecker', {
         templateUrl: 'views/apichecker.html',
         controller: 'bvapi'
@@ -19,4 +22,5 @@ BV.config(['$routeProvider', '$locationProvider', function($routeProvider, $loca
             requireBase: false
         });
     */
+    
 }])

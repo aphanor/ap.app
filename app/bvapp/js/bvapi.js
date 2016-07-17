@@ -19,6 +19,7 @@ BV.controller('bvapi', ['$scope', 'APIapp', function($scope, APIapp) {
         
         APIapp.apichecker($scope.api_URL);
     };
+    
 }]);
 
 
@@ -26,7 +27,7 @@ BV.controller('bvapi', ['$scope', 'APIapp', function($scope, APIapp) {
     ******************************* BV API - Factory & Directives *******************************
 */
 
-BV.factory("APIapp",['$http', '$window', '$q', '$rootScope', '$routeParams', '$location', '$route', '$timeout', function($http, $window, $q, $rootScope, $routeParams, $location, $route, $timeout) {
+BV.factory("APIapp", ['$http', '$window', '$q', '$rootScope', '$routeParams', '$location', '$route', '$timeout', function($http, $window, $q, $rootScope, $routeParams, $location, $route, $timeout) {
     
     $rootScope.oneAtATime = true;
     $rootScope.status = {
@@ -47,6 +48,7 @@ BV.factory("APIapp",['$http', '$window', '$q', '$rootScope', '$routeParams', '$l
             $rootScope.staging = stagingcheck;
         
     // *************** Environment check *************** 
+            
             if ($rootScope.staging == true) {
                 $rootScope.bv_api = $rootScope.stg_api + $rootScope.types + ".json?apiversion=5.4";
                 $rootScope.api = $rootScope.stg_api + $rootScope.types + ".json?apiversion=5.4&passkey=";
@@ -64,6 +66,7 @@ BV.factory("APIapp",['$http', '$window', '$q', '$rootScope', '$routeParams', '$l
                     console.log($rootScope.data_test);
                 });
             }
+            
     // *************** END of check ***************
             
             function getData() {
@@ -102,18 +105,18 @@ BV.factory("APIapp",['$http', '$window', '$q', '$rootScope', '$routeParams', '$l
         },
         apichecker: function(URLAPI) {
             
-            console.log(URLAPI);
-            
-            $rootScope.api_URL = URLAPI;
+            $rootScope.api_URL = URLAPI.toLowerCase();
             
             if ($rootScope.api_URL.indexOf("&include=products") != -1) {
-                checkAPIURL ()
+                checkAPIURL ();
+                console.log("No product query string");
             } else {
                 $rootScope.api_URL = $rootScope.api_URL + "&include=products";
                 checkAPIURL ();
             }
             
             function checkAPIURL () {     
+                
                 $http.get($rootScope.api_URL).then(function(response) { 
                     
                     $rootScope.apidata = response.data;
@@ -144,6 +147,7 @@ BV.factory("APIapp",['$http', '$window', '$q', '$rootScope', '$routeParams', '$l
                             }
                             
     // *************** Syndication function ***************
+                            
                             angular.forEach($rootScope.results, function(value, key) {    
                                 $rootScope.resultsData = JSON.stringify(value.IsSyndicated);
                                 $rootScope.ratingsOnlyReview = JSON.stringify(value.IsRatingsOnly);
@@ -165,11 +169,13 @@ BV.factory("APIapp",['$http', '$window', '$q', '$rootScope', '$routeParams', '$l
                             
                             $q.all($rootScope.objectData).then(function () {
                                 $rootScope.SourcesSyndicated = $rootScope.objectData;
-                            });  
+                            });
+                             
     // *************** END Syndication ***************
                             
                             
     // *************** Client's Info function ***************
+                            
                             angular.forEach($rootScope.apidata.Includes.Products, function(value, key) {
                                 
                                 var reg = /^(?:https?:\/\/)?(?:[^@\/\n]+@)?(?:www\.)?([^:\/\n]+)/gm;
@@ -190,8 +196,10 @@ BV.factory("APIapp",['$http', '$window', '$q', '$rootScope', '$routeParams', '$l
     // *************** END Syndication ***************
                             
     // *************** Pagination function ***************
+                            
                             $rootScope.limit = $rootScope.apidata.Limit;
                             $rootScope.page = ($rootScope.apidata.TotalResults / $rootScope.limit);
+                            $rootScope.pager;
                             
                             if($rootScope.page != Math.floor($rootScope.page)) {
                                 $rootScope.page = Math.floor($rootScope.page) + 1;
@@ -208,7 +216,11 @@ BV.factory("APIapp",['$http', '$window', '$q', '$rootScope', '$routeParams', '$l
                                 }
                             }
                             
-                            $rootScope.paginations = $rootScope.pager.urls;
+                            $q.all($rootScope.pager).then(function () {
+                                $rootScope.paginations = $rootScope.pager.urls;
+                            });
+                            console.info($rootScope.pager)
+                            
     // *************** END Pagination ***************
                             
                         } else if ($rootScope.api_URL.indexOf(".xml?") != -1) {
@@ -241,4 +253,5 @@ BV.factory("APIapp",['$http', '$window', '$q', '$rootScope', '$routeParams', '$l
             }
         }
     }
+    
  }]); 
